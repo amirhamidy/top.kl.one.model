@@ -1,3 +1,4 @@
+
 /* ==========================================================================
    INITIALIZE ALL COMPONENTS ON DOCUMENT READY
    ========================================================================== */
@@ -315,4 +316,83 @@ function showNotification(message, type) {
             y: 20
         }
     }).showToast();
+}
+
+
+/* ==========================================================================
+   INITIALIZE ALL COMPONENTS
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', function() {
+    initGoldenOffers();
+});
+
+
+function initGoldenOffers() {
+
+    // INITIALIZE THE MAIN PRODUCT SLIDER
+    new Swiper('.golden-offers-swiper', {
+        loop: false,
+        slidesPerView: 1.5,
+        spaceBetween: 15,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            576: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 2.5, spaceBetween: 20 },
+            1200: { slidesPerView: 3, spaceBetween: 25 },
+        },
+        grabCursor: true,
+    });
+
+    // WISHLIST BUTTON LOGIC (HEART ICON)
+    const offersContainer = document.querySelector('.golden-offers');
+    if (offersContainer) {
+        offersContainer.addEventListener('click', function(e) {
+            const wishlistBtn = e.target.closest('.wishlist-btn');
+            if (wishlistBtn) {
+                wishlistBtn.classList.toggle('is-wishlisted');
+            }
+        });
+    }
+
+    // FLASH DEAL CARD LOGIC (THE "WOW" ANIMATION)
+    const flipper = document.querySelector('.flash-deal-flipper');
+    if (flipper) {
+        // DATA FOR OUR FLASH DEALS (IN A REAL APP, THIS COMES FROM AN API)
+        const flashDealsData = [
+            { name: 'هدست گیمینگ RGB', price: '۳,۱۰۰,۰۰۰ تومان', img: 'assets/img/twoo-slider.webp' },
+            { name: 'دوربین ورزشی 4K', price: '۷,۵۰۰,۰۰۰ تومان', img: 'assets/img/three-slider.webp' },
+            { name: 'گوشی هوشمند پرچمدار', price: '۲۵,۰۰۰,۰۰۰ تومان', img: 'assets/img/one-slider.webp' },
+        ];
+
+        let currentDealIndex = 0;
+        const flipperFront = flipper.querySelector('.flipper-front');
+        const flipperBack = flipper.querySelector('.flipper-back');
+
+        function changeDeal() {
+            currentDealIndex = (currentDealIndex + 1) % flashDealsData.length;
+            const nextDeal = flashDealsData[currentDealIndex];
+
+            // 1. Get the currently active face (front or back)
+            const currentVisibleFace = flipper.classList.contains('is-flipping') ? flipperBack : flipperFront;
+            const nextHiddenFace = flipper.classList.contains('is-flipping') ? flipperFront : flipperBack;
+
+            // 2. Populate the hidden face with the new data
+            nextHiddenFace.innerHTML = `
+                <h3 class="flash-deal-title">پیشنهاد لحظه‌ای!</h3>
+                <img src="${nextDeal.img}" alt="${nextDeal.name}" class="flash-deal-img">
+                <h4 class="flash-deal-name">${nextDeal.name}</h4>
+                <div class="flash-deal-timer">00:14:59</div>
+                <div class="flash-deal-price">${nextDeal.price}</div>
+                <a href="#" class="btn-flash-deal">همین حالا بخرید</a>
+            `;
+
+            // 3. Trigger the flip
+            flipper.classList.toggle('is-flipping');
+        }
+
+        setInterval(changeDeal, 8000); // Change deal every 8 seconds
+    }
 }
