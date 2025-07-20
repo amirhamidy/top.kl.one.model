@@ -1,398 +1,239 @@
+/* ==========================================================================
+   MAIN INITIALIZATION
+========================================================================== */
+document.addEventListener('DOMContentLoaded', function() {
+    const swiperExists = typeof Swiper !== 'undefined';
+    const toastifyExists = typeof Toastify !== 'undefined';
+
+    initCoreUI();
+
+    if (swiperExists) {
+        initSliders();
+    }
+
+    initInteractions(toastifyExists);
+
+    console.log("فروشگاه با موفقیت بارگذاری شد. نسخه نهایی! 🚀");
+});
 
 /* ==========================================================================
-   INITIALIZE ALL COMPONENTS ON DOCUMENT READY
-   ========================================================================== */
-
-
-document.addEventListener('DOMContentLoaded', function() {
+   1. CORE UI COMPONENTS
+========================================================================== */
+function initCoreUI() {
     initSearch();
     initMobileMenu();
     initMegaMenu();
-    initHeroSlider();
-    initProductCarousel();
-    initThumbnailGalleries();
-    initProductActions();
-});
-
-
-/* ==========================================================================
-   1. SEARCH OVERLAY LOGIC
-   ========================================================================== */
+}
 
 function initSearch() {
     const searchOverlay = document.getElementById('search-overlay');
     const searchToggleBtn = document.getElementById('search-toggle-btn');
     const searchCloseBtn = document.getElementById('search-close-btn');
     const searchInput = document.querySelector('.search-input');
+    if (!searchOverlay || !searchToggleBtn || !searchCloseBtn || !searchInput) return;
 
-    if (!searchOverlay || !searchToggleBtn || !searchCloseBtn || !searchInput) {
-        return;
-    }
-
-    function openSearch() {
+    searchToggleBtn.addEventListener('click', () => {
         searchOverlay.classList.add('active');
         setTimeout(() => searchInput.focus(), 300);
-    }
+    });
 
-    function closeSearch() {
-        searchOverlay.classList.remove('active');
-    }
+    const closeSearch = () => searchOverlay.classList.remove('active');
 
-    searchToggleBtn.addEventListener('click', openSearch);
     searchCloseBtn.addEventListener('click', closeSearch);
-
-    searchOverlay.addEventListener('click', function(e) {
-        if (e.target === searchOverlay) {
-            closeSearch();
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-            closeSearch();
-        }
-    });
+    searchOverlay.addEventListener('click', e => (e.target === searchOverlay) && closeSearch());
+    document.addEventListener('keydown', e => (e.key === 'Escape' && searchOverlay.classList.contains('active')) && closeSearch());
 }
-
-
-/* ==========================================================================
-   2. MOBILE OFF-CANVAS MENU LOGIC
-   ========================================================================== */
 
 function initMobileMenu() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const menuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('mobile-menu-overlay');
-    const submenuToggles = document.querySelectorAll('.mobile-menu .has-submenu > a');
-    const submenuBackBtns = document.querySelectorAll('.mobile-menu .submenu-back-btn');
+    if (!mobileMenu || !menuToggle || !overlay) return;
 
-    if (!mobileMenu || !menuToggle || !overlay) {
-        return;
-    }
-
-    function openMenu() {
+    const openMenu = () => {
         mobileMenu.classList.add('active');
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
-    }
+    };
 
-    function closeMenu() {
+    const closeMenu = () => {
         mobileMenu.classList.remove('active');
         overlay.classList.remove('active');
         document.body.style.overflow = '';
-
-        const activeSubmenu = mobileMenu.querySelector('.submenu.active');
-        if (activeSubmenu) {
-            activeSubmenu.classList.remove('active');
-        }
-    }
+        mobileMenu.querySelector('.submenu.active')?.classList.remove('active');
+    };
 
     menuToggle.addEventListener('click', openMenu);
-    if (menuClose) menuClose.addEventListener('click', closeMenu);
+    menuClose?.addEventListener('click', closeMenu);
     overlay.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => (e.key === 'Escape' && mobileMenu.classList.contains('active')) && closeMenu());
 
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
-            closeMenu();
-        }
-    });
-
-    submenuToggles.forEach(function(toggle) {
+    document.querySelectorAll('.mobile-menu .has-submenu > a').forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
-            const submenu = this.nextElementSibling;
-            if (submenu && submenu.classList.contains('submenu')) {
-                submenu.classList.add('active');
-            }
+            this.nextElementSibling?.classList.add('active');
         });
     });
 
-    submenuBackBtns.forEach(function(btn) {
+    document.querySelectorAll('.mobile-menu .submenu-back-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            this.closest('.submenu').classList.remove('active');
+            this.closest('.submenu')?.classList.remove('active');
         });
     });
 }
-
-
-/* ==========================================================================
-   3. MEGA MENU LOGIC
-   ========================================================================== */
 
 function initMegaMenu() {
-    const categoryItems = document.querySelectorAll('.mega-menu-categories .category-item');
-
-    categoryItems.forEach(function(item) {
+    document.querySelectorAll('.mega-menu-categories .category-item').forEach(item => {
         item.addEventListener('mouseover', function() {
-            if (this.classList.contains('active')) {
-                return;
-            }
-
-            const currentActiveItem = document.querySelector('.mega-menu-categories .category-item.active');
-            if (currentActiveItem) {
-                currentActiveItem.classList.remove('active');
-            }
+            if (this.classList.contains('active')) return;
+            const container = this.closest('.mega-menu');
+            container.querySelector('.category-item.active')?.classList.remove('active');
+            container.querySelector('.subcategory-panel.active')?.classList.remove('active');
             this.classList.add('active');
-
-            const currentActivePanel = document.querySelector('.subcategory-panel.active');
-            if (currentActivePanel) {
-                currentActivePanel.classList.remove('active');
-            }
-
-            const targetPanel = document.querySelector(this.dataset.target);
-            if (targetPanel) {
-                targetPanel.classList.add('active');
-            }
+            document.querySelector(this.dataset.target)?.classList.add('active');
         });
     });
 }
 
-
 /* ==========================================================================
-   4. HERO SLIDER LOGIC
-   ========================================================================== */
+   2. SWIPER SLIDERS
+========================================================================== */
+function initSliders() {
+    initHeroSlider();
+    initGoldenOffersSlider();
+    initFlashDealSlider();
+}
 
 function initHeroSlider() {
-    if (typeof Swiper === 'undefined') return;
-
-    const heroSwiper = new Swiper('.hero-swiper', {
+    new Swiper('.hero-swiper', {
         loop: true,
         effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.hero-swiper .swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.hero-button-next',
-            prevEl: '.hero-button-prev',
-        },
+        fadeEffect: { crossFade: true },
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        pagination: { el: '.hero-swiper .swiper-pagination', clickable: true },
+        navigation: { nextEl: '.hero-button-next', prevEl: '.hero-button-prev' },
         on: {
+            init: function () {
+                const activeBullet = this.pagination.el.querySelector('.swiper-pagination-bullet-active');
+                if(activeBullet) activeBullet.classList.add('progress-start');
+            },
             slideChangeTransitionStart: function () {
-                const bullets = this.pagination.el.children;
-                for (const bullet of bullets) {
-                    bullet.classList.remove('progress-start');
-                }
-                const activeBullet = this.pagination.bullets[this.realIndex];
-                if (activeBullet) {
-                    void activeBullet.offsetWidth;
+                const allBullets = this.pagination.el.querySelectorAll('.swiper-pagination-bullet');
+                allBullets.forEach(b => b.classList.remove('progress-start'));
+                const activeBullet = this.pagination.el.querySelector('.swiper-pagination-bullet-active');
+                if(activeBullet) {
+                    void activeBullet.offsetWidth; // Force reflow
                     activeBullet.classList.add('progress-start');
                 }
             }
         }
     });
-
-    const firstActiveBullet = heroSwiper.pagination.bullets[heroSwiper.realIndex];
-    if (firstActiveBullet) {
-        firstActiveBullet.classList.add('progress-start');
-    }
 }
 
-
-/* ==========================================================================
-   5. PRODUCT CAROUSEL LOGIC (YOUR ORIGINAL)
-   ========================================================================== */
-
-function initProductCarousel() {
-    if (typeof Swiper === 'undefined') return;
-
-    new Swiper('.swiper-product-carousel', {
+function initGoldenOffersSlider() {
+    new Swiper('.golden-offers-swiper', {
         loop: false,
-        slidesPerView: 1.8,
+        slidesPerView: 1.5,
         spaceBetween: 15,
-        navigation: {
-            nextEl: '.swiper-product-carousel .swiper-button-next',
-            prevEl: '.swiper-product-carousel .swiper-button-prev',
-        },
-        breakpoints: {
-            576: { slidesPerView: 2.5, spaceBetween: 20 },
-            768: { slidesPerView: 3, spaceBetween: 20 },
-            992: { slidesPerView: 4, spaceBetween: 25 },
-            1200: { slidesPerView: 5, spaceBetween: 25 }
-        },
+        navigation: { nextEl: '.golden-offer-next', prevEl: '.golden-offer-prev' },
+        breakpoints: { 576: { slidesPerView: 2, spaceBetween: 20 }, 768: { slidesPerView: 2.5, spaceBetween: 20 }, 1200: { slidesPerView: 3, spaceBetween: 25 } },
         grabCursor: true,
     });
 }
 
+function initFlashDealSlider() {
+    new Swiper('.flash-deal-swiper', {
+        loop: false,
+        slidesPerView: 1,
+        spaceBetween: 15,
+        navigation: { nextEl: '.flash-deal-next', prevEl: '.flash-deal-prev' },
+        grabCursor: true,
+    });
+}
 
 /* ==========================================================================
-   6. PRODUCT CARD THUMBNAIL GALLERY (YOUR ORIGINAL)
-   ========================================================================== */
+   3. INTERACTIONS & ANIMATIONS
+========================================================================== */
+function initInteractions(toastifyLoaded) {
+    initThumbnailGalleries();
+    initProductActions(toastifyLoaded);
+    initScrollAnimations();
+}
 
 function initThumbnailGalleries() {
-    document.querySelectorAll('.product-card').forEach(function(card) {
-        const mainImageWrapper = card.querySelector('.main-image-wrapper');
+    document.querySelectorAll('.product-card').forEach(card => {
+        const mainImage = card.querySelector('.main-product-image');
         const thumbnails = card.querySelectorAll('.thumbnail-item');
+        if (!mainImage || thumbnails.length === 0) return;
 
-        if (!mainImageWrapper || thumbnails.length === 0) {
-            return;
-        }
-
-        thumbnails[0].classList.add('active');
-
-        thumbnails.forEach(function(thumb) {
+        thumbnails.forEach(thumb => {
             thumb.addEventListener('mouseenter', function() {
-                if (this.classList.contains('active')) {
-                    return;
-                }
-
-                const activeThumb = card.querySelector('.thumbnail-item.active');
-                if (activeThumb) {
-                    activeThumb.classList.remove('active');
-                }
+                if (this.classList.contains('active')) return;
+                card.querySelector('.thumbnail-item.active')?.classList.remove('active');
                 this.classList.add('active');
-
-                const oldImage = mainImageWrapper.querySelector('.main-product-image');
-                const newImage = document.createElement('img');
-                newImage.src = this.dataset.largeSrc;
-                newImage.alt = oldImage.alt;
-                newImage.className = 'main-product-image';
-                newImage.style.transform = 'translateX(100%)';
-
-                mainImageWrapper.appendChild(newImage);
-                void newImage.offsetWidth;
-
-                oldImage.style.transform = 'translateX(-100%)';
-                newImage.style.transform = 'translateX(0)';
-
-                oldImage.addEventListener('transitionend', function() {
-                    oldImage.remove();
-                }, {
-                    once: true
-                });
+                mainImage.src = this.dataset.largeSrc;
             });
         });
     });
 }
 
+function initProductActions(toastifyLoaded) {
+    document.addEventListener('click', function(e) {
+        const wishlistBtn = e.target.closest('.wishlist-btn');
+        if (wishlistBtn) {
+            wishlistBtn.classList.toggle('is-wishlisted');
+            const isWishlisted = wishlistBtn.classList.contains('is-wishlisted');
+            const message = isWishlisted ? 'به علاقه‌مندی‌ها اضافه شد!' : 'از علاقه‌مندی‌ها حذف شد.';
+            showNotification(message, isWishlisted ? 'danger' : 'default', toastifyLoaded);
+        }
 
-/* ==========================================================================
-   7. PRODUCT ACTIONS & NOTIFICATIONS (YOUR ORIGINAL)
-   ========================================================================== */
-
-function initProductActions() {
-    document.querySelectorAll('.btn-add-to-cart').forEach(function(button) {
-        button.addEventListener('click', function() {
-            showNotification('محصول به سبد خرید اضافه شد!', 'success');
-        });
-    });
-
-    document.querySelectorAll('.btn-add-to-wishlist').forEach(function(button) {
-        button.addEventListener('click', function() {
-            showNotification('محصول به لیست علاقه‌مندی‌ها اضافه شد!', 'danger');
-        });
+        const addToCartBtn = e.target.closest('.btn-add-to-cart');
+        if (addToCartBtn) {
+            showNotification('محصول به سبد خرید اضافه شد!', 'success', toastifyLoaded);
+        }
     });
 }
 
-function showNotification(message, type) {
-    if (typeof Toastify === 'undefined') return;
+function initScrollAnimations() {
+    const sections = document.querySelectorAll('.hero-slider-section, .golden-offers');
+    if (!sections.length) return;
 
-    let backgroundColor;
-    if (type === 'success') {
-        backgroundColor = "linear-gradient(to right, #00b09b, var(--success-color))";
-    } else if (type === 'danger') {
-        backgroundColor = "linear-gradient(to right, #e53935, var(--danger-color))";
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => observer.observe(section));
+}
+
+function showNotification(message, type, isLoaded) {
+    if (!isLoaded) {
+        console.warn('Toastify library is not loaded. Notification:', message);
+        return;
     }
+
+    const colors = {
+        success: "linear-gradient(to right, #10b981, #10b981)",
+        danger: "linear-gradient(to right, #ef4444, #ef4444)",
+        default: "linear-gradient(to right, #6c757d, #212529)"
+    };
 
     Toastify({
         text: message,
         duration: 3000,
         close: true,
-        gravity: 'top',
+        gravity: 'bottom',
         position: 'left',
         stopOnFocus: true,
         style: {
-            background: backgroundColor
+            background: colors[type] || colors['default'],
+            borderRadius: "var(--border-radius-sm)",
+            fontFamily: "Vazirmatn",
         },
-        offset: {
-            x: -100,
-            y: 20
-        }
     }).showToast();
-}
-
-
-/* ==========================================================================
-   INITIALIZE ALL COMPONENTS
-   ========================================================================== */
-document.addEventListener('DOMContentLoaded', function() {
-    initGoldenOffers();
-});
-
-
-function initGoldenOffers() {
-
-    // INITIALIZE THE MAIN PRODUCT SLIDER
-    new Swiper('.golden-offers-swiper', {
-        loop: false,
-        slidesPerView: 1.5,
-        spaceBetween: 15,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            576: { slidesPerView: 2, spaceBetween: 20 },
-            768: { slidesPerView: 2.5, spaceBetween: 20 },
-            1200: { slidesPerView: 3, spaceBetween: 25 },
-        },
-        grabCursor: true,
-    });
-
-    // WISHLIST BUTTON LOGIC (HEART ICON)
-    const offersContainer = document.querySelector('.golden-offers');
-    if (offersContainer) {
-        offersContainer.addEventListener('click', function(e) {
-            const wishlistBtn = e.target.closest('.wishlist-btn');
-            if (wishlistBtn) {
-                wishlistBtn.classList.toggle('is-wishlisted');
-            }
-        });
-    }
-
-    // FLASH DEAL CARD LOGIC (THE "WOW" ANIMATION)
-    const flipper = document.querySelector('.flash-deal-flipper');
-    if (flipper) {
-        // DATA FOR OUR FLASH DEALS (IN A REAL APP, THIS COMES FROM AN API)
-        const flashDealsData = [
-            { name: 'هدست گیمینگ RGB', price: '۳,۱۰۰,۰۰۰ تومان', img: 'assets/img/twoo-slider.webp' },
-            { name: 'دوربین ورزشی 4K', price: '۷,۵۰۰,۰۰۰ تومان', img: 'assets/img/three-slider.webp' },
-            { name: 'گوشی هوشمند پرچمدار', price: '۲۵,۰۰۰,۰۰۰ تومان', img: 'assets/img/one-slider.webp' },
-        ];
-
-        let currentDealIndex = 0;
-        const flipperFront = flipper.querySelector('.flipper-front');
-        const flipperBack = flipper.querySelector('.flipper-back');
-
-        function changeDeal() {
-            currentDealIndex = (currentDealIndex + 1) % flashDealsData.length;
-            const nextDeal = flashDealsData[currentDealIndex];
-
-            // 1. Get the currently active face (front or back)
-            const currentVisibleFace = flipper.classList.contains('is-flipping') ? flipperBack : flipperFront;
-            const nextHiddenFace = flipper.classList.contains('is-flipping') ? flipperFront : flipperBack;
-
-            // 2. Populate the hidden face with the new data
-            nextHiddenFace.innerHTML = `
-                <h3 class="flash-deal-title">پیشنهاد لحظه‌ای!</h3>
-                <img src="${nextDeal.img}" alt="${nextDeal.name}" class="flash-deal-img">
-                <h4 class="flash-deal-name">${nextDeal.name}</h4>
-                <div class="flash-deal-timer">00:14:59</div>
-                <div class="flash-deal-price">${nextDeal.price}</div>
-                <a href="#" class="btn-flash-deal">همین حالا بخرید</a>
-            `;
-
-            // 3. Trigger the flip
-            flipper.classList.toggle('is-flipping');
-        }
-
-        setInterval(changeDeal, 8000); // Change deal every 8 seconds
-    }
 }

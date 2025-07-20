@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه شما - نسخه نهایی کامل</title>
-
-    <!-- LIBS & FONTS (میتونی اینا رو هم به فایل CSS خودت منتقل کنی) -->
+    <title>فروشگاه شما - نسخه افسانه‌ای</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -27,6 +24,7 @@
     <symbol id="icon-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></symbol>
     <symbol id="icon-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></symbol>
     <symbol id="icon-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></symbol>
 </svg>
 
 <!-- ==========================================================================
@@ -36,7 +34,7 @@
     <div class="container">
         <div class="d-flex align-items-center header-content">
             <button class="header-action-btn mobile-menu-toggle d-lg-none" type="button" aria-label="باز کردن منو">
-                <svg class="icon" style="fill:none; stroke:currentColor;"><use href="#icon-menu"></use></svg>
+                <svg class="icon"><use href="#icon-menu"></use></svg>
             </button>
             <a href="#" class="header-logo me-lg-4">
                 <img src="https://via.placeholder.com/140x40/FFFFFF/00b8d4?text=YourLogo" alt="لوگو">
@@ -47,17 +45,17 @@
                         <a class="nav-link" href="#">دسته‌بندی کالاها</a>
                         <div class="mega-menu">
                             <ul class="mega-menu-categories">
-                                <li class="category-item active" data-target="#panel-digital"><a href="#">کالای دیجیتال <svg class="icon icon-chevron-left" style="fill:none; stroke:currentColor;"><use href="#icon-chevron-left"></use></svg></a></li>
-                                <li class="category-item" data-target="#panel-appliances"><a href="#">لوازم خانگی <svg class="icon icon-chevron-left" style="fill:none; stroke:currentColor;"><use href="#icon-chevron-left"></use></svg></a></li>
-                                <!-- ... سایر دسته‌بندی‌ها ... -->
+                                <li class="category-item active" data-target="#panel-digital"><a href="#">کالای دیجیتال <svg class="icon icon-chevron-left"><use href="#icon-chevron-left"></use></svg></a></li>
+                                <li class="category-item" data-target="#panel-appliances"><a href="#">لوازم خانگی <svg class="icon icon-chevron-left"><use href="#icon-chevron-left"></use></svg></a></li>
+                                <li class="category-item" data-target="#panel-fashion"><a href="#">مد و پوشاک <svg class="icon icon-chevron-left"><use href="#icon-chevron-left"></use></svg></a></li>
                             </ul>
                             <div class="mega-menu-subcategories">
                                 <div class="subcategory-panel active" id="panel-digital">
-                                    <div class="subcategory-column"><a href="#" class="subcategory-group-title">موبایل و تبلت</a><ul class="subcategory-list"><li><a href="#">گوشی اپل</a></li><li><a href="#">گوشی سامسونگ</a></li></ul></div>
-                                    <div class="subcategory-column"><a href="#" class="subcategory-group-title">لپ‌تاپ</a><ul class="subcategory-list"><li><a href="#">لپ‌تاپ گیمینگ</a></li><li><a href="#">مک‌بوک</a></li></ul></div>
+                                    <div class="subcategory-column"><a href="#" class="subcategory-group-title">موبایل و تبلت</a><ul class="subcategory-list"><li><a href="#">گوشی اپل</a></li><li><a href="#">گوشی سامسونگ</a></li><li><a href="#">گوشی شیائومی</a></li></ul></div>
+                                    <div class="subcategory-column"><a href="#" class="subcategory-group-title">لپ‌تاپ</a><ul class="subcategory-list"><li><a href="#">لپ‌تاپ گیمینگ</a></li><li><a href="#">مک‌بوک</a></li><li><a href="#">لپ‌تاپ اداری</a></li></ul></div>
                                 </div>
                                 <div class="subcategory-panel" id="panel-appliances"><p class="p-4 w-100 text-center text-muted">محتوای لوازم خانگی</p></div>
-                                <!-- ... سایر پنل‌ها ... -->
+                                <div class="subcategory-panel" id="panel-fashion"><p class="p-4 w-100 text-center text-muted">محتوای مد و پوشاک</p></div>
                             </div>
                         </div>
                     </li>
@@ -66,9 +64,9 @@
                 </ul>
             </nav>
             <div class="d-flex align-items-center header-actions">
-                <button class="header-action-btn" id="search-toggle-btn" aria-label="باز کردن جستجو"><svg class="icon" style="fill:none; stroke:currentColor;"><use href="#icon-search"></use></svg></button>
+                <button class="header-action-btn" id="search-toggle-btn" aria-label="باز کردن جستجو"><svg class="icon"><use href="#icon-search"></use></svg></button>
                 <a href="#" class="header-action-btn" aria-label="لیست علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></a>
-                <a href="#" class="header-action-btn" aria-label="سبد خرید"><span class="badge">3</span><svg class="icon" style="fill:none; stroke:currentColor;"><use href="#icon-cart"></use></svg></a>
+                <a href="#" class="header-action-btn" aria-label="سبد خرید"><span class="badge">3</span><svg class="icon"><use href="#icon-cart"></use></svg></a>
             </div>
         </div>
     </div>
@@ -77,53 +75,21 @@
 <!-- ==========================================================================
    OVERLAYS (SEARCH & MOBILE MENU)
 ========================================================================== -->
-<div class="search-overlay" id="search-overlay">
-    <div class="search-box">
-        <form action="/search" method="get" class="search-form" role="search">
-            <input type="search" name="q" class="search-input" placeholder="جستجو در فروشگاه..." autocomplete="off" aria-label="فیلد جستجو">
-            <button type="submit" class="search-submit-btn" aria-label="جستجو"><svg class="icon" style="fill:none; stroke:currentColor;"><use href="#icon-search"></use></svg></button>
-        </form>
-        <button id="search-close-btn" class="search-close-btn" aria-label="بستن جستجو"><svg class="icon"><use href="#icon-close"></use></svg></button>
-    </div>
-</div>
-
+<div class="search-overlay" id="search-overlay"><div class="search-box"><form action="/search" method="get" class="search-form" role="search"><input type="search" name="q" class="search-input" placeholder="جستجو در فروشگاه..." autocomplete="off" aria-label="فیلد جستجو"><button type="submit" class="search-submit-btn" aria-label="جستجو"><svg class="icon"><use href="#icon-search"></use></svg></button></form><button id="search-close-btn" class="search-close-btn" aria-label="بستن جستجو"><svg class="icon"><use href="#icon-close"></use></svg></button></div></div>
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
-<aside class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-header">
-        <a href="#" class="mobile-menu-logo"><img src="https://via.placeholder.com/140x40/FFFFFF/00b8d4?text=YourLogo" alt="لوگو"></a>
-        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="بستن منو"><svg class="icon"><use href="#icon-close"></use></svg></button>
-    </div>
-    <div class="mobile-menu-body">
-        <nav class="mobile-nav">
-            <ul class="mobile-nav-list">
-                <li class="has-submenu"><a href="#">دسته‌بندی کالاها <svg class="icon icon-chevron-left" style="fill:none; stroke:currentColor; width:16px;height:16px;"><use href="#icon-chevron-left"></use></svg></a>
-                    <div class="submenu">
-                        <div class="submenu-header"><button class="submenu-back-btn" aria-label="بازگشت"><svg class="icon" style="fill:none; stroke:currentColor;"><use href="#icon-chevron-left"></use></svg> بازگشت</button><h5>دسته‌بندی‌ها</h5></div>
-                        <ul class="submenu-list"><li><a href="#">کالای دیجیتال</a></li><li><a href="#">لوازم خانگی</a></li></ul>
-                    </div>
-                </li>
-                <li><a href="#">پرفروش‌ها</a></li>
-                <li><a href="#">تخفیف‌ها و پیشنهادها</a></li>
-            </ul>
-        </nav>
-    </div>
-    <div class="mobile-menu-footer"><a href="#" class="btn-login">ورود / ثبت‌نام</a></div>
-</aside>
+<aside class="mobile-menu" id="mobile-menu"><div class="mobile-menu-header"><a href="#" class="mobile-menu-logo"><img src="https://via.placeholder.com/140x40/FFFFFF/00b8d4?text=YourLogo" alt="لوگو"></a><button class="mobile-menu-close" id="mobile-menu-close" aria-label="بستن منو"><svg class="icon"><use href="#icon-close"></use></svg></button></div><div class="mobile-menu-body"><nav class="mobile-nav"><ul class="mobile-nav-list"><li class="has-submenu"><a href="#">دسته‌بندی کالاها <svg class="icon icon-chevron-left"><use href="#icon-chevron-left"></use></svg></a><div class="submenu"><div class="submenu-header"><button class="submenu-back-btn" aria-label="بازگشت"><svg class="icon"><use href="#icon-chevron-left"></use></svg> بازگشت</button><h5>دسته‌بندی‌ها</h5></div><ul class="submenu-list"><li><a href="#">کالای دیجیتال</a></li><li><a href="#">لوازم خانگی</a></li></ul></div></li><li><a href="#">پرفروش‌ها</a></li><li><a href="#">تخفیف‌ها و پیشنهادها</a></li></ul></nav></div><div class="mobile-menu-footer"><a href="#" class="btn-login">ورود / ثبت‌نام</a></div></aside>
 
-
-<!-- ==========================================================================
-   MAIN CONTENT
-========================================================================== -->
 <main>
-
-    <!-- HERO SLIDER SECTION -->
+    <!-- ==========================================================================
+       HERO SLIDER SECTION
+    ========================================================================== -->
     <section class="hero-slider-section">
         <div class="container">
             <div class="swiper hero-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="#"><img src="assets/img/one-slider.webp" alt="بنر ۱"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="assets/img/twoo-slider.webp" alt="بنر ۲"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="assets/img/three-slider.webp" alt="بنر ۳"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/1200x400/E0F7FA/00838F?text=Awesome+Banner+1" alt="بنر ۱"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/1200x400/FCE4EC/880E4F?text=Special+Offer+2" alt="بنر ۲"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/1200x400/FFF3E0/E65100?text=New+Arrivals+3" alt="بنر ۳"></a></div>
                 </div>
                 <div class="hero-slider-controls">
                     <div class="swiper-pagination"></div>
@@ -136,51 +102,47 @@
         </div>
     </section>
 
-    <!-- GOLDEN OFFERS SECTION (OUR CREATION) -->
+    <!-- ==========================================================================
+       GOLDEN OFFERS SECTION
+    ========================================================================== -->
     <section class="golden-offers">
         <div class="container">
             <div class="golden-offers-container">
                 <div class="flash-deal-slider-card">
-                    <h3 class="flash-deal-title">فقط امروز!</h3>
+                    <div class="offers-slider-header"><h2 class="offers-slider-title">پیشنهاد لحظه‌ای</h2><a href="#" class="offers-slider-all">مشاهده همه</a></div>
                     <div class="swiper flash-deal-swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide deal-slide"><img src="https://picsum.photos/id/60/400/400" alt="اسپیکر هوشمند" class="flash-deal-img"><h4 class="flash-deal-name">اسپیکر هوشمند خانگی</h4><div class="flash-deal-price">۲,۸۰۰,۰۰۰ تومان</div><a href="#" class="btn-flash-deal">بررسی و خرید</a></div>
-                            <div class="swiper-slide deal-slide"><img src="https://picsum.photos/id/70/400/400" alt="موس گیمینگ" class="flash-deal-img"><h4 class="flash-deal-name">موس گیمینگ حرفه‌ای</h4><div class="flash-deal-price">۱,۲۰۰,۰۰۰ تومان</div><a href="#" class="btn-flash-deal">بررسی و خرید</a></div>
-                            <div class="swiper-slide deal-slide"><img src="https://picsum.photos/id/80/400/400" alt="تبلت" class="flash-deal-img"><h4 class="flash-deal-name">تبلت دانش‌آموزی</h4><div class="flash-deal-price">۶,۱۰۰,۰۰۰ تومان</div><a href="#" class="btn-flash-deal">بررسی و خرید</a></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/60/400/400" alt="اسپیکر" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div></div><div class="product-info"><h3 class="product-name"><a href="#">اسپیکر هوشمند خانگی</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۲,۸۰۰,۰۰۰ ت</span></div><span class="product-discount-badge">ویژه</span></div></div></article></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/70/400/400" alt="موس" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div></div><div class="product-info"><h3 class="product-name"><a href="#">موس گیمینگ حرفه‌ای</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۱,۲۰۰,۰۰۰ ت</span></div><span class="product-discount-badge">ویژه</span></div></div></article></div>
                         </div>
-                        <div class="swiper-pagination"></div>
                     </div>
+                    <div class="swiper-nav-button button-prev flash-deal-prev"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></div>
+                    <div class="swiper-nav-button button-next flash-deal-next"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></div>
                 </div>
 
                 <div class="offers-slider-wrapper">
                     <div class="offers-slider-header"><h2 class="offers-slider-title">پیشنهادهای طلایی</h2><a href="#" class="offers-slider-all">مشاهده همه</a></div>
                     <div class="swiper golden-offers-swiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/10/400/400" alt="گوشی" class="main-product-image"></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/10/80/80" data-large-src="https://picsum.photos/id/10/400/400" alt="" class="thumbnail-item"><img src="https://picsum.photos/id/11/80/80" data-large-src="https://picsum.photos/id/11/400/400" alt="" class="thumbnail-item"></div><button class="wishlist-btn"><svg class="icon"><use href="#icon-heart"></use></svg></button></div><div class="product-info"><h3 class="product-name"><a href="#">گوشی هوشمند مدل ایکس پرو</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۱۱,۵۰۰,۰۰۰ ت</span><span class="old-price">۱۳,۰۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۵٪</span></div></div></article></div>
-                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/20/400/400" alt="لپ‌تاپ" class="main-product-image"></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/20/80/80" data-large-src="https://picsum.photos/id/20/400/400" alt="" class="thumbnail-item"><img src="https://picsum.photos/id/21/80/80" data-large-src="https://picsum.photos/id/21/400/400" alt="" class="thumbnail-item"></div><button class="wishlist-btn"><svg class="icon"><use href="#icon-heart"></use></svg></button></div><div class="product-info"><h3 class="product-name"><a href="#">لپ‌تاپ گیمینگ نسل جدید</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۳۵,۰۰۰,۰۰۰ ت</span><span class="old-price">۴۰,۰۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۲٪</span></div></div></article></div>
-                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/30/400/400" alt="ساعت" class="main-product-image"></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/30/80/80" data-large-src="https://picsum.photos/id/30/400/400" alt="" class="thumbnail-item"><img src="https://picsum.photos/id/31/80/80" data-large-src="https://picsum.photos/id/31/400/400" alt="" class="thumbnail-item"></div><button class="wishlist-btn is-wishlisted"><svg class="icon"><use href="#icon-heart"></use></svg></button></div><div class="product-info"><h3 class="product-name"><a href="#">ساعت هوشمند سری ۹</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۸,۲۰۰,۰۰۰ ت</span><span class="old-price">۹,۵۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۴٪</span></div></div></article></div>
-                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/40/400/400" alt="دوربین" class="main-product-image"></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/40/80/80" data-large-src="https://picsum.photos/id/40/400/400" alt="" class="thumbnail-item"></div><button class="wishlist-btn"><svg class="icon"><use href="#icon-heart"></use></svg></button></div><div class="product-info"><h3 class="product-name"><a href="#">دوربین دیجیتال میرورلس</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۴۱,۷۵۰,۰۰۰ ت</span><span class="old-price">۴۵,۰۰۰,۰۰۰</span></div><span class="product-discount-badge">۸٪</span></div></div></article></div>
-                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/50/400/400" alt="هدفون" class="main-product-image"></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/50/80/80" data-large-src="https://picsum.photos/id/50/400/400" alt="" class="thumbnail-item"></div><button class="wishlist-btn"><svg class="icon"><use href="#icon-heart"></use></svg></button></div><div class="product-info"><h3 class="product-name"><a href="#">هدفون بی‌سیم نویز کنسلینگ</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۴,۵۰۰,۰۰۰ ت</span><span class="old-price">۵,۲۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۳٪</span></div></div></article></div>
-                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/90/400/400" alt="کیبورد" class="main-product-image"></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/90/80/80" data-large-src="https://picsum.photos/id/90/400/400" alt="" class="thumbnail-item"></div><button class="wishlist-btn"><svg class="icon"><use href="#icon-heart"></use></svg></button></div><div class="product-info"><h3 class="product-name"><a href="#">کیبورد مکانیکال RGB</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۳,۲۰۰,۰۰۰ ت</span><span class="old-price">۳,۸۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۶٪</span></div></div></article></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/10/400/400" alt="گوشی" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/10/80/80" data-large-src="https://picsum.photos/id/10/400/400" alt="نمای ۱" class="thumbnail-item active"><img src="https://picsum.photos/id/11/80/80" data-large-src="https://picsum.photos/id/11/400/400" alt="نمای ۲" class="thumbnail-item"></div></div><div class="product-info"><h3 class="product-name"><a href="#">گوشی هوشمند مدل ایکس پرو</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۱۱,۵۰۰,۰۰۰ ت</span><span class="old-price">۱۳,۰۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۵٪</span></div></div></article></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/20/400/400" alt="لپ‌تاپ" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/20/80/80" data-large-src="https://picsum.photos/id/20/400/400" alt="نمای ۱" class="thumbnail-item active"><img src="https://picsum.photos/id/21/80/80" data-large-src="https://picsum.photos/id/21/400/400" alt="نمای ۲" class="thumbnail-item"></div></div><div class="product-info"><h3 class="product-name"><a href="#">لپ‌تاپ گیمینگ نسل جدید</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۳۵,۰۰۰,۰۰۰ ت</span><span class="old-price">۴۰,۰۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۲٪</span></div></div></article></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/30/400/400" alt="ساعت" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn is-wishlisted" aria-label="حذف از علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/30/80/80" data-large-src="https://picsum.photos/id/30/400/400" alt="نمای ۱" class="thumbnail-item active"><img src="https://picsum.photos/id/31/80/80" data-large-src="https://picsum.photos/id/31/400/400" alt="نمای ۲" class="thumbnail-item"></div></div><div class="product-info"><h3 class="product-name"><a href="#">ساعت هوشمند سری ۹</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۸,۲۰۰,۰۰۰ ت</span><span class="old-price">۹,۵۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۴٪</span></div></div></article></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/40/400/400" alt="دوربین" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/40/80/80" data-large-src="https://picsum.photos/id/40/400/400" alt="نمای ۱" class="thumbnail-item active"></div></div><div class="product-info"><h3 class="product-name"><a href="#">دوربین دیجیتال میرورلس</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۴۱,۷۵۰,۰۰۰ ت</span><span class="old-price">۴۵,۰۰۰,۰۰۰</span></div><span class="product-discount-badge">۸٪</span></div></div></article></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/50/400/400" alt="هدفون" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/50/80/80" data-large-src="https://picsum.photos/id/50/400/400" alt="نمای ۱" class="thumbnail-item active"></div></div><div class="product-info"><h3 class="product-name"><a href="#">هدفون بی‌سیم نویز کنسلینگ</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۴,۵۰۰,۰۰۰ ت</span><span class="old-price">۵,۲۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۳٪</span></div></div></article></div>
+                            <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/90/400/400" alt="کیبورد" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/90/80/80" data-large-src="https://picsum.photos/id/90/400/400" alt="نمای ۱" class="thumbnail-item active"></div></div><div class="product-info"><h3 class="product-name"><a href="#">کیبورد مکانیکال RGB</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۳,۲۰۰,۰۰۰ ت</span><span class="old-price">۳,۸۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۶٪</span></div></div></article></div>
                         </div>
                     </div>
-                    <div class="swiper-nav-button button-prev" id="main-slider-prev"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></div>
-                    <div class="swiper-nav-button button-next" id="main-slider-next"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></div>
+                    <div class="swiper-nav-button button-prev golden-offer-prev"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></div>
+                    <div class="swiper-nav-button button-next golden-offer-next"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></div>
                 </div>
             </div>
         </div>
     </section>
-
 </main>
 
-<!-- ==========================================================================
-   SCRIPTS
-========================================================================== -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
- <script src="assets/js/script.js"></script>
-
+<script src="assets/js/script.js"></script>
 </body>
 </html>
