@@ -22,12 +22,24 @@
     --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.07), 0 8px 24px rgba(0, 0, 0, 0.07);
 }
 
+/* *** متغیرهای رنگی برای حالت تاریک *** */
+body.dark-theme {
+    --bg-white: #1a1a1a;
+    --bg-light: #212529;
+    --text-dark: #f8f9fa;
+    --text-muted: #9a9a9a;
+    --border-color: #3d3d3d;
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.15);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
 body {
     font-family: 'Vazirmatn', sans-serif;
+    background-color: var(--bg-light); /* استفاده مستقیم از متغیر */
     color: var(--text-dark);
     line-height: 1.65;
     overflow-x: hidden;
-    background-image: linear-gradient(to bottom, #f8f9fa, #ffffff);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 a { text-decoration: none; color: var(--text-dark); transition: color var(--transition-fast); }
@@ -38,7 +50,7 @@ a:hover { color: var(--primary-accent); }
 /* ==========================================================================
    1. HEADER & NAVIGATION
    ========================================================================== */
-.header { position: sticky; top: 0; z-index: 1020; background-color: var(--bg-white); box-shadow: var(--shadow-soft); border-bottom: 1px solid var(--border-color); }
+.header { position: sticky; top: 0; z-index: 1020; background-color: var(--bg-white); box-shadow: var(--shadow-soft); border-bottom: 1px solid var(--border-color); transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast); }
 .header-content { height: 70px; }
 .header-logo img { max-height: 40px; }
 .header-nav .nav-item { position: relative; }
@@ -64,11 +76,45 @@ a:hover { color: var(--primary-accent); }
     align-items: center;
     justify-content: center;
     border: 2px solid var(--bg-white);
+    transition: border-color var(--transition-fast);
 }
 
-.mega-menu { position: absolute; top: 70px; right: 0; width: 950px; max-height: 550px; background-color: var(--bg-white); border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 var(--border-radius-md) var(--border-radius-md); box-shadow: var(--shadow-medium); display: flex; overflow: hidden; z-index: 1021; opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.98); transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s; }
+/* *** استایل دکمه تغییر تم (راه حل نهایی و قطعی) *** */
+.theme-toggle-btn {
+    position: relative; /* پدر آیکون‌های absolute میشه */
+    width: 24px;       /* عرض و ارتفاع ثابت برای جلوگیری از پرش */
+    height: 24px;
+}
+/*
+   این قانون جدید، قانون قبلی رو شکست میده و مشکل را برای همیشه حل می‌کند.
+   با این کار به طور مشخص به آیکون‌های داخل دکمه تم می‌گوییم که absolute باشند.
+*/
+.theme-toggle-btn .icon {
+    position: absolute !important; /* با این !important کار رو تموم می‌کنیم */
+    top: 0;
+    right: 0;
+    transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.4s ease;
+    pointer-events: none; /* آیکون مخفی کلیک‌خور نباشه */
+}
+/* حالت پیش‌فرض (Light Mode): ماه مشخص، خورشید مخفی */
+.theme-toggle-btn .icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+/* حالت تاریک (Dark Mode): خورشید مشخص، ماه مخفی */
+body.dark-theme .theme-toggle-btn .icon-moon {
+    opacity: 0;
+    transform: rotate(90deg);
+}
+body.dark-theme .theme-toggle-btn .icon-sun {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+
+.mega-menu { position: absolute; top: 70px; right: 0; width: 950px; max-height: 550px; background-color: var(--bg-white); border: 1px solid var(--border-color); border-top: none; border-radius: 0 0 var(--border-radius-md) var(--border-radius-md); box-shadow: var(--shadow-medium); display: flex; overflow: hidden; z-index: 1021; opacity: 0; visibility: hidden; transform: translateY(10px) scale(0.98); transition: all 0.25s ease; }
 .mega-menu-container:hover > .mega-menu { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-.mega-menu-categories { flex-shrink: 0; width: 280px; list-style: none; padding: 0.5rem 0; margin: 0; border-left: 1px solid var(--border-color); overflow-y: auto; }
+.mega-menu-categories { flex-shrink: 0; width: 280px; list-style: none; padding: 0.5rem 0; margin: 0; border-left: 1px solid var(--border-color); overflow-y: auto; transition: border-color var(--transition-fast); }
 .mega-menu-categories .category-item a { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.2rem; font-size: 0.9rem; font-weight: 500; transition: all var(--transition-fast); border-right: 3px solid transparent; }
 .mega-menu-categories .category-item:hover a, .mega-menu-categories .category-item.active a { background-color: var(--primary-accent-light); color: var(--primary-accent); }
 .mega-menu-categories .category-item.active a { border-right-color: var(--primary-accent); }
@@ -82,19 +128,21 @@ a:hover { color: var(--primary-accent); }
 .subcategory-list { list-style: none; padding: 0; margin: 0; }
 .subcategory-list li a { display: block; padding: 0.5rem 0; color: var(--text-muted); }
 .search-overlay { position: fixed; top: 0; right: 0; width: 100%; height: 100%; background-color: rgba(248, 249, 250, 0.8); backdrop-filter: blur(8px); z-index: 1050; display: flex; align-items: flex-start; justify-content: center; padding-top: 15vh; opacity: 0; visibility: hidden; transition: opacity var(--transition-smooth), visibility var(--transition-smooth); }
+body.dark-theme .search-overlay { background-color: rgba(26, 26, 26, 0.8); }
 .search-overlay.active { opacity: 1; visibility: visible; }
-.search-box { background-color: var(--bg-white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-medium); width: 90%; max-width: 600px; transform: translateY(-30px) scale(0.95); transition: transform var(--transition-smooth); position: relative; }
+.search-box { background-color: var(--bg-white); border-radius: var(--border-radius-lg); box-shadow: var(--shadow-medium); width: 90%; max-width: 600px; transform: translateY(-30px) scale(0.95); transition: transform var(--transition-smooth), background-color var(--transition-fast), box-shadow var(--transition-fast); position: relative; }
 .search-overlay.active .search-box { transform: translateY(0) scale(1); }
 .search-form { display: flex; align-items: center; }
-.search-input { border: none; background: none; outline: none; width: 100%; height: 60px; padding: 0 20px; font-size: 1.1rem; }
+.search-input { border: none; background: none; outline: none; width: 100%; height: 60px; padding: 0 20px; font-size: 1.1rem; color: var(--text-dark); }
 .search-submit-btn { background-color: var(--primary-accent); border: none; border-radius: var(--border-radius-md); color: white; width: 52px; height: 52px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color var(--transition-fast); }
-.search-submit-btn:hover { background-color: #008f9e; }
+.search-submit-btn:hover { background-color: var(--primary-accent-dark); }
 .search-close-btn { position: absolute; top: -15px; left: -15px; width: 36px; height: 36px; background-color: var(--bg-white); color: var(--text-muted); border: 1px solid var(--border-color); border-radius: 50%; box-shadow: var(--shadow-soft); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-fast); }
 .search-close-btn:hover { transform: scale(1.1); color: var(--danger-color); }
 .mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1030; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s; }
 .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
-.mobile-menu { position: fixed; top: 0; right: 0; width: 300px; max-width: 85%; height: 100%; background-color: var(--bg-white); z-index: 1040; display: flex; flex-direction: column; transform: translateX(100%); transition: transform var(--transition-smooth); overflow: hidden; }
+.mobile-menu { position: fixed; top: 0; right: 0; width: 300px; max-width: 85%; height: 100%; background-color: var(--bg-white); z-index: 1040; display: flex; flex-direction: column; transform: translateX(100%); transition: transform var(--transition-smooth), background-color var(--transition-fast); overflow: hidden; }
 .mobile-menu.active { transform: translateX(0); }
+.mobile-menu-header, .mobile-menu-footer, .mobile-nav-list li a, .submenu-header, .submenu-list li a { border-color: var(--border-color); transition: border-color var(--transition-fast); }
 .mobile-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem; border-bottom: 1px solid var(--border-color); flex-shrink: 0; }
 .mobile-menu-logo img { max-height: 30px; }
 .mobile-menu-close { background: none; border: none; color: var(--text-muted); padding: 0.5rem; cursor: pointer; }
@@ -102,13 +150,14 @@ a:hover { color: var(--primary-accent); }
 .mobile-nav-list, .submenu-list { list-style: none; padding: 0; margin: 0; }
 .mobile-nav-list li a, .submenu-list li a { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.5rem; font-weight: 500; border-bottom: 1px solid var(--border-color); }
 .mobile-nav-list li.has-submenu > a .icon-chevron-left { transform: rotate(180deg); transition: transform var(--transition-fast); }
-.submenu { position: absolute; top: 0; right: 0; width: 100%; height: 100%; background-color: var(--bg-white); transform: translateX(100%); transition: transform var(--transition-smooth); z-index: 10; display: flex; flex-direction: column; }
+.submenu { position: absolute; top: 0; right: 0; width: 100%; height: 100%; background-color: var(--bg-white); transform: translateX(100%); transition: transform var(--transition-smooth), background-color var(--transition-fast); z-index: 10; display: flex; flex-direction: column; }
 .submenu.active { transform: translateX(0); }
 .submenu-header { display: flex; align-items: center; padding: 1rem; border-bottom: 1px solid var(--border-color); flex-shrink: 0; }
 .submenu-back-btn { background: none; border: none; color: var(--text-muted); font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; margin-right: -0.5rem; }
 .submenu-header h5 { margin: 0 auto 0 0; font-size: 1rem; font-weight: 700; }
 .mobile-menu-footer { padding: 1rem; border-top: 1px solid var(--border-color); flex-shrink: 0; }
-.btn-login { display: block; width: 100%; padding: 0.75rem; background-color: var(--primary-accent); color: white; text-align: center; border-radius: var(--border-radius-sm); font-weight: 500; }
+.btn-login { display: block; width: 100%; padding: 0.75rem; background-color: var(--primary-accent); color: white; text-align: center; border-radius: var(--border-radius-sm); font-weight: 500; transition: background-color var(--transition-fast); }
+.btn-login:hover { background-color: var(--primary-accent-dark); color: white; }
 
 /* ==========================================================================
    2. HERO SLIDER
@@ -154,8 +203,8 @@ a:hover { color: var(--primary-accent); }
 .offers-slider-wrapper, .flash-deal-slider-card {
     background-color: var(--bg-white); border-radius: var(--border-radius-lg);
     padding: 1.5rem; box-shadow: var(--shadow-soft); min-width: 0;
-    /* FIX 2: Added position relative to anchor the nav buttons */
     position: relative;
+    transition: background-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 .offers-slider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .offers-slider-title { font-size: 1.5rem; font-weight: 700; margin: 0; }
@@ -163,14 +212,21 @@ a:hover { color: var(--primary-accent); }
 
 .product-card {
     border: 1px solid var(--border-color); border-radius: var(--border-radius-md);
-    overflow: hidden; display: flex; flex-direction: column; transition: all var(--transition-fast);
-    height: 100%; /* Ensure cards in a row have same height */
+    overflow: hidden; display: flex; flex-direction: column;
+    transition: all var(--transition-fast);
+    height: 100%;
 }
 .product-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-medium); }
-.product-gallery { position: relative; padding: 0.5rem; background-color: #fdfdfd; }
+.product-gallery { position: relative; padding: 0.5rem; background-color: var(--bg-light); transition: background-color var(--transition-fast); }
 .main-image-wrapper { width: 100%; padding-top: 100%; position: relative; overflow: hidden; }
 .main-product-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity 0.2s ease-in-out; }
-.thumbnail-gallery { display: flex; justify-content: center; padding-top: 0.5rem; gap: 0.5rem; }
+.thumbnail-gallery {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+    gap: 0.5rem;
+    min-height: 48px;
+}
 .thumbnail-item { width: 40px; height: 40px; object-fit: cover; border-radius: var(--border-radius-md); cursor: pointer; border: 2px solid transparent; opacity: 0.7; transition: all var(--transition-fast); }
 .thumbnail-item:hover { opacity: 1; transform: scale(1.05); }
 .thumbnail-item.active { opacity: 1; border-color: var(--primary-accent); }
@@ -182,25 +238,25 @@ a:hover { color: var(--primary-accent); }
 .product-discount-badge { background-color: var(--danger-color); color: white; padding: 0.2rem 0.5rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; }
 
 .swiper-nav-button {
+    position: absolute !important; /* حل مشکل تداخل با بوت‌استرپ */
     background-color: var(--bg-white); border: 1px solid var(--border-color);
     width: 44px; height: 44px; border-radius: 50%; display: flex;
     align-items: center; justify-content: center; cursor: pointer;
     color: var(--text-dark); box-shadow: var(--shadow-soft);
-    transition: all var(--transition-fast); position: absolute;
+    transition: all var(--transition-fast);
     z-index: 10;
-    /* FIX 2: Changed top positioning to be relative to slider, not viewport */
     top: 50%;
     transform: translateY(-50%);
 }
 .golden-offer-prev { right: 1rem; }
 .golden-offer-next { left: 1rem; }
-.flash-deal-prev { top: 45%; right: 1rem; transform: translateY(-50%); }
-.flash-deal-next { top: 45%; left: 1rem; transform: translateY(-50%); }
+.flash-deal-prev { right: 1rem; }
+.flash-deal-next { left: 1rem; }
 .swiper-button-disabled { opacity: 0.3; cursor: not-allowed; }
 
 .main-image-wrapper .image-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    background-color: var(--bg-white); opacity: 0; transition: opacity 0.3s ease;
+    background-color: var(--bg-white); opacity: 0; transition: opacity 0.3s ease, background-color var(--transition-fast);
 }
 .main-image-wrapper:hover .image-overlay { opacity: 0.8; }
 .product-actions-on-hover {
@@ -249,6 +305,22 @@ a:hover { color: var(--primary-accent); }
 }
 .submenu-back-btn .icon { vertical-align: middle; }
 
+/* *** استایل دایره انیمیشن تغییر تم *** */
+.theme-transition-circle {
+    position: fixed;
+    z-index: 9999; /* باید روی همه چیز باشه */
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background-color: var(--text-dark); /* رنگ پیش‌فرض برای رفتن به حالت تاریک */
+    transform: scale(0);
+    pointer-events: none; /* اجازه نمیده کلیک‌ها رو بدزده */
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.theme-transition-circle.is-active {
+    transform: scale(250); /* عددی بزرگ برای پوشش کل صفحه */
+}
+
 /* ==========================================================================
    5. RESPONSIVE ADJUSTMENTS
    ========================================================================== */
@@ -256,14 +328,14 @@ a:hover { color: var(--primary-accent); }
     .header-nav, .mega-menu { display: none !important; }
     .header-content { justify-content: space-between; }
     .header-logo { margin: 0 !important; }
+    .golden-offer-prev, .golden-offer-next { display: none; }
 }
+
 @media (min-width: 992px) { .mobile-menu-toggle { display: none !important; } }
+
 @media (max-width: 768px) {
     .header-actions { gap: .75rem; }
     .search-close-btn { top: 10px; left: 10px; }
     .hero-slider-controls { bottom: 12px; right: 12px; padding: 6px; }
     .hero-slider-controls .nav-buttons { display: none; }
-}
-@media (max-width: 1200px) {
-    .golden-offer-prev, .golden-offer-next { display: none; }
 }

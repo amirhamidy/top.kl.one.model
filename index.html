@@ -12,6 +12,9 @@
 </head>
 <body>
 
+<!-- *** دایره انیمیشن برای تغییر تم *** -->
+<div class="theme-transition-circle" id="theme-transition-circle"></div>
+
 <!-- ==========================================================================
    SVG ICON DEFINITIONS
 ========================================================================== -->
@@ -25,6 +28,9 @@
     <symbol id="icon-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></symbol>
     <symbol id="icon-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></symbol>
     <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></symbol>
+    <!-- *** کد جدید برای آیکون‌های تم *** -->
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></symbol>
 </svg>
 
 <!-- ==========================================================================
@@ -64,6 +70,12 @@
                 </ul>
             </nav>
             <div class="d-flex align-items-center header-actions">
+                <!-- *** دکمه جدید تغییر تم *** -->
+                <button class="header-action-btn theme-toggle-btn" id="theme-toggle" aria-label="تغییر تم">
+                    <svg class="icon icon-moon"><use href="#icon-moon"></use></svg>
+                    <svg class="icon icon-sun"><use href="#icon-sun"></use></svg>
+                </button>
+
                 <button class="header-action-btn" id="search-toggle-btn" aria-label="باز کردن جستجو"><svg class="icon"><use href="#icon-search"></use></svg></button>
                 <a href="#" class="header-action-btn" aria-label="لیست علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></a>
                 <a href="#" class="header-action-btn" aria-label="سبد خرید"><span class="badge">3</span><svg class="icon"><use href="#icon-cart"></use></svg></a>

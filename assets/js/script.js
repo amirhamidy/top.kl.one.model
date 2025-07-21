@@ -1,23 +1,34 @@
 /* ==========================================================================
+   فروشگاه افسانه‌ای - فایل اصلی جاوا اسکریپت
+   اصول: کد تمیز، استاتیک، با تمرکز بر دیزاین و UX
+   ========================================================================== */
+
+/* ==========================================================================
    MAIN INITIALIZATION
+   وقتی کل ساختار HTML آماده شد، این کد اجرا میشه
 ========================================================================== */
 document.addEventListener('DOMContentLoaded', function() {
     const swiperExists = typeof Swiper !== 'undefined';
     const toastifyExists = typeof Toastify !== 'undefined';
 
     initCoreUI();
+    initThemeToggle(); // ✨ افزودن منطق حالت تاریک
 
     if (swiperExists) {
         initSliders();
+    } else {
+        console.error("خطا: کتابخانه Swiper بارگذاری نشده است. اسلایدرها کار نخواهند کرد.");
     }
 
     initInteractions(toastifyExists);
 
-    console.log("فروشگاه با موفقیت بارگذاری شد. نسخه نهایی! 🚀");
+    console.log("فروشگاه با موفقیت بارگذاری شد. نسخه افسانه‌ای! 🚀");
 });
 
+
 /* ==========================================================================
-   1. CORE UI COMPONENTS
+   1. CORE UI COMPONENTS (Search, Mobile Menu, Mega Menu)
+   توابع اصلی رابط کاربری
 ========================================================================== */
 function initCoreUI() {
     initSearch();
@@ -65,7 +76,7 @@ function initMobileMenu() {
     };
 
     menuToggle.addEventListener('click', openMenu);
-    menuClose?.addEventListener('click', closeMenu);
+    if(menuClose) menuClose.addEventListener('click', closeMenu);
     overlay.addEventListener('click', closeMenu);
     document.addEventListener('keydown', e => (e.key === 'Escape' && mobileMenu.classList.contains('active')) && closeMenu());
 
@@ -96,8 +107,10 @@ function initMegaMenu() {
     });
 }
 
+
 /* ==========================================================================
    2. SWIPER SLIDERS
+   مدیریت تمام اسلایدرهای سایت
 ========================================================================== */
 function initSliders() {
     initHeroSlider();
@@ -149,11 +162,17 @@ function initFlashDealSlider() {
         spaceBetween: 15,
         navigation: { nextEl: '.flash-deal-next', prevEl: '.flash-deal-prev' },
         grabCursor: true,
+        breakpoints: {
+            576: { slidesPerView: 2, spaceBetween: 20 },
+            992: { slidesPerView: 1, spaceBetween: 15 }
+        }
     });
 }
 
+
 /* ==========================================================================
    3. INTERACTIONS & ANIMATIONS
+   تعاملات کاربر و انیمیشن‌ها
 ========================================================================== */
 function initInteractions(toastifyLoaded) {
     initThumbnailGalleries();
@@ -211,6 +230,65 @@ function initScrollAnimations() {
     sections.forEach(section => observer.observe(section));
 }
 
+
+/* ==========================================================================
+   4. THEME TOGGLE LOGIC (Dark Mode) - ✨ نسخه نهایی با UX سریع ✨
+   ========================================================================== */
+function initThemeToggle() {
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeTransitionCircle = document.getElementById('theme-transition-circle');
+    if (!themeToggleBtn || !themeTransitionCircle) return;
+
+    let isAnimating = false; // یک پرچم برای جلوگیری از کلیک‌های سریع
+
+    // بررسی حافظه مرورگر برای تم ذخیره شده
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        if (isAnimating) return; // اگر انیمیشن در حال اجراست، کاری نکن
+
+        isAnimating = true;
+        const isDarkMode = document.body.classList.contains('dark-theme');
+
+        // ۱. رنگ دایره را بر اساس تم *مقصد* تنظیم می‌کنیم
+        // نکته: رنگ‌ها به صورت hard-code شده تا به متغیرهای در حال تغییر وابسته نباشند
+        themeTransitionCircle.style.backgroundColor = isDarkMode ? '#f8f9fa' : '#212529';
+
+        // ۲. موقعیت شروع انیمیشن را از مرکز دکمه می‌گیریم
+        const btnRect = themeToggleBtn.getBoundingClientRect();
+        const originX = btnRect.left + btnRect.width / 2;
+        const originY = btnRect.top + btnRect.height / 2;
+        themeTransitionCircle.style.transformOrigin = `${originX}px ${originY}px`;
+
+        // ۳. **مهم‌ترین بخش:** تم را *بلافاصله* عوض می‌کنیم
+        document.body.classList.toggle('dark-theme');
+
+        // انتخاب کاربر را در حافظه ذخیره می‌کنیم
+        if (document.body.classList.contains('dark-theme')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.removeItem('theme');
+        }
+
+        // ۴. انیمیشن دایره را فعال می‌کنیم
+        themeTransitionCircle.classList.add('is-active');
+
+        // ۵. بعد از پایان انیمیشن، دایره را جمع کرده و پرچم را آزاد می‌کنیم
+        themeTransitionCircle.addEventListener('transitionend', () => {
+            themeTransitionCircle.classList.remove('is-active');
+            isAnimating = false;
+        }, { once: true });
+    });
+}
+
+
+/* ==========================================================================
+   5. HELPER FUNCTIONS
+   توابع کمکی
+========================================================================== */
 function showNotification(message, type, isLoaded) {
     if (!isLoaded) {
         console.warn('Toastify library is not loaded. Notification:', message);
@@ -233,7 +311,7 @@ function showNotification(message, type, isLoaded) {
         style: {
             background: colors[type] || colors['default'],
             borderRadius: "var(--border-radius-sm)",
-            fontFamily: "Vazirmatn",
+            fontFamily: "Vazirmatn, sans-serif",
         },
     }).showToast();
 }
