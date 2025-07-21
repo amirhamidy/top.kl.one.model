@@ -1,35 +1,34 @@
 /* ==========================================================================
-   فروشگاه افسانه‌ای - فایل اصلی جاوا اسکریپت
-   اصول: کد تمیز، استاتیک، با تمرکز بر دیزاین و UX
-   ========================================================================== */
+ * LEGENDARY STORE - MAIN JAVASCRIPT FILE
+ *
+ * PRINCIPLES: CLEAN CODE, STATIC-FIRST, DESIGN & UX FOCUSED
+ * ========================================================================== */
 
 /* ==========================================================================
-   MAIN INITIALIZATION
-   وقتی کل ساختار HTML آماده شد، این کد اجرا میشه
-========================================================================== */
+ * MAIN INITIALIZATION
+ * THIS CODE RUNS WHEN THE ENTIRE HTML DOCUMENT IS LOADED AND PARSED.
+ * ========================================================================== */
 document.addEventListener('DOMContentLoaded', function() {
     const swiperExists = typeof Swiper !== 'undefined';
     const toastifyExists = typeof Toastify !== 'undefined';
 
     initCoreUI();
-    initThemeToggle(); // ✨ افزودن منطق حالت تاریک
+    initThemeToggle();
+    initInteractions(toastifyExists);
 
     if (swiperExists) {
         initSliders();
     } else {
-        console.error("خطا: کتابخانه Swiper بارگذاری نشده است. اسلایدرها کار نخواهند کرد.");
+        console.error("ERROR: SWIPER.JS LIBRARY IS NOT LOADED. SLIDERS WILL NOT FUNCTION.");
     }
 
-    initInteractions(toastifyExists);
-
-    console.log("فروشگاه با موفقیت بارگذاری شد. نسخه افسانه‌ای! 🚀");
+    console.log("STORE INITIALIZED SUCCESSFULLY. LEGENDARY VERSION! 🚀");
 });
 
 
 /* ==========================================================================
-   1. CORE UI COMPONENTS (Search, Mobile Menu, Mega Menu)
-   توابع اصلی رابط کاربری
-========================================================================== */
+ * 1. CORE UI COMPONENTS (SEARCH, MOBILE MENU, MEGA MENU)
+ * ========================================================================== */
 function initCoreUI() {
     initSearch();
     initMobileMenu();
@@ -109,9 +108,8 @@ function initMegaMenu() {
 
 
 /* ==========================================================================
-   2. SWIPER SLIDERS
-   مدیریت تمام اسلایدرهای سایت
-========================================================================== */
+ * 2. SWIPER SLIDERS
+ * ========================================================================== */
 function initSliders() {
     initHeroSlider();
     initGoldenOffersSlider();
@@ -136,7 +134,7 @@ function initHeroSlider() {
                 allBullets.forEach(b => b.classList.remove('progress-start'));
                 const activeBullet = this.pagination.el.querySelector('.swiper-pagination-bullet-active');
                 if(activeBullet) {
-                    void activeBullet.offsetWidth; // Force reflow
+                    void activeBullet.offsetWidth; // FORCE REFLOW
                     activeBullet.classList.add('progress-start');
                 }
             }
@@ -171,13 +169,13 @@ function initFlashDealSlider() {
 
 
 /* ==========================================================================
-   3. INTERACTIONS & ANIMATIONS
-   تعاملات کاربر و انیمیشن‌ها
-========================================================================== */
+ * 3. INTERACTIONS & DYNAMIC FEATURES
+ * ========================================================================== */
 function initInteractions(toastifyLoaded) {
     initThumbnailGalleries();
     initProductActions(toastifyLoaded);
     initScrollAnimations();
+    initFlashDealCountdown(); // INITIALIZE THE NEW COUNTDOWN TIMER
 }
 
 function initThumbnailGalleries() {
@@ -230,53 +228,89 @@ function initScrollAnimations() {
     sections.forEach(section => observer.observe(section));
 }
 
+// NEW FEATURE: COUNTDOWN TIMER FOR FLASH DEALS
+function initFlashDealCountdown() {
+    const countdownElement = document.getElementById('flash-deal-countdown');
+    if (!countdownElement) return;
+
+    // SET A DUMMY 24-HOUR DURATION FROM THE MOMENT THE PAGE LOADS
+    // FOR A REAL-WORLD SCENARIO, THIS END TIME WOULD COME FROM A SERVER.
+    const duration = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    const endTime = new Date().getTime() + duration;
+
+    const timerInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+
+        // WHEN THE COUNTDOWN IS OVER
+        if (distance < 0) {
+            clearInterval(timerInterval);
+            countdownElement.textContent = "00:00:00";
+            return;
+        }
+
+        // TIME CALCULATIONS
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // FORMAT TO ALWAYS SHOW TWO DIGITS (E.G., 09 INSTEAD OF 9)
+        const formattedHours = String(hours).padStart(2, '0');
+        const formattedMinutes = String(minutes).padStart(2, '0');
+        const formattedSeconds = String(seconds).padStart(2, '0');
+
+        // UPDATE THE ELEMENT
+        countdownElement.textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+    }, 1000);
+}
+
 
 /* ==========================================================================
-   4. THEME TOGGLE LOGIC (Dark Mode) - ✨ نسخه نهایی با UX سریع ✨
-   ========================================================================== */
+ * 4. THEME TOGGLE LOGIC (DARK MODE) - FINAL FAST UX VERSION
+ * ========================================================================== */
 function initThemeToggle() {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const themeTransitionCircle = document.getElementById('theme-transition-circle');
     if (!themeToggleBtn || !themeTransitionCircle) return;
 
-    let isAnimating = false; // یک پرچم برای جلوگیری از کلیک‌های سریع
+    let isAnimating = false; // A FLAG TO PREVENT RAPID CLICKS
 
-    // بررسی حافظه مرورگر برای تم ذخیره شده
+    // CHECK LOCAL STORAGE FOR SAVED THEME
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         document.body.classList.add('dark-theme');
     }
 
     themeToggleBtn.addEventListener('click', () => {
-        if (isAnimating) return; // اگر انیمیشن در حال اجراست، کاری نکن
+        if (isAnimating) return; // DO NOTHING IF ANIMATION IS IN PROGRESS
 
         isAnimating = true;
         const isDarkMode = document.body.classList.contains('dark-theme');
 
-        // ۱. رنگ دایره را بر اساس تم *مقصد* تنظیم می‌کنیم
-        // نکته: رنگ‌ها به صورت hard-code شده تا به متغیرهای در حال تغییر وابسته نباشند
+        // 1. SET THE CIRCLE'S COLOR BASED ON THE *DESTINATION* THEME
+        // NOTE: HARD-CODED COLORS TO AVOID DEPENDING ON CHANGING CSS VARIABLES
         themeTransitionCircle.style.backgroundColor = isDarkMode ? '#f8f9fa' : '#212529';
 
-        // ۲. موقعیت شروع انیمیشن را از مرکز دکمه می‌گیریم
+        // 2. GET THE ANIMATION'S STARTING POSITION FROM THE BUTTON'S CENTER
         const btnRect = themeToggleBtn.getBoundingClientRect();
         const originX = btnRect.left + btnRect.width / 2;
         const originY = btnRect.top + btnRect.height / 2;
         themeTransitionCircle.style.transformOrigin = `${originX}px ${originY}px`;
 
-        // ۳. **مهم‌ترین بخش:** تم را *بلافاصله* عوض می‌کنیم
+        // 3. MOST IMPORTANT PART: TOGGLE THE THEME *IMMEDIATELY* FOR FAST UX
         document.body.classList.toggle('dark-theme');
 
-        // انتخاب کاربر را در حافظه ذخیره می‌کنیم
+        // SAVE THE USER'S CHOICE TO LOCAL STORAGE
         if (document.body.classList.contains('dark-theme')) {
             localStorage.setItem('theme', 'dark');
         } else {
             localStorage.removeItem('theme');
         }
 
-        // ۴. انیمیشن دایره را فعال می‌کنیم
+        // 4. ACTIVATE THE CIRCLE'S EXPAND ANIMATION
         themeTransitionCircle.classList.add('is-active');
 
-        // ۵. بعد از پایان انیمیشن، دایره را جمع کرده و پرچم را آزاد می‌کنیم
+        // 5. AFTER THE ANIMATION ENDS, RESET THE CIRCLE AND RELEASE THE FLAG
         themeTransitionCircle.addEventListener('transitionend', () => {
             themeTransitionCircle.classList.remove('is-active');
             isAnimating = false;
@@ -286,12 +320,11 @@ function initThemeToggle() {
 
 
 /* ==========================================================================
-   5. HELPER FUNCTIONS
-   توابع کمکی
-========================================================================== */
+ * 5. HELPER FUNCTIONS
+ * ========================================================================== */
 function showNotification(message, type, isLoaded) {
     if (!isLoaded) {
-        console.warn('Toastify library is not loaded. Notification:', message);
+        console.warn('TOASTIFY.JS LIBRARY IS NOT LOADED. NOTIFICATION:', message);
         return;
     }
 

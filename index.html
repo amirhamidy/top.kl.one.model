@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<!-- *** دایره انیمیشن برای تغییر تم *** -->
 <div class="theme-transition-circle" id="theme-transition-circle"></div>
 
 <!-- ==========================================================================
@@ -28,7 +27,6 @@
     <symbol id="icon-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></symbol>
     <symbol id="icon-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></symbol>
     <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></symbol>
-    <!-- *** کد جدید برای آیکون‌های تم *** -->
     <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></symbol>
     <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></symbol>
 </svg>
@@ -70,12 +68,10 @@
                 </ul>
             </nav>
             <div class="d-flex align-items-center header-actions">
-                <!-- *** دکمه جدید تغییر تم *** -->
                 <button class="header-action-btn theme-toggle-btn" id="theme-toggle" aria-label="تغییر تم">
                     <svg class="icon icon-moon"><use href="#icon-moon"></use></svg>
                     <svg class="icon icon-sun"><use href="#icon-sun"></use></svg>
                 </button>
-
                 <button class="header-action-btn" id="search-toggle-btn" aria-label="باز کردن جستجو"><svg class="icon"><use href="#icon-search"></use></svg></button>
                 <a href="#" class="header-action-btn" aria-label="لیست علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></a>
                 <a href="#" class="header-action-btn" aria-label="سبد خرید"><span class="badge">3</span><svg class="icon"><use href="#icon-cart"></use></svg></a>
@@ -99,15 +95,16 @@
         <div class="container">
             <div class="swiper hero-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/1200x400/E0F7FA/00838F?text=Awesome+Banner+1" alt="بنر ۱"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/1200x400/FCE4EC/880E4F?text=Special+Offer+2" alt="بنر ۲"></a></div>
-                    <div class="swiper-slide"><a href="#"><img src="https://via.placeholder.com/1200x400/FFF3E0/E65100?text=New+Arrivals+3" alt="بنر ۳"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="assets/img/three-slider.webp" alt="بنر ۱"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="assets/img/three-slider.webp" alt="بنر ۲"></a></div>
+                    <div class="swiper-slide"><a href="#"><img src="assets/img/three-slider.webp" alt="بنر ۳"></a></div>
                 </div>
-                <div class="hero-slider-controls">
+                <div class="slider-controls slider-controls--hero">
                     <div class="swiper-pagination"></div>
                     <div class="nav-buttons">
-                        <button class="hero-nav-btn hero-button-prev" aria-label="اسلاید قبلی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></button>
-                        <button class="hero-nav-btn hero-button-next" aria-label="اسلاید بعدی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></button>
+                        <!-- *** FIX: CORRECTED CLASS NAMES *** -->
+                        <button class="nav-button hero-button-prev" aria-label="اسلاید قبلی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></button>
+                        <button class="nav-button hero-button-next" aria-label="اسلاید بعدی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></button>
                     </div>
                 </div>
             </div>
@@ -127,9 +124,15 @@
                             <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/60/400/400" alt="اسپیکر" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div></div><div class="product-info"><h3 class="product-name"><a href="#">اسپیکر هوشمند خانگی</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۲,۸۰۰,۰۰۰ ت</span></div><span class="product-discount-badge">ویژه</span></div></div></article></div>
                             <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/70/400/400" alt="موس" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div></div><div class="product-info"><h3 class="product-name"><a href="#">موس گیمینگ حرفه‌ای</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۱,۲۰۰,۰۰۰ ت</span></div><span class="product-discount-badge">ویژه</span></div></div></article></div>
                         </div>
+                        <div class="slider-controls slider-controls--product has-countdown">
+                            <div class="flash-deal-countdown" id="flash-deal-countdown">24:00:00</div>
+                            <div class="nav-buttons">
+                                <!-- *** FIX: CORRECTED CLASS NAMES *** -->
+                                <button class="nav-button flash-deal-prev" aria-label="قبلی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></button>
+                                <button class="nav-button flash-deal-next" aria-label="بعدی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="swiper-nav-button button-prev flash-deal-prev"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></div>
-                    <div class="swiper-nav-button button-next flash-deal-next"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></div>
                 </div>
 
                 <div class="offers-slider-wrapper">
@@ -143,9 +146,14 @@
                             <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/50/400/400" alt="هدفون" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/50/80/80" data-large-src="https://picsum.photos/id/50/400/400" alt="نمای ۱" class="thumbnail-item active"></div></div><div class="product-info"><h3 class="product-name"><a href="#">هدفون بی‌سیم نویز کنسلینگ</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۴,۵۰۰,۰۰۰ ت</span><span class="old-price">۵,۲۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۳٪</span></div></div></article></div>
                             <div class="swiper-slide"><article class="product-card"><div class="product-gallery"><div class="main-image-wrapper"><img src="https://picsum.photos/id/90/400/400" alt="کیبورد" class="main-product-image"><div class="image-overlay"></div><div class="product-actions-on-hover"><a href="#" class="action-btn" aria-label="مشاهده محصول"><svg class="icon"><use href="#icon-eye"></use></svg></a><button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید"><svg class="icon"><use href="#icon-cart"></use></svg></button><button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها"><svg class="icon"><use href="#icon-heart"></use></svg></button></div></div><div class="thumbnail-gallery"><img src="https://picsum.photos/id/90/80/80" data-large-src="https://picsum.photos/id/90/400/400" alt="نمای ۱" class="thumbnail-item active"></div></div><div class="product-info"><h3 class="product-name"><a href="#">کیبورد مکانیکال RGB</a></h3><div class="product-price-wrapper"><div class="product-price"><span class="new-price">۳,۲۰۰,۰۰۰ ت</span><span class="old-price">۳,۸۰۰,۰۰۰</span></div><span class="product-discount-badge">۱۶٪</span></div></div></article></div>
                         </div>
+                        <div class="slider-controls slider-controls--product">
+                            <div class="nav-buttons">
+                                <!-- *** FIX: CORRECTED CLASS NAMES *** -->
+                                <button class="nav-button golden-offer-prev" aria-label="قبلی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></button>
+                                <button class="nav-button golden-offer-next" aria-label="بعدی"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="swiper-nav-button button-prev golden-offer-prev"><svg class="icon icon-hero-nav"><use href="#icon-arrow-right"></use></svg></div>
-                    <div class="swiper-nav-button button-next golden-offer-next"><svg class="icon icon-hero-nav"><use href="#icon-arrow-left"></use></svg></div>
                 </div>
             </div>
         </div>
