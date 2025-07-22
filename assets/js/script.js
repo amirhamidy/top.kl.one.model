@@ -169,5 +169,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMenus();
     initSearch();
     initMisc();
-    initProductGallery(); // ACTIVATE THE GALLERY LOGIC
+    initProductGallery();
 });

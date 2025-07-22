@@ -37,7 +37,6 @@
     --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.07), 0 8px 24px rgba(0, 0, 0, 0.07);
     --shadow-premium: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.04);
 }
-
 body.dark-theme {
     --bg-white: #1a1a1a;
     --bg-light: #212529;
@@ -167,12 +166,25 @@ body.dark-theme .search-overlay { background-color: rgba(26, 26, 26, 0.8); }
     box-shadow: var(--shadow-soft);
     min-width: 0;
 }
+
+.next-and-prue{display: flex !important;justify-content: center !important;gap: 0 5px}
 .offers-slider-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
 .offers-slider-title-wrapper { display: flex; align-items: center; gap: 1rem; }
 .offers-slider-title { font-size: 1.5rem; font-weight: 700; margin: 0; }
 .offers-slider-all { color: var(--primary-accent); font-weight: 500; }
-.header-nav-buttons { display: flex; gap: 0.5rem; }
-.header-nav-btn { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-muted); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all var(--transition-fast); }
+.header-nav-buttons { display: flex; gap: 0.5rem; justify-content: center; }
+.header-nav-btn { background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
 .header-nav-btn:hover { background-color: var(--primary-accent); border-color: var(--primary-accent); color: white; }
 .header-nav-btn .icon { width: 20px; height: 20px; }
 .swiper-button-disabled { opacity: 0.4 !important; cursor: not-allowed !important; background-color: transparent !important; border-color: var(--border-color) !important; color: var(--text-muted) !important; }
@@ -212,8 +224,8 @@ body.dark-theme .product-countdown { background-color: rgba(var(--danger-color-r
    ========================================================================== */
 .hero-slider-section, .golden-offers { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
 .hero-slider-section.is-visible, .golden-offers.is-visible { opacity: 1; transform: translateY(0); }
-.theme-transition-circle { position: fixed; z-index: 9999; top: var(--top, 0); left: var(--left, 0); width: 1px; height: 1px; border-radius: 50%; background-color: var(--text-dark); transform: scale(0); pointer-events: none; transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1); }
-.theme-transition-circle.is-active { transform: scale(3000); }
+.theme-transition-circle { position: fixed; z-index: 9999; top: 0; left: 0; width: 1px; height: 1px; border-radius: 50%; background-color: var(--text-dark); transform: scale(0); pointer-events: none; transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1); }
+.theme-transition-circle.is-active { transform: scale(800); }
 
 /* ==========================================================================
    5. RESPONSIVE ADJUSTMENTS
