@@ -1167,34 +1167,116 @@ body.dark-theme .product-countdown {
    ========================================================================== */
 
 .special-offers {
-    padding: 4rem 0; /* Consistent with other sections */
+    padding: 4rem 0;
 }
+
+.offers-slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.offers-slider-title {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.header-nav-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.header-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--light-gray);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.header-nav-btn:hover {
+    background-color: var(--primary-accent);
+    border-color: var(--primary-accent);
+}
+
+.header-nav-btn:hover .icon {
+    stroke: white;
+}
+
+.header-nav-btn.swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--light-gray);
+    border-color: var(--border-color);
+}
+
+.header-nav-btn.swiper-button-disabled .icon {
+    stroke: var(--text-muted);
+}
+
+.header-nav-btn .icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--text-muted);
+    transition: stroke var(--transition-fast);
+}
+
 
 /* Specific styling for the product card in special offers */
 .product-card.special-card {
-    /* Reset some default product-card styles if needed, or add specific ones */
-    /* Ensure no unwanted overflow: hidden here as interactive zones might expand/change */
-    border: none; /* Let main-image-wrapper handle the border for visual effect */
-    box-shadow: none; /* Let main-image-wrapper handle the shadow */
+    position: relative;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+    padding-bottom: 0;
 }
+
+/* Hover effect for the entire special product card */
+.product-card.special-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* New: Make the whole image area a link container */
+.product-card.special-card .main-image-link {
+    display: block; /* Ensures the link takes up the full space */
+    text-decoration: none; /* Removes default underline from link */
+    color: inherit; /* Inherits color from parent, so text inside is not blue */
+}
+
 
 .product-card.special-card .main-image-wrapper {
     position: relative;
-    border-radius: var(--border-radius-md); /* Apply border-radius here */
-    box-shadow: var(--shadow-soft); /* Apply shadow here */
-    overflow: hidden; /* Keep overflow hidden for the image wrapper itself */
-}
-
-.product-card.special-card .main-image-wrapper:hover {
-    box-shadow: var(--shadow-medium); /* Enhanced shadow on hover */
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    padding-bottom: 100%; /* Creates a square aspect ratio. Adjust if your images are not square. */
+    background-color: var(--bg-light);
+    display: block;
 }
 
 .product-card.special-card .main-product-image {
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for image changes */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Scales the image down to fit *entirely* within the container. */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    z-index: 1; /* Below interactive zones */
 }
 
+/* Hide traditional thumbnail gallery if present */
 .product-card.special-card .thumbnail-gallery {
-    display: none; /* No need for traditional thumbnails here as we use interactive zones */
+    display: none;
 }
 
 /* Interactive Zones for image changes on hover */
@@ -1204,20 +1286,19 @@ body.dark-theme .product-countdown {
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex; /* Arrange zones horizontally */
-    z-index: 2; /* Above the image but below hover actions */
-    pointer-events: none; /* Allows hover actions to be detected */
+    display: flex;
+    z-index: 3; /* Above main image */
+    pointer-events: all; /* Enables interaction on zones */
 }
 
 .interactive-zones .zone {
-    flex: 1; /* Each zone takes equal width */
+    flex: 1;
     height: 100%;
-    background-color: transparent; /* Initially transparent */
-    transition: background-color 0.2s ease; /* For future visual feedback if needed */
-    pointer-events: auto; /* Make zones interactive */
+    background-color: transparent;
+    position: relative;
 }
 
-/* Optional: Add a subtle overlay visual feedback for zones */
+/* Subtle overlay visual feedback for zones on hover */
 .interactive-zones .zone::after {
     content: '';
     position: absolute;
@@ -1225,70 +1306,68 @@ body.dark-theme .product-countdown {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--primary-accent-rgb), 0.1); /* Light overlay */
+    background-color: rgba(var(--primary-accent-rgb), 0.1);
     opacity: 0;
     transition: opacity 0.2s ease;
-    pointer-events: none;
+    pointer-events: none; /* Crucial: ensures clicks pass through to the link */
+    z-index: 1;
 }
 
 .interactive-zones .zone:hover::after {
-    opacity: 1; /* Show overlay on hover */
-}
-
-
-/* New Action Effects for icons on hover */
-.product-card.special-card .product-actions-on-hover.new-action-effects {
-    display: flex;
-    flex-direction: column; /* Stack icons vertically */
-    gap: 0.75rem; /* Closer gap */
-    right: 15px; /* Position them on the right side */
-    left: auto;
-    transform: translateY(-50%); /* Center vertically */
-    transition: none; /* Remove previous transition for the container */
-    padding: 0;
-    pointer-events: none; /* Still pointer events none for the container */
-}
-
-.product-card.special-card .main-image-wrapper:hover .product-actions-on-hover.new-action-effects {
-    pointer-events: all; /* Enable pointer events when wrapper is hovered */
-}
-
-.product-card.special-card .new-action-effects .action-btn {
-    opacity: 0;
-    transform: scale(0.5); /* Start smaller */
-    transition: opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    background-color: var(--bg-white); /* Ensure background is white/theme color */
-    border-color: var(--border-color); /* Add border for better definition */
-    box-shadow: var(--shadow-soft);
-}
-
-.product-card.special-card .main-image-wrapper:hover .new-action-effects .action-btn {
     opacity: 1;
-    transform: scale(1); /* Zoom into place */
 }
 
-/* Individual delays for a staggered pop-in effect */
-.product-card.special-card .main-image-wrapper:hover .new-action-effects .action-btn:nth-child(1) {
-    transition-delay: 0.1s;
+/* --- REMOVED ALL STYLES RELATED TO .product-actions-on-hover and .action-btn --- */
+
+
+/* Product Info section inside the special card */
+.product-card.special-card .product-info {
+    padding: 1rem;
+    text-align: center;
 }
 
-.product-card.special-card .main-image-wrapper:hover .new-action-effects .action-btn:nth-child(2) {
-    transition-delay: 0.15s;
+.product-card.special-card .product-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }
 
-.product-card.special-card .main-image-wrapper:hover .new-action-effects .action-btn:nth-child(3) {
-    transition-delay: 0.2s;
+.product-card.special-card .product-name a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
 }
 
-.product-card.special-card .new-action-effects .action-btn:hover {
-    transform: scale(1.1) !important; /* Slightly larger scale on individual hover */
-    background-color: var(--primary-accent); /* Change color on hover for visual feedback */
-    border-color: var(--primary-accent);
+.product-card.special-card .product-name a:hover {
+    color: var(--primary-accent);
+}
+
+.product-card.special-card .product-price-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.product-card.special-card .new-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.product-card.special-card .old-price {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.product-card.special-card .product-discount-badge {
+    background-color: var(--danger-color);
     color: white;
-}
-
-.product-card.special-card .new-action-effects .action-btn:hover .icon {
-    stroke: white; /* Change icon color on hover */
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
 }
 
 /* Extra Info Section */
@@ -1297,23 +1376,12 @@ body.dark-theme .product-countdown {
     color: var(--text-muted);
     margin-top: 0.75rem;
     padding-top: 0.75rem;
-    border-top: 1px dashed var(--border-color); /* Dotted line for separation */
+    border-top: 1px dashed var(--border-color);
 }
 
-/* Responsive adjustments for the new section */
-@media (min-width: 992px) {
-    .special-offers .swiper-slide {
-        /* Adjust slide width/spacing if needed for larger screens */
-    }
-}
-
+/* Responsive adjustments for the new section - Adjusted to match Golden Offers breakpoints */
 @media (max-width: 768px) {
-    .product-card.special-card .new-action-effects {
-        right: 10px; /* Adjust position for smaller screens */
-        gap: 0.5rem;
-    }
-    .product-card.special-card .new-action-effects .action-btn {
-        width: 40px; /* Slightly smaller buttons */
-        height: 40px;
+    .offers-slider-title {
+        font-size: 1.5rem;
     }
 }
