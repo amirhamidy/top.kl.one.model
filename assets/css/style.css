@@ -1306,7 +1306,6 @@ body.dark-theme .product-countdown {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--primary-accent-rgb), 0.1);
     opacity: 0;
     transition: opacity 0.2s ease;
     pointer-events: none; /* Crucial: ensures clicks pass through to the link */
