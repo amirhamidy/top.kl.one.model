@@ -140,18 +140,77 @@
 
 <div class="search-overlay" id="search-overlay">
     <div class="search-box">
-        <form action="/search" method="get" class="search-form" role="search">
-            <input type="search" name="q" class="search-input" placeholder="جستجو در فروشگاه..." autocomplete="off" aria-label="فیلد جستجو">
+        <button class="search-close-btn" id="search-close-btn" aria-label="بستن جستجو">
+            <svg class="icon icon-hero-nav">
+                <use href="#icon-x"></use>
+            </svg>
+        </button>
+        <form class="search-form" action="#" method="get">
+            <input type="search" class="search-input" placeholder="جستجو در بین محصولات..." aria-label="جستجو در محصولات">
             <button type="submit" class="search-submit-btn" aria-label="جستجو">
-                <svg class="icon"><use href="#icon-search"></use></svg>
+                <svg class="icon">
+                    <use href="#icon-search"></use>
+                </svg>
             </button>
         </form>
-        <button id="search-close-btn" class="search-close-btn" aria-label="بستن جستجو">
-            <svg class="icon"><use href="#icon-close"></use></svg>
-        </button>
+
+        <div class="search-suggestions-wrapper">
+            <h4 class="suggestions-title">پیشنهادهای محبوب:</h4>
+            <div class="suggestions-list-container">
+                <div class="suggestions-list">
+                    <a href="/search?q=گوشی موبایل" class="suggestion-item">
+                        <span class="suggestion-text">گوشی موبایل</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=لپ تاپ استوک" class="suggestion-item">
+                        <span class="suggestion-text">لپ تاپ استوک</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=هدفون بلوتوثی" class="suggestion-item">
+                        <span class="suggestion-text">هدفون بلوتوثی</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=ساعت هوشمند" class="suggestion-item">
+                        <span class="suggestion-text">ساعت هوشمند</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=دوربین عکاسی" class="suggestion-item">
+                        <span class="suggestion-text">دوربین عکاسی</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=مانیتور گیمینگ" class="suggestion-item">
+                        <span class="suggestion-text">مانیتور گیمینگ</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=کیبورد مکانیکال" class="suggestion-item">
+                        <span class="suggestion-text">کیبورد مکانیکال</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=اسپیکر قابل حمل" class="suggestion-item">
+                        <span class="suggestion-text">اسپیکر قابل حمل</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=لوازم جانبی کامپیوتر" class="suggestion-item">
+                        <span class="suggestion-text">لوازم جانبی کامپیوتر</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=کولر گازی" class="suggestion-item">
+                        <span class="suggestion-text">کولر گازی</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                    <a href="/search?q=یخچال ساید بای ساید" class="suggestion-item">
+                        <span class="suggestion-text">یخچال ساید بای ساید</span>
+                        <svg class="icon"><use href="#icon-chevron-left"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+
 <aside class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-header">
         <a href="#" class="mobile-menu-logo">
