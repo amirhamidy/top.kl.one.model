@@ -1475,26 +1475,26 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     flex-shrink: 0;
 }
 
-/* Hover/Focus states for button-like items */
+
 .suggestion-item:hover,
 .suggestion-item:focus-visible {
-    background-color: var(--primary-accent); /* Solid background on hover */
+    background-color: var(--primary-accent);
     border-color: var(--primary-accent);
-    color: white; /* White text on hover */
+    color: white;
     outline: none;
-    box-shadow: var(--shadow-soft); /* Subtle shadow on hover */
+    box-shadow: var(--shadow-soft);
 }
 
 .suggestion-item:hover .icon,
 .suggestion-item:focus-visible .icon {
-    color: white; /* White icon on hover */
+    color: white;
 }
 
 .suggestion-text {
-    /* No change needed here, it handles ellipsis if text is too long */
+
 }
 
-/* Responsive adjustment for search box to show more suggestions on larger screens */
+
 @media (min-width: 768px) {
     .search-suggestions-wrapper {
         padding: 1.5rem 30px 30px;
@@ -1643,15 +1643,14 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    display: flex; /* تغییر: از column به flex برای سنتر کردن محتوا */
+    display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
-    /* padding: 20px; */ /* حذف شد، به modal-content منتقل شد */
-    box-sizing: border-box;
+     box-sizing: border-box;
     direction: rtl;
 }
 
@@ -1665,29 +1664,28 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     width: 100%;
     max-width: 400px;
     height: 90vh;
-    max-height: 700px; /* از ارتفاع viewport استفاده می کنیم و سپس کنترل می کنیم */
+    max-height: 700px;
     background-color: black;
     border-radius: 10px;
-    overflow: hidden; /* مهم برای برش محتوای اضافه */
+    overflow: hidden;
     display: flex;
-    flex-direction: column; /* چیدمان ستونی برای هدر، مدیا و کپشن */
+    flex-direction: column;
     transform: scale(0.9);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-sizing: border-box; /* اضافه شد */
-    /* margin-bottom: 10px; */ /* حذف شد، کپشن داخل این کانتینر رفت */
-}
+    box-sizing: border-box;
+ }
 
 @media (max-width: 768px) {
     .story-module-modal-content {
         border-radius: 0;
         max-width: 100%;
         max-height: 100%;
-        height: 100%; /* در موبایل تمام صفحه شود */
+        height: 100%;
     }
 }
 
 .story-module-modal-story-header {
-    position: absolute; /* همچنان absolute برای روی مدیا */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -1733,7 +1731,7 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* دکمه بستن (ضربدر) */
+
 .story-module-modal-close {
     background: none;
     border: none;
@@ -1800,17 +1798,16 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
 }
 
 .story-module-modal-story-media {
-    position: relative; /* مهم: برای absolute بودن کنترل‌بارها و دکمه‌های ناوبری */
+    position: relative;
     z-index: 10;
     overflow: hidden;
     width: 100%;
-    height: 100%; /* این مهم است */
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: default;
-    /* touch-action: none; */ /* برای جلوگیری از تداخل با اسکرول خود Video.js یا کشیدن مدال می تواند مشکل ساز باشد */
-    flex-grow: 1; /* این خط مهم است: فضای باقی مانده را پر می کند */
+     flex-grow: 1;
 }
 
 .story-module-story-media-content {
@@ -1856,14 +1853,13 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
 .story-module-nav-button {
     position: absolute;
     top: 50%;
-    transform: none; /* حذف شد */
+    transform: none;
     border: none;
     color: white;
     font-size: 2em;
     cursor: pointer;
     z-index: 55;
     width: 60px;
-    /* height: calc(100% - 60px); */ /* حذف شد */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1871,7 +1867,7 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     transition: background-color 0.2s ease;
     margin: 0 10px;
     box-sizing: border-box;
-    direction: ltr; /* جهت دکمه‌ها را ltr نگه می‌دارد */
+    direction: ltr;
     background-color: rgba(0, 0, 0, 0.2);
 
 }
@@ -1896,29 +1892,27 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     right: auto;
 }
 
-/* --- شروع تغییرات برای Video.js و کپشن --- */
 
-/* این استایل Video.js .vjs-tech برای اطمینان از object-fit: contain */
 .story-module-modal-story-media .video-js {
     width: 100% !important;
     height: 100% !important;
-    position: absolute !important; /* این مهم است */
+    position: absolute !important;
     top: 0;
     left: 0;
-    object-fit: contain !important; /* این مهم است */
+    object-fit: contain !important;
     background-color: black;
     z-index: 15;
 }
 
 .story-module-modal-story-media .video-js .vjs-tech {
-    object-fit: contain !important; /* مهم: برای خود تگ video در Video.js */
+    object-fit: contain !important;
 }
 
 .video-js .vjs-control-bar {
     display: flex !important;
     background-color: rgba(0, 0, 0, 0.5) !important;
     height: 40px !important;
-    z-index: 20 !important; /* z-index بالا برای دیده شدن */
+    z-index: 20 !important;
     opacity: 1 !important;
     visibility: visible !important;
     transition: opacity 0.3s ease, visibility 0.3s ease !important;
@@ -1933,7 +1927,6 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     direction: ltr;
 }
 
-/* این بلاک برای اینکه کنترل‌بار در حالت عدم فعالیت کاربر پنهان شود. */
 .video-js:not(.vjs-user-inactive) .vjs-control-bar {
     opacity: 1 !important;
     visibility: visible !important;
@@ -2170,12 +2163,10 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     text-align: left;
 }
 
-/* استایل برای کپشن بیرونی (External Caption) - مهم: موقعیت آن تغییر کرد */
-/* این عنصر اکنون باید داخل .story-module-modal-content قرار گیرد */
+
 .story-module-external-caption {
     width: 100%;
-    /* max-width: 400px; */ /* حذف شد چون flex-item است */
-    background-color: rgba(0, 0, 0, 0.7); /* پس‌زمینه برای خوانایی بهتر */
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 10px 15px;
     box-sizing: border-box;
@@ -2183,7 +2174,7 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     flex-direction: column;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    max-height: 100px; /* فضای کمتری اشغال کند */
+    max-height: 100px;
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -2192,8 +2183,8 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     line-height: 1.4;
     z-index: 999;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-    flex-shrink: 0; /* از کوچک شدن کپشن جلوگیری می کند */
-    border-top: 1px solid rgba(255,255,255,0.1); /* خط جداکننده */
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .story-module-external-caption::-webkit-scrollbar {
@@ -2207,11 +2198,11 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     direction: rtl;
 }
 
-/* در حالت موبایل، مدال و کپشن باید تمام عرض را بگیرند */
+
 @media (max-width: 768px) {
     .story-module-external-caption {
         border-radius: 0;
         max-width: 100%;
-        max-height: 20vh; /* در موبایل هم کنترل شود */
+        max-height: 20vh;
     }
 }
