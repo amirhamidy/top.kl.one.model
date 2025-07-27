@@ -2207,3 +2207,6 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
 }
 
 
+.w-center{
+    text-align: -webkit-center !important;
+}
