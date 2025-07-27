@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         prevEl: prevButton
                     },
                     breakpoints: {
-                        576: { slidesPerView: 2, spaceBetween: 16 },
+                        576: { slidesPerView: 3, spaceBetween: 16 },
                         768: { slidesPerView: 2, spaceBetween: 20 },
                         992: { slidesPerView: 3, spaceBetween: 24 },
                         1200: { slidesPerView: 4, spaceBetween: 24 }

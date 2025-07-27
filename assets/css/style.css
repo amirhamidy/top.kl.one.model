@@ -37,7 +37,7 @@
     --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.07), 0 8px 24px rgba(0, 0, 0, 0.07);
     --shadow-premium: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.04);
 
-     
+
     --header-height: 70px;
     --focus-outline-color: rgba(var(--primary-accent-rgb), 0.5);
 }
@@ -800,9 +800,6 @@ body.dark-theme .search-overlay {
 /* ==========================================================================
    3. PRODUCT SECTION & CARDS
    ========================================================================== */
-.golden-offers {
-    padding: 4rem 0;
-}
 
 .golden-offers-container {
     display: grid;
@@ -1056,7 +1053,7 @@ body.dark-theme .product-countdown {
 }
 
 .theme-transition-circle.is-active {
-    transform: scale(800); /* Large enough scale to cover the viewport */
+    transform: scale(50); /* Large enough scale to cover the viewport */
 }
 
 /* ==========================================================================
@@ -1256,7 +1253,7 @@ body.dark-theme .product-countdown {
     position: relative;
     border-radius: var(--border-radius-md);
     overflow: hidden;
-    padding-bottom: 100%;
+    padding-bottom: 0;
     background-color: var(--bg-light);
     display: block;
 }
@@ -1277,6 +1274,11 @@ body.dark-theme .product-countdown {
     display: none;
 }
 
+
+
+.hero-slider-section img{
+    height: 300px !important;
+}
 
 .interactive-zones {
     position: absolute;
