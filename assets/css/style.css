@@ -411,7 +411,7 @@ body.dark-theme .search-overlay {
     background-color: var(--primary-accent-dark);
 }
 
-.search-submit-btn:focus-visible { /* Custom focus for search button */
+.search-submit-btn:focus-visible {  
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -439,7 +439,7 @@ body.dark-theme .search-overlay {
     color: var(--danger-color);
 }
 
-.search-close-btn:focus-visible { /* Custom focus for close button */
+.search-close-btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -503,7 +503,7 @@ body.dark-theme .search-overlay {
     cursor: pointer;
 }
 
-.mobile-menu-close:focus-visible { /* Custom focus for mobile menu close button */
+.mobile-menu-close:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -567,7 +567,7 @@ body.dark-theme .search-overlay {
     gap: 0.5rem;
 }
 
-.submenu-back-btn:focus-visible { /* Custom focus for back button */
+.submenu-back-btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -598,10 +598,10 @@ body.dark-theme .search-overlay {
 
 .btn-login:hover {
     background-color: var(--primary-accent-dark);
-    color: white; /* Ensure text remains white on hover */
+    color: white;
 }
 
-.btn-login:focus-visible { /* Custom focus for login button */
+.btn-login:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -632,7 +632,7 @@ body.dark-theme .search-overlay {
     object-fit: cover;
 }
 
-/* HERO SLIDER CONTROLS (APPEAR ON HOVER) */
+
 .slider-controls-hero {
     position: absolute;
     bottom: 20px;
@@ -659,7 +659,7 @@ body.dark-theme .search-overlay {
     transform: translateY(0);
 }
 
-.slider-controls-hero .swiper-navigation-buttons { /* New class for navigation buttons to remove !important */
+.slider-controls-hero .swiper-navigation-buttons {
     display: flex;
     justify-content: center;
     gap: 5px;
@@ -684,7 +684,7 @@ body.dark-theme .search-overlay {
     transform: scale(1.1);
 }
 
-.slider-controls-hero .nav-button:focus-visible { /* Custom focus for hero nav buttons */
+.slider-controls-hero .nav-button:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -705,7 +705,7 @@ body.dark-theme .search-overlay {
     border-radius: 2px;
     margin: 0 !important;
     opacity: 1;
-    cursor: pointer; /* Ensure bullet is clickable */
+    cursor: pointer;
 }
 
 .hero-swiper .swiper-pagination-bullet::after {
@@ -723,7 +723,7 @@ body.dark-theme .search-overlay {
     width: 100%;
 }
 
-/* Common styles for product sliders */
+
 .offers-slider-wrapper,
 .flash-deal-slider-card {
     background-color: var(--bg-white);
@@ -783,7 +783,7 @@ body.dark-theme .search-overlay {
     color: white;
 }
 
-.header-nav-btn:focus-visible { /* Custom focus for product slider nav buttons */
+.header-nav-btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -794,8 +794,7 @@ body.dark-theme .search-overlay {
     background-color: transparent;
     border-color: var(--border-color);
     color: var(--text-muted);
-    /* No !important needed due to HTML structure and careful CSS */
-}
+ }
 
 
 /* ==========================================================================
@@ -835,7 +834,7 @@ body.dark-theme .search-overlay {
 
 .main-image-wrapper {
     width: 100%;
-    padding-top: 100%; /* Creates a square aspect ratio */
+    padding-top: 100%;
     position: relative;
     overflow: hidden;
 }
@@ -891,7 +890,7 @@ body.dark-theme .search-overlay {
     font-size: 0.9rem;
     font-weight: 500;
     line-height: 1.5;
-    min-height: 40px; /* Ensures consistent height for product names */
+    min-height: 40px;
     margin-bottom: 0.75rem;
 }
 
@@ -899,7 +898,7 @@ body.dark-theme .search-overlay {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Pushes content to bottom */
+    margin-top: auto;
     padding-top: 1rem;
 }
 
@@ -949,7 +948,7 @@ body.dark-theme .product-countdown {
     background-color: var(--bg-white);
     opacity: 0;
     transition: opacity 0.3s ease, background-color var(--transition-fast);
-    pointer-events: none; /* Allows clicks to pass through to elements below */
+    pointer-events: none;
 }
 
 .main-image-wrapper:hover .image-overlay {
@@ -964,11 +963,11 @@ body.dark-theme .product-countdown {
     display: flex;
     gap: 1rem;
     z-index: 5;
-    pointer-events: none; /* Important: Allows hover on main image, but not directly on this container */
+    pointer-events: none;
 }
 
 .main-image-wrapper:hover .product-actions-on-hover {
-    pointer-events: all; /* Enable pointer events when wrapper is hovered */
+    pointer-events: all;
 }
 
 
@@ -987,7 +986,7 @@ body.dark-theme .product-countdown {
     opacity: 0;
     transform: translateY(15px);
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    pointer-events: auto; /* Re-enable pointer events for the buttons themselves */
+    pointer-events: auto;
 }
 
 .main-image-wrapper:hover .action-btn {
@@ -1004,12 +1003,11 @@ body.dark-theme .product-countdown {
 }
 
 .action-btn:hover {
-    transform: scale(1.1) !important; /* Kept !important here for strong hover scale */
+    transform: scale(1.1) !important;
     box-shadow: var(--shadow-medium);
 }
 
-.action-btn:focus-visible { /* Custom focus for product action buttons */
-    outline: none;
+.action-btn:focus-visible {  : none;
     box-shadow: 0 0 0 3px var(--focus-outline-color), var(--shadow-medium);
 }
 
@@ -1073,7 +1071,7 @@ body.dark-theme .product-countdown {
 @media (max-width: 991.98px) {
     .header-nav,
     .mega-menu {
-        display: none !important; /* Keep !important for display properties from Bootstrap */
+        display: none !important;
     }
 
     .header-content {
@@ -1091,12 +1089,12 @@ body.dark-theme .product-countdown {
     }
 
     .hero-swiper .swiper-pagination {
-        margin-top: 1rem; /* Adjust margin for smaller screens */
+        margin-top: 1rem;
         justify-content: center;
     }
 
     .slider-controls-hero {
-        position: static; /* Adjust positioning for smaller screens */
+        position: static;
         background: transparent;
         backdrop-filter: none;
         border: none;
@@ -1115,7 +1113,7 @@ body.dark-theme .product-countdown {
     }
 
     .slider-controls-hero .nav-button {
-        background-color: var(--primary-accent-light); /* Lighter background for visibility */
+        background-color: var(--primary-accent-light);
         border-color: var(--primary-accent);
         color: var(--primary-accent);
     }
@@ -1155,10 +1153,10 @@ body.dark-theme .product-countdown {
     }
 }
 
-/* Optional: Additional small screen adjustments for product cards if needed */
+
 @media (max-width: 575.98px) {
     .product-card {
-        /* Example: if you want them stacked differently */
+
     }
 }
 
@@ -1229,7 +1227,7 @@ body.dark-theme .product-countdown {
 }
 
 
-/* Specific styling for the product card in special offers */
+
 .product-card.special-card {
     position: relative;
     border: 1px solid var(--border-color);
@@ -1240,17 +1238,17 @@ body.dark-theme .product-countdown {
     padding-bottom: 0;
 }
 
-/* Hover effect for the entire special product card */
+
 .product-card.special-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-medium);
 }
 
-/* New: Make the whole image area a link container */
+
 .product-card.special-card .main-image-link {
-    display: block; /* Ensures the link takes up the full space */
-    text-decoration: none; /* Removes default underline from link */
-    color: inherit; /* Inherits color from parent, so text inside is not blue */
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 
@@ -1258,7 +1256,7 @@ body.dark-theme .product-countdown {
     position: relative;
     border-radius: var(--border-radius-md);
     overflow: hidden;
-    padding-bottom: 100%; /* Creates a square aspect ratio. Adjust if your images are not square. */
+    padding-bottom: 100%;
     background-color: var(--bg-light);
     display: block;
 }
@@ -1269,17 +1267,17 @@ body.dark-theme .product-countdown {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Scales the image down to fit *entirely* within the container. */
+    object-fit: contain;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     z-index: 1; /* Below interactive zones */
 }
 
-/* Hide traditional thumbnail gallery if present */
+
 .product-card.special-card .thumbnail-gallery {
     display: none;
 }
 
-/* Interactive Zones for image changes on hover */
+
 .interactive-zones {
     position: absolute;
     top: 0;
@@ -1287,8 +1285,8 @@ body.dark-theme .product-countdown {
     width: 100%;
     height: 100%;
     display: flex;
-    z-index: 3; /* Above main image */
-    pointer-events: all; /* Enables interaction on zones */
+    z-index: 3;
+    pointer-events: all;
 }
 
 .interactive-zones .zone {
@@ -1298,7 +1296,7 @@ body.dark-theme .product-countdown {
     position: relative;
 }
 
-/* Subtle overlay visual feedback for zones on hover */
+
 .interactive-zones .zone::after {
     content: '';
     position: absolute;
@@ -1308,7 +1306,7 @@ body.dark-theme .product-countdown {
     height: 100%;
     opacity: 0;
     transition: opacity 0.2s ease;
-    pointer-events: none; /* Crucial: ensures clicks pass through to the link */
+    pointer-events: none;
     z-index: 1;
 }
 
@@ -1316,10 +1314,10 @@ body.dark-theme .product-countdown {
     opacity: 1;
 }
 
-/* --- REMOVED ALL STYLES RELATED TO .product-actions-on-hover and .action-btn --- */
 
 
-/* Product Info section inside the special card */
+
+
 .product-card.special-card .product-info {
     padding: 1rem;
     text-align: center;
@@ -1369,7 +1367,7 @@ body.dark-theme .product-countdown {
     font-weight: 500;
 }
 
-/* Extra Info Section */
+
 .product-extra-info {
     font-size: 0.85rem;
     color: var(--text-muted);
@@ -1378,17 +1376,16 @@ body.dark-theme .product-countdown {
     border-top: 1px dashed var(--border-color);
 }
 
-/* Responsive adjustments for the new section - Adjusted to match Golden Offers breakpoints */
 @media (max-width: 768px) {
     .offers-slider-title {
         font-size: 1.5rem;
     }
 }
-/* --- Search Suggestions (Updated for Horizontal Drag Scroll) --- */
+
 .search-suggestions-wrapper {
-    padding: 1rem 20px 20px; /* Adjust padding to match search input area */
+    padding: 1rem 20px 20px;
     border-top: 1px solid var(--border-color);
-    margin-top: -1px; /* Overlap border with search box border */
+    margin-top: -1px;
     background-color: var(--bg-white);
     border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
 }
@@ -1400,28 +1397,28 @@ body.dark-theme .product-countdown {
     margin-bottom: 0.75rem;
 }
 
-/* New: For horizontal scroll with drag */
-.suggestions-list-container {
-    overflow-x: auto; /* Enable horizontal scroll */
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    white-space: nowrap; /* Prevent items from wrapping */
-    padding-bottom: 0.5rem; /* Add some padding for scrollbar visibility if needed */
-    cursor: grab; /* Indicate draggable */
-    -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
 
-    /* Custom scrollbar for better aesthetics */
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--primary-accent) var(--bg-light); /* Firefox */
+.suggestions-list-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-accent) var(--bg-light);
 }
 
 .suggestions-list-container.active-dragging {
-    cursor: grabbing; /* Indicate currently dragging */
-    user-select: none; /* Prevent text selection during drag */
+    cursor: grabbing;
+    user-select: none;
 }
 
-/* Webkit (Chrome, Safari) scrollbar styling */
+
 .suggestions-list-container::-webkit-scrollbar {
-    height: 8px; /* Height for horizontal scrollbar */
+    height: 8px;
 }
 
 .suggestions-list-container::-webkit-scrollbar-track {
@@ -1436,39 +1433,39 @@ body.dark-theme .product-countdown {
 }
 
 body.dark-theme .suggestions-list-container::-webkit-scrollbar-track {
-    background: var(--bg-white); /* Darker background for scroll track */
+    background: var(--bg-white);
 }
 
 body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
-    border: 2px solid var(--bg-white); /* Darker border for thumb */
+    border: 2px solid var(--bg-white);
 }
 
 
 .suggestions-list {
-    display: inline-flex; /* Use inline-flex for horizontal items without breaking line */
-    gap: 0.75rem; /* Space between suggestion items */
+    display: inline-flex;
+    gap: 0.75rem;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .suggestion-item {
-    display: inline-flex; /* Changed to inline-flex for button-like appearance */
+    display: inline-flex;
     align-items: center;
-    padding: 0.6rem 1rem; /* Adjust padding for button look */
+    padding: 0.6rem 1rem;
     background-color: var(--bg-light);
-    border: 1px solid var(--border-color); /* Added border for button look */
-    border-radius: 25px; /* More rounded for button-like feel */
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
     color: var(--text-dark);
     font-size: 0.9rem;
-    white-space: nowrap; /* Keep text on one line */
-    text-decoration: none; /* Remove underline for links */
+    white-space: nowrap;
+    text-decoration: none;
     transition: all var(--transition-fast);
-    flex-shrink: 0; /* Prevent items from shrinking */
+    flex-shrink: 0;
 }
 
 .suggestion-item .icon {
-    width: 16px; /* Slightly smaller icon for button look */
+    width: 16px;
     height: 16px;
     margin-right: 0.5rem; /* Space between text and icon */
     color: var(--text-muted); /* Default icon color */
