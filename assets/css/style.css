@@ -37,7 +37,7 @@
     --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.07), 0 8px 24px rgba(0, 0, 0, 0.07);
     --shadow-premium: 0 10px 25px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.04);
 
-    /* New variables for better maintainability and accessibility */
+     
     --header-height: 70px;
     --focus-outline-color: rgba(var(--primary-accent-rgb), 0.5);
 }
@@ -53,7 +53,7 @@ body.dark-theme {
     --shadow-premium: 0 10px 25px rgba(0, 0, 0, 0.3), 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Global reset and base styles */
+
 body {
     font-family: 'Vazirmatn', sans-serif;
     background-color: var(--bg-light);
@@ -69,25 +69,25 @@ a {
     transition: color var(--transition-fast);
 }
 
-/* Ensure focus states for accessibility */
+
 a:hover,
 a:focus-visible {
     color: var(--primary-accent);
-    outline: none; /* Remove default outline for better custom focus */
+    outline: none;
 }
 
 button,
 input,
 select,
 textarea {
-    outline: none; /* Remove default outline for better custom focus */
+    outline: none;
 }
 
-/* Custom focus outline for keyboard navigation */
+
 *:focus-visible {
     outline: 2px solid var(--focus-outline-color);
     outline-offset: 2px;
-    border-radius: var(--border-radius-sm); /* Adjust based on element shape */
+    border-radius: var(--border-radius-sm);
 }
 
 .icon {
@@ -122,7 +122,7 @@ textarea {
 }
 
 .header-logo img {
-    max-height: calc(var(--header-height) - 30px); /* Adjust based on header height */
+    max-height: calc(var(--header-height) - 30px);
     width: auto;
 }
 
@@ -150,7 +150,7 @@ textarea {
 
 .header-nav .nav-link:hover::after,
 .mega-menu-container:hover > .nav-link::after,
-.header-nav .nav-link:focus-visible::after { /* Add focus-visible */
+.header-nav .nav-link:focus-visible::after {
     width: 100%;
 }
 
@@ -179,7 +179,7 @@ textarea {
     background-color: rgba(var(--primary-accent-rgb), 0.1);
 }
 
-.header-action-btn:focus-visible { /* Custom focus for header buttons */
+.header-action-btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
@@ -228,10 +228,10 @@ body.dark-theme .theme-toggle-btn .icon-sun {
     transform: translate(-50%, -50%) rotate(0deg);
 }
 
-/* === MEGA MENU === */
+
 .mega-menu {
     position: absolute;
-    top: var(--header-height); /* Use header height variable */
+    top: var(--header-height);
     right: 0;
     width: 950px;
     max-height: 550px;
@@ -276,20 +276,20 @@ body.dark-theme .theme-toggle-btn .icon-sun {
     border-right: 3px solid transparent;
 }
 
-.mega-menu-categories .category-item { /* Added focus-visible for keyboard navigation */
+.mega-menu-categories .category-item {
     cursor: pointer;
 }
 
 .mega-menu-categories .category-item:hover a,
 .mega-menu-categories .category-item.active a,
-.mega-menu-categories .category-item:focus-visible a { /* Add focus-visible */
+.mega-menu-categories .category-item:focus-visible a {
     background-color: var(--primary-accent-light);
     color: var(--primary-accent);
-    outline: none; /* Remove default focus outline */
+    outline: none;
 }
 
 .mega-menu-categories .category-item.active a,
-.mega-menu-categories .category-item:focus-visible a { /* Add focus-visible */
+.mega-menu-categories .category-item:focus-visible a {
     border-right-color: var(--primary-accent);
 }
 
@@ -335,7 +335,7 @@ body.dark-theme .theme-toggle-btn .icon-sun {
     color: var(--text-muted);
 }
 
-/* === SEARCH & MOBILE OVERLAYS === */
+
 .search-overlay {
     position: fixed;
     top: 0;
@@ -411,7 +411,7 @@ body.dark-theme .search-overlay {
     background-color: var(--primary-accent-dark);
 }
 
-.search-submit-btn:focus-visible {  
+.search-submit-btn:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px var(--focus-outline-color);
 }
