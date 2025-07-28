@@ -733,6 +733,10 @@ body.dark-theme .search-overlay {
     min-width: 0;
 }
 
+.swiper{
+    overflow-y: visible !important;
+}
+
 .offers-slider-header {
     display: flex;
     justify-content: space-between;
@@ -1053,7 +1057,7 @@ body.dark-theme .product-countdown {
 }
 
 .theme-transition-circle.is-active {
-    transform: scale(50); /* Large enough scale to cover the viewport */
+    transform: scale(30); /* Large enough scale to cover the viewport */
 }
 
 /* ==========================================================================
@@ -1161,9 +1165,6 @@ body.dark-theme .product-countdown {
    NEW SECTION: SPECIAL OFFERS
    ========================================================================== */
 
-.special-offers {
-    padding: 4rem 0;
-}
 
 .offers-slider-header {
     display: flex;
@@ -1345,13 +1346,13 @@ body.dark-theme .product-countdown {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0.75rem;
 }
 
 .product-card.special-card .new-price {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-color);
+    padding-top: 0 !important;
 }
 
 .product-card.special-card .old-price {
@@ -2308,4 +2309,8 @@ body.dark-theme .story-module-external-caption {
     color: var(--text-dark);
     text-shadow: none;
     border-top: 1px solid var(--border-color);
+}
+
+.sh-slider{
+    background-color: var(--primary-accent);
 }
