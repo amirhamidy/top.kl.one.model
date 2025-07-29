@@ -973,8 +973,43 @@ if (blogTagsList) {
     animateBlogTagsScroll();
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    'use strict';
 
+    // Blog Slider Logic (بدون افکت opacity)
+    const blogSlider = document.getElementById('blog-slider');
+    const blogPrevBtn = document.getElementById('blog-slider-prev');
+    const blogNextBtn = document.getElementById('blog-slider-next');
 
+    if (blogSlider && blogPrevBtn && blogNextBtn) {
+        let scrollAmount = 0;
 
+        const updateScrollAmount = () => {
+            const firstCard = blogSlider.querySelector('.blog-slider-card');
+            if (firstCard) {
+                const cardWidth = firstCard.offsetWidth;
+                const cardStyle = window.getComputedStyle(firstCard);
+                const marginRight = parseFloat(cardStyle.marginRight);
+                scrollAmount = cardWidth + marginRight;
+            }
+        };
 
+        updateScrollAmount();
+        window.addEventListener('resize', updateScrollAmount);
 
+        blogNextBtn.addEventListener('click', () => {
+            blogSlider.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        blogPrevBtn.addEventListener('click', () => {
+            blogSlider.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+});
