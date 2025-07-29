@@ -2460,6 +2460,7 @@ body.dark-theme .blog-tag-item:hover {
     }
 }
 
+/* --- Global / Base Styles (existing) --- */
 .my-container {
     max-width: 1200px;
     margin-left: auto;
@@ -2498,6 +2499,7 @@ body.dark-theme .section-title {
     color: #00bcd4;
 }
 
+/* --- Blog Slider Section --- */
 .blog-slider-section {
     padding: 60px 0;
     background-color: #fcfcfc;
@@ -2509,30 +2511,24 @@ body.dark-theme .blog-slider-section {
 
 .blog-slider-wrapper {
     position: relative;
+    padding: 0 40px; /* Add padding for Swiper buttons inside wrapper */
 }
 
-.blog-slider-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding-bottom: 15px;
+/* Swiper specific overrides for our custom cards */
+/* The main Swiper container */
+.swiper {
+    width: 100%;
+    height: auto; /* Height adapts to content */
+    padding-bottom: 40px; /* Space for pagination if active */
 }
 
-.blog-slider-container::-webkit-scrollbar {
-    display: none;
-}
+/* Individual Swiper slides (our blog cards) */
+.swiper-slide.blog-slider-card {
+    /* Swiper handles width and margin based on slidesPerView and spaceBetween */
+    width: auto !important; /* Let Swiper control the width based on configuration */
+    margin-right: 0 !important; /* Swiper handles spacing with spaceBetween parameter */
 
-.blog-slider-card {
-    flex: 0 0 auto;
-    width: calc(33.333% - 20px);
-    max-width: 300px;
-    margin-right: 30px;
-    scroll-snap-align: start;
-
+    /* Keep existing card styles */
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -2542,23 +2538,19 @@ body.dark-theme .blog-slider-section {
     border: 1px solid #f0f0f0;
 }
 
-body.dark-theme .blog-slider-card {
+body.dark-theme .swiper-slide.blog-slider-card {
     background-color: #282828;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     border-color: #383838;
 }
 
-.blog-slider-card:hover {
+.swiper-slide.blog-slider-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-theme .blog-slider-card:hover {
+body.dark-theme .swiper-slide.blog-slider-card:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.blog-slider-card:last-child {
-    margin-right: 0;
 }
 
 .blog-card-image-wrapper {
@@ -2575,7 +2567,7 @@ body.dark-theme .blog-slider-card:hover {
     transition: transform 0.4s ease;
 }
 
-.blog-slider-card:hover .blog-card-image-wrapper img {
+.swiper-slide.blog-slider-card:hover .blog-card-image-wrapper img {
     transform: scale(1.05);
 }
 
@@ -2610,7 +2602,7 @@ body.dark-theme .blog-card-title {
     color: #e0e0e0;
 }
 
-.blog-slider-card:hover .blog-card-title {
+.swiper-slide.blog-slider-card:hover .blog-card-title {
     color: #0097a7;
 }
 
@@ -2662,20 +2654,20 @@ body.dark-theme .blog-card-meta {
     margin-right: 0;
 }
 
-.blog-slider-card:hover .read-more-btn {
+.swiper-slide.blog-slider-card:hover .read-more-btn {
     gap: 10px;
     color: #007bff;
     transform: translateX(-2px);
 }
 
-.blog-slider-card:hover .read-more-btn i {
+.swiper-slide.blog-slider-card:hover .read-more-btn i {
     transform: translateX(-5px);
 }
 
-.slider-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+/* Swiper Navigation Buttons Customization */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #555; /* Icon color */
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
@@ -2684,55 +2676,73 @@ body.dark-theme .blog-card-meta {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-    color: #555;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-    z-index: 10;
 }
 
-body.dark-theme .slider-nav {
+body.dark-theme .swiper-button-next,
+body.dark-theme .swiper-button-prev {
     background-color: rgba(40, 40, 40, 0.8);
     border-color: rgba(255, 255, 255, 0.1);
     color: #bbb;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.slider-nav:hover {
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
     background-color: #007bff;
     color: white;
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
 }
 
-body.dark-theme .slider-nav:hover {
+body.dark-theme .swiper-button-next:hover,
+body.dark-theme .swiper-button-prev:hover {
     background-color: #0056b3;
     color: white;
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
 }
 
-.slider-nav.prev-btn {
-    left: -20px;
+/* Adjust button position */
+.swiper-button-prev {
+    left: 0;
 }
 
-.slider-nav.next-btn {
-    right: -20px;
+.swiper-button-next {
+    right: 0;
 }
 
-@media (max-width: 1200px) {
-    .blog-slider-card {
-        width: calc(33.333% - 20px);
-        max-width: unset;
-    }
+/* Remove default Swiper icon styling to use FontAwesome */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    display: none; /* Hide default Swiper icons */
 }
 
+/* Swiper Pagination Customization */
+.swiper-pagination-bullet {
+    background-color: #ccc; /* Default bullet color */
+    opacity: 1;
+    transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #00bcd4; /* Active bullet color */
+}
+
+body.dark-theme .swiper-pagination-bullet {
+    background-color: #555;
+}
+
+body.dark-theme .swiper-pagination-bullet-active {
+    background-color: #00bcd4;
+}
+
+/* --- Responsive Adjustments (adjusted for Swiper) --- */
 @media (max-width: 992px) {
     .blog-slider-section {
         padding: 50px 0;
     }
-    .blog-slider-card {
-        width: calc(50% - 20px);
-        margin-right: 40px;
+    .blog-slider-wrapper {
+        padding: 0 30px; /* Adjust padding for buttons */
     }
     .blog-card-image-wrapper {
         height: 160px;
@@ -2752,16 +2762,17 @@ body.dark-theme .slider-nav:hover {
     .read-more-btn {
         font-size: 13px;
     }
-    .slider-nav {
+    .swiper-button-next,
+    .swiper-button-prev {
         width: 40px;
         height: 40px;
         font-size: 16px;
     }
-    .slider-nav.prev-btn {
-        left: -10px;
+    .swiper-button-prev {
+        left: 0;
     }
-    .slider-nav.next-btn {
-        right: -10px;
+    .swiper-button-next {
+        right: 0;
     }
 }
 
@@ -2770,12 +2781,7 @@ body.dark-theme .slider-nav:hover {
         padding: 40px 0;
     }
     .blog-slider-wrapper {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .blog-slider-card {
-        width: 85vw;
-        margin-right: 15px;
+        padding: 0; /* Remove padding, buttons go outside */
     }
     .blog-card-image-wrapper {
         height: 140px;
@@ -2795,7 +2801,9 @@ body.dark-theme .slider-nav:hover {
     .read-more-btn {
         font-size: 12px;
     }
-    .slider-nav {
+    /* Hide navigation buttons on very small screens, rely on touch scroll */
+    .swiper-button-next,
+    .swiper-button-prev {
         display: none;
     }
     .my-container {
@@ -2803,3 +2811,4 @@ body.dark-theme .slider-nav:hover {
         padding-right: 15px;
     }
 }
+

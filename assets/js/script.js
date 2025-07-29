@@ -976,39 +976,48 @@ if (blogTagsList) {
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
-    // Blog Slider Logic (بدون افکت opacity)
-    const blogSlider = document.getElementById('blog-slider');
-    const blogPrevBtn = document.getElementById('blog-slider-prev');
-    const blogNextBtn = document.getElementById('blog-slider-next');
+    // ... (کدهای موجود برای اسلایدر تگ‌ها در اینجا) ...
 
-    if (blogSlider && blogPrevBtn && blogNextBtn) {
-        let scrollAmount = 0;
+    // Blog Swiper Initialization (با آیدی اختصاصی)
+    if (document.getElementById('blogSwiper')) {
+        const blogSwiper = new Swiper('#blogSwiper', {
+            // Optional parameters
+            direction: 'horizontal', // 'horizontal' or 'vertical'
+            loop: false, // Set to true if you want infinite loop
+            grabCursor: true, // Shows grab cursor on desktop
 
-        const updateScrollAmount = () => {
-            const firstCard = blogSlider.querySelector('.blog-slider-card');
-            if (firstCard) {
-                const cardWidth = firstCard.offsetWidth;
-                const cardStyle = window.getComputedStyle(firstCard);
-                const marginRight = parseFloat(cardStyle.marginRight);
-                scrollAmount = cardWidth + marginRight;
-            }
-        };
+            // Responsive breakpoints
+            breakpoints: {
+                // when window width is >= 1200px (desktop)
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30, // Space between cards
+                },
+                // when window width is >= 768px (tablet)
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30, // Space between cards
+                },
+                // when window width is < 768px (mobile)
+                0: { // Starting from 0px
+                    slidesPerView: 1.1, // Show one card partially to indicate more
+                    spaceBetween: 15, // Less space on mobile
+                    centeredSlides: true, // Center the active
+                    initialSlide: 0,
+                }
+            },
 
-        updateScrollAmount();
-        window.addEventListener('resize', updateScrollAmount);
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
 
-        blogNextBtn.addEventListener('click', () => {
-            blogSlider.scrollBy({
-                left: scrollAmount,
-                behavior: 'smooth'
-            });
-        });
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
 
-        blogPrevBtn.addEventListener('click', () => {
-            blogSlider.scrollBy({
-                left: -scrollAmount,
-                behavior: 'smooth'
-            });
         });
     }
 
