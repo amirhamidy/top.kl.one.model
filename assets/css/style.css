@@ -2755,3 +2755,8 @@ body.dark-theme .swiper-pagination-bullet-active {
     }
 }
 
+
+.cs-b-icon{
+    width: 50% !important;
+    height: 50% !important;
+}
