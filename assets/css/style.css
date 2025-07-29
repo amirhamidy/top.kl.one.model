@@ -1661,6 +1661,7 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
 
 .story-module-modal-content {
     position: relative;
+    transform: translateY(6%) scale(1) !important;
     width: 100%;
     max-width: 400px;
     height: 90vh;
@@ -1670,7 +1671,6 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transform: scale(0.9);
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-sizing: border-box;
  }
