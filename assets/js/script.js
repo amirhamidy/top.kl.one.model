@@ -943,7 +943,56 @@ hrefSlides.forEach(link => {
     link.setAttribute('target', '_blank');
 });
 
+const animatedBlogCards = document.querySelectorAll('.index-blog-post-card');
 
+if (animatedBlogCards.length > 0) {
+    const blogCardObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = parseInt(entry.target.dataset.delay) || 0;
+                setTimeout(() => {
+                    entry.target.classList.add('is-visible');
+                }, delay);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedBlogCards.forEach(card => blogCardObserver.observe(card));
+}
+
+const blogTagsList = document.getElementById('blog-tags-list-marquee');
+
+if (blogTagsList) {
+    const initialTagsContent = blogTagsList.innerHTML;
+    blogTagsList.innerHTML += initialTagsContent + initialTagsContent + initialTagsContent;
+
+    let currentScrollAmount = 0;
+    const scrollSpeedPerFrame = 0.5;
+    let animationFrameIdForTags;
+
+    function animateBlogTagsScroll() {
+        currentScrollAmount += scrollSpeedPerFrame;
+        if (currentScrollAmount >= blogTagsList.scrollWidth / 4) {
+            currentScrollAmount = 0;
+        }
+        blogTagsList.style.transform = `translateX(-${currentScrollAmount}px)`;
+        animationFrameIdForTags = requestAnimationFrame(animateBlogTagsScroll);
+    }
+
+    blogTagsList.addEventListener('mouseenter', () => {
+        cancelAnimationFrame(animationFrameIdForTags);
+    });
+
+    blogTagsList.addEventListener('mouseleave', () => {
+        animateBlogTagsScroll();
+    });
+
+    animateBlogTagsScroll();
+}
 
 
 

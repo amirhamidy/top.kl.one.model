@@ -2314,5 +2314,468 @@ body.dark-theme .story-module-external-caption {
 .sh-slider{
     background-color: var(--primary-accent);
 }
+/* --- Blog Section for Index Page Styles --- */
+.blog-section-in-index {
+    padding: 96px 0; /* Increased padding for more breathing room */
+    background-color: #f8f9fa; /* Light background */
+    position: relative;
+    z-index: 1; /* Ensure it's above potential elements */
+}
 
+body.dark-theme .blog-section-in-index {
+    background-color: #1c1c1c; /* Deeper dark background for dark theme */
+}
+
+/* Section Title Styling */
+.section-title {
+    font-size: 44px; /* Larger, more impactful title */
+    font-weight: 800;
+    color: #212121;
+    margin-bottom: 64px; /* More space below title */
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px; /* Space for underline */
+}
+
+body.dark-theme .section-title {
+    color: #f1f1f1;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Short, impactful underline */
+    height: 4px;
+    background-color: #00bcd4; /* Accent color for underline */
+    border-radius: 2px;
+}
+
+.highlight-text {
+    color: #00bcd4; /* Your primary accent color */
+}
+
+/* Blog Posts Grid */
+.index-blog-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider cards, better min-width */
+    gap: 48px; /* More generous spacing between cards */
+    margin-top: 48px;
+}
+
+/* Individual Blog Post Card */
+.index-blog-post-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px; /* Even larger, softer border-radius */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1); /* Deeper, softer shadow */
+    overflow: hidden;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother cubic-bezier transition */
+    border: none; /* Remove subtle border, rely on shadow */
+
+    /* Initial state for JS animation */
+    opacity: 0;
+    transform: translateY(30px); /* Deeper initial translateY */
+}
+
+body.dark-theme .index-blog-post-card {
+    background-color: #2a2a2a; /* Dark card background */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+}
+
+.index-blog-post-card:hover {
+    transform: translateY(-12px); /* More pronounced lift on hover */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2); /* Stronger, wider shadow on hover */
+}
+
+body.dark-theme .index-blog-post-card:hover {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+.index-blog-post-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Slower, smoother entrance */
+}
+
+/* Image Wrapper & Overlay */
+.index-blog-post-card .index-post-image-wrapper {
+    width: 100%;
+    height: 240px; /* Taller images for better visual impact */
+    overflow: hidden;
+    position: relative;
+}
+
+.index-blog-post-card .index-post-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother zoom transition */
+}
+
+.index-blog-post-card:hover .index-post-image-wrapper img {
+    transform: scale(1.15); /* More pronounced zoom effect */
+}
+
+.index-blog-post-card .post-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)); /* Subtle gradient overlay */
+    transition: background 0.4s ease;
+}
+
+.index-blog-post-card:hover .post-overlay {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)); /* Darker gradient on hover */
+}
+
+/* Post Content */
+.index-blog-post-card .index-post-content {
+    padding: 32px; /* More generous padding */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.index-blog-post-card .index-post-category {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px; /* Slightly larger category text */
+    color: #00bcd4;
+    font-weight: 700; /* Bolder */
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Increased letter spacing for style */
+}
+
+.index-blog-post-card .index-post-category i {
+    color: #ffeb3b;
+    font-size: 13px;
+    margin-inline-end: 8px;
+}
+
+.index-blog-post-card .index-post-title {
+    font-size: 26px; /* Larger, more prominent title */
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 16px;
+    line-height: 1.3;
+    color: #212121;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme .index-blog-post-card .index-post-title {
+    color: #ffffff;
+}
+
+.index-blog-post-card:hover .index-post-title {
+    color: #0097a7; /* Slightly darker accent on hover */
+}
+
+.index-blog-post-card .index-post-excerpt {
+    font-size: 16px; /* Larger excerpt text for readability */
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.index-blog-post-card .index-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 24px;
+}
+
+body.dark-theme .index-blog-post-card .index-post-meta {
+    color: #ccc;
+}
+
+.index-blog-post-card .index-post-meta i {
+    color: #ffeb3b;
+    font-size: 13px;
+    margin-inline-end: 6px;
+}
+
+.index-blog-post-card .read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #00bcd4;
+    transition: gap 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    padding: 8px 0; /* Add some padding for touch target */
+}
+
+.index-blog-post-card .read-more-btn i {
+    transition: transform 0.3s ease;
+    margin-inline-end: 0;
+}
+
+.index-blog-post-card:hover .read-more-btn {
+    gap: 18px; /* More prominent gap increase on hover */
+    color: #007bff; /* Change to a more standard blue on hover */
+    transform: translateX(-3px); /* Subtle shift for the button */
+}
+
+.index-blog-post-card:hover .read-more-btn i {
+    transform: translateX(-8px); /* Moves further left */
+}
+
+/* --- Custom button style for "View All" --- */
+.custom-btn-style {
+    padding: 15px 35px; /* Larger padding */
+    font-size: 18px; /* Larger font size */
+    font-weight: 700; /* Bolder */
+    border-radius: 50px; /* Pill-shaped button */
+    background-color: #007bff; /* Primary blue for main button */
+    color: white;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3); /* Softer, wider shadow */
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-top: 64px; /* More space above button */
+}
+
+.custom-btn-style:hover {
+    transform: translateY(-5px); /* More lift on hover */
+    box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4); /* Stronger shadow on hover */
+    background-color: #0056b3; /* Darker blue on hover */
+    color: white;
+}
+.custom-btn-style i {
+    margin-inline-start: 10px; /* Increased space for icon */
+}
+
+
+/* --- Blog Tags Marquee Section Styles --- */
+.blog-tags-marquee-section {
+    padding: 40px 0;
+    background: linear-gradient(90deg, #00bcd4, #ffeb3b); /* Vibrant gradient */
+    overflow: hidden;
+    margin-top: 96px; /* More space from above section */
+    border-top: 1px solid rgba(255, 255, 255, 0.4); /* Stronger subtle border */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    z-index: 1; /* Ensure tags are above other elements */
+}
+
+body.dark-theme .blog-tags-marquee-section {
+    background: linear-gradient(90deg, #0097a7, #fdd835);
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.blog-tags-marquee-section::before,
+.blog-tags-marquee-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 120px; /* Wider fade effect */
+    height: 100%;
+    pointer-events: none;
+    z-index: 2; /* Ensure fade is on top */
+}
+
+.blog-tags-marquee-section::before {
+    left: 0;
+    background: linear-gradient(to right, #00bcd4, transparent);
+}
+
+.blog-tags-marquee-section::after {
+    right: 0;
+    background: linear-gradient(to left, #00bcd4, transparent);
+}
+
+body.dark-theme .blog-tags-marquee-section::before {
+    background: linear-gradient(to right, #0097a7, transparent);
+}
+
+body.dark-theme .blog-tags-marquee-section::after {
+    background: linear-gradient(to left, #0097a7, transparent);
+}
+
+
+.blog-tags-marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.blog-tags-list {
+    display: inline-flex;
+    white-space: nowrap;
+    gap: 40px; /* More space between tags for clarity */
+    padding: 16px 0; /* More vertical padding */
+    box-sizing: border-box;
+}
+
+.blog-tag-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px; /* Larger padding for better touch targets */
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly more opaque background */
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Stronger border for definition */
+    border-radius: 50px; /* Fully pill-shaped */
+    color: white;
+    font-size: 17px; /* Larger tag text */
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
+    user-select: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* More prominent shadow for tags */
+}
+
+body.dark-theme .blog-tag-item {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.blog-tag-item:hover {
+    background-color: rgba(255, 255, 255, 0.55); /* More opaque on hover */
+    border-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-5px); /* More pronounced lift on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+}
+
+body.dark-theme .blog-tag-item:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .blog-section-in-index {
+        padding: 70px 0;
+    }
+    .section-title {
+        font-size: 36px;
+        margin-bottom: 50px;
+    }
+    .index-blog-posts-grid {
+        gap: 32px;
+    }
+    .index-blog-post-card .index-post-title {
+        font-size: 22px;
+    }
+    .index-blog-post-card .index-post-excerpt {
+        -webkit-line-clamp: 4;
+    }
+    .custom-btn-style {
+        font-size: 16px;
+        padding: 12px 30px;
+        margin-top: 50px;
+    }
+
+    .blog-tags-marquee-section {
+        padding: 30px 0;
+        margin-top: 70px;
+    }
+
+    .blog-tags-marquee-section::before,
+    .blog-tags-marquee-section::after {
+        width: 80px;
+    }
+
+    .blog-tags-list {
+        gap: 30px;
+    }
+
+    .blog-tag-item {
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-section-in-index {
+        padding: 50px 0;
+    }
+    .section-title {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+    .section-title::after {
+        width: 60px;
+        height: 3px;
+    }
+    .index-blog-posts-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .index-blog-post-card {
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .index-blog-post-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+    .index-blog-post-card .index-post-image-wrapper {
+        height: 200px;
+    }
+    .index-blog-post-card .index-post-content {
+        padding: 24px;
+    }
+    .index-blog-post-card .index-post-title {
+        font-size: 20px;
+    }
+    .index-blog-post-card .index-post-excerpt {
+        font-size: 15px;
+        -webkit-line-clamp: 3;
+    }
+    .index-blog-post-card .index-post-meta {
+        font-size: 13px;
+        gap: 16px;
+    }
+    .index-blog-post-card .read-more-btn {
+        font-size: 16px;
+    }
+
+    .custom-btn-style {
+        font-size: 15px;
+        padding: 10px 25px;
+        margin-top: 40px;
+    }
+
+    .blog-tags-marquee-section {
+        padding: 25px 0;
+        margin-top: 60px;
+    }
+
+    .blog-tags-marquee-section::before,
+    .blog-tags-marquee-section::after {
+        width: 60px;
+    }
+
+    .blog-tags-list {
+        gap: 24px;
+    }
+
+    .blog-tag-item {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
 
