@@ -2315,151 +2315,94 @@ body.dark-theme .story-module-external-caption {
     background-color: var(--primary-accent);
 }
 /* --- Blog Tags Marquee Section Styles (Minimal & Pure) --- */
-.blog-tags-marquee-section {
-    padding: 30px 0; /* Reduced padding for a more compact feel */
-    background: linear-gradient(90deg, #e0f7fa, #fffde7); /* Very light, subtle gradient */
+/* --- Blog Tags Section (جدید یا جایگزین) --- */
+.blog-tags-section {
+    padding: 50px 0; /* Padding for the section */
+    background-color: #f8f8f8; /* Light background for contrast */
+}
+
+body.dark-theme .blog-tags-section {
+    background-color: #222;
+}
+
+.blog-tags-marquee-wrapper {
     overflow: hidden; /* Crucial for marquee effect */
-    margin-top: 70px; /* Space from elements above */
-    border-top: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle border */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
-    z-index: 1; /* Ensure it's above potential background elements */
+    white-space: nowrap; /* Prevent items from wrapping */
+    padding: 10px 0; /* Vertical padding inside the wrapper */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
 }
 
-body.dark-theme .blog-tags-marquee-section {
-    background: linear-gradient(90deg, #252525, #222222); /* Dark, subtle gradient */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+body.dark-theme .blog-tags-marquee-wrapper {
+    border-color: #333;
 }
 
-/* Fading edges for marquee effect (Important UX detail) */
-.blog-tags-marquee-section::before,
-.blog-tags-marquee-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 80px; /* Width of the fade */
-    height: 100%;
-    pointer-events: none; /* Allows clicks to pass through */
-    z-index: 2; /* Ensure fade is on top of tags */
+.blog-tags-list-marquee {
+    display: inline-block; /* Make it an inline block to allow horizontal scrolling */
+    /* Swiper is replacing scroll-related properties here for blog slider.
+       For tags, we still need transform for JS marquee. */
+    transform: translateX(0); /* Initial state for JS animation */
+    transition: none; /* No CSS transition, JS handles animation */
 }
 
-.blog-tags-marquee-section::before {
-    left: 0;
-    background: linear-gradient(to right, #e0f7fa, transparent); /* Fade from light gradient start color */
-}
-
-.blog-tags-marquee-section::after {
-    right: 0;
-    background: linear-gradient(to left, #e0f7fa, transparent); /* Fade from light gradient start color */
-}
-
-body.dark-theme .blog-tags-marquee-section::before {
-    background: linear-gradient(to right, #252525, transparent);
-}
-
-body.dark-theme .blog-tags-marquee-section::after {
-    background: linear-gradient(to left, #252525, transparent);
-}
-
-/* Container for the actual moving list */
-.blog-tags-marquee-container {
-    width: 100%;
-    overflow: hidden; /* Ensures only visible part is seen */
-    position: relative;
-}
-
-/* The list of tags itself, moving horizontally */
-.blog-tags-list {
-    display: inline-flex; /* Allows tags to sit next to each other */
-    white-space: nowrap; /* Prevents tags from wrapping to next line */
-    gap: 25px; /* Space between tags */
-    padding: 12px 0; /* Vertical padding for tags */
-    box-sizing: border-box; /* Include padding in element's total width */
-    /* Transform property will be set by JavaScript for animation */
-}
-
-/* Individual tag item styling */
 .blog-tag-item {
-    display: inline-flex;
+    display: inline-flex; /* Use inline-flex for vertical alignment if needed */
     align-items: center;
-    padding: 10px 20px; /* Reduced padding for a more compact button */
-    background-color: rgba(255, 255, 255, 0.5); /* More transparent background for tags */
-    border: 1px solid rgba(0, 0, 0, 0.08); /* Very subtle border for definition */
-    border-radius: 25px; /* Slightly less rounded pill-shape */
-    color: #555; /* Softer text color for tags */
-    font-size: 14px; /* Smaller tag text */
-    font-weight: 500; /* Lighter font weight */
+    justify-content: center;
+    padding: 8px 18px; /* Good padding for comfortable tap/click area */
+    margin-right: 15px; /* Space between tags */
+    background-color: #e0f7fa; /* Light blue background for tags */
+    color: #007bff; /* Primary blue text */
+    border-radius: 20px; /* Pill shape */
+    font-size: 14px;
+    font-weight: 500;
     text-decoration: none;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    flex-shrink: 0; /* Prevents tags from shrinking if space is limited */
-    user-select: none; /* Prevents text selection during drag/scroll */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Very subtle shadow for tags */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
 }
 
 body.dark-theme .blog-tag-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    color: #e0e0e0;
+    background-color: #343a40;
+    color: #81d4fa;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .blog-tag-item:hover {
-    background-color: rgba(255, 255, 255, 0.7); /* Slightly more opaque on hover */
-    border-color: rgba(0, 0, 0, 0.15);
-    transform: translateY(-3px); /* Subtle lift on hover */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
+    background-color: #00bcd4; /* Accent color on hover */
+    color: white;
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 body.dark-theme .blog-tag-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    background-color: #0097a7;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* --- Responsive Adjustments (Minimal) --- */
-@media (max-width: 992px) {
-    .blog-tags-marquee-section {
-        padding: 25px 0;
-        margin-top: 50px;
-    }
+/* Remove margin from the last item in the direct view (if it was static)
+   but for marquee, all items need margin-right except the very last one.
+   Since JS duplicates, it's better to keep margin-right on all and handle
+   extra space if needed, or simply rely on overflow:hidden */
+.blog-tag-item:last-of-type {
+    /* margin-right: 0; If not duplicated by JS, otherwise keep it */
+}
 
-    .blog-tags-marquee-section::before,
-    .blog-tags-marquee-section::after {
-        width: 60px;
+/* Responsive adjustments for tags */
+@media (max-width: 768px) {
+    .blog-tags-section {
+        padding: 30px 0;
     }
-
-    .blog-tags-list {
-        gap: 20px;
+    .blog-tags-marquee-wrapper {
+        padding: 8px 0;
     }
-
     .blog-tag-item {
-        padding: 8px 16px;
+        padding: 6px 14px;
+        margin-right: 10px;
         font-size: 13px;
     }
 }
-
-@media (max-width: 768px) {
-    .blog-tags-marquee-section {
-        padding: 20px 0;
-        margin-top: 40px;
-    }
-
-    .blog-tags-marquee-section::before,
-    .blog-tags-marquee-section::after {
-        width: 40px;
-    }
-
-    .blog-tags-list {
-        gap: 15px;
-    }
-
-    .blog-tag-item {
-        padding: 7px 14px;
-        font-size: 12px;
-    }
-}
-
 /* --- Global / Base Styles (existing) --- */
 .my-container {
     max-width: 1200px;

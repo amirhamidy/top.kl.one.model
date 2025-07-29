@@ -976,7 +976,6 @@ if (blogTagsList) {
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
-    // ... (کدهای موجود برای اسلایدر تگ‌ها در اینجا) ...
 
     // Blog Swiper Initialization (با آیدی اختصاصی)
     if (document.getElementById('blogSwiper')) {
