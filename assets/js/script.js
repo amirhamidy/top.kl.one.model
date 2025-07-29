@@ -943,35 +943,14 @@ hrefSlides.forEach(link => {
     link.setAttribute('target', '_blank');
 });
 
-const animatedBlogCards = document.querySelectorAll('.index-blog-post-card');
-
-if (animatedBlogCards.length > 0) {
-    const blogCardObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const delay = parseInt(entry.target.dataset.delay) || 0;
-                setTimeout(() => {
-                    entry.target.classList.add('is-visible');
-                }, delay);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.2,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    animatedBlogCards.forEach(card => blogCardObserver.observe(card));
-}
-
 const blogTagsList = document.getElementById('blog-tags-list-marquee');
 
 if (blogTagsList) {
     const initialTagsContent = blogTagsList.innerHTML;
-    blogTagsList.innerHTML += initialTagsContent + initialTagsContent + initialTagsContent;
+    blogTagsList.innerHTML += initialTagsContent + initialTagsContent + initialTagsContent + initialTagsContent;
 
     let currentScrollAmount = 0;
-    const scrollSpeedPerFrame = 0.5;
+    const scrollSpeedPerFrame = 0.4;
     let animationFrameIdForTags;
 
     function animateBlogTagsScroll() {
@@ -993,6 +972,8 @@ if (blogTagsList) {
 
     animateBlogTagsScroll();
 }
+
+
 
 
 
