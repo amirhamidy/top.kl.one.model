@@ -48,16 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 new Swiper(container, {
                     slidesPerView: 1,
-                    spaceBetween: 13,
+                    spaceBetween: 16,
                     navigation: {
                         nextEl: nextButton,
                         prevEl: prevButton
                     },
                     breakpoints: {
-                        576: { slidesPerView: 3.4, spaceBetween: 16 },
-                        768: { slidesPerView: 2.4, spaceBetween: 20 },
-                        992: { slidesPerView: 3.4, spaceBetween: 24 },
-                        1200: { slidesPerView: 4.4, spaceBetween: 24 }
+                        576: { slidesPerView: 3, spaceBetween: 16 },
+                        768: { slidesPerView: 2, spaceBetween: 20 },
+                        992: { slidesPerView: 3, spaceBetween: 24 },
+                        1200: { slidesPerView: 4, spaceBetween: 24 }
                     },
                     on: { init: (swiper) => updateSwiperNavButtons(swiper), slideChange: (swiper) => updateSwiperNavButtons(swiper) }
                 });
