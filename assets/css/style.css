@@ -1267,7 +1267,7 @@ body.dark-theme .product-countdown {
     height: 100%;
     object-fit: contain;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    z-index: 1; /* Below interactive zones */
+    z-index: 1; 
 }
 
 
@@ -1470,8 +1470,8 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
 .suggestion-item .icon {
     width: 16px;
     height: 16px;
-    margin-right: 0.5rem; /* Space between text and icon */
-    color: var(--text-muted); /* Default icon color */
+    margin-right: 0.5rem;
+    color: var(--text-muted);
     flex-shrink: 0;
 }
 
@@ -2314,11 +2314,11 @@ body.dark-theme .story-module-external-caption {
 .sh-slider{
     background-color: var(--primary-accent);
 }
-/* --- Blog Tags Marquee Section Styles (Minimal & Pure) --- */
-/* --- Blog Tags Section (جدید یا جایگزین) --- */
+
+
 .blog-tags-section {
-    padding: 50px 0; /* Padding for the section */
-    background-color: #f8f8f8; /* Light background for contrast */
+    padding: 50px 0;
+    background-color: #f8f8f8;
 }
 
 body.dark-theme .blog-tags-section {
@@ -2326,10 +2326,10 @@ body.dark-theme .blog-tags-section {
 }
 
 .blog-tags-marquee-wrapper {
-    overflow: hidden; /* Crucial for marquee effect */
+    overflow: hidden;
     position: relative;
-    white-space: nowrap; /* Prevent items from wrapping */
-    padding: 10px 0; /* Vertical padding inside the wrapper */
+    white-space: nowrap;
+    padding: 10px 0;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 }
@@ -2339,28 +2339,26 @@ body.dark-theme .blog-tags-marquee-wrapper {
 }
 
 .blog-tags-list-marquee {
-    display: inline-block; /* Make it an inline block to allow horizontal scrolling */
-    /* Swiper is replacing scroll-related properties here for blog slider.
-       For tags, we still need transform for JS marquee. */
-    transform: translateX(0); /* Initial state for JS animation */
-    transition: none; /* No CSS transition, JS handles animation */
+    display: inline-block;
+    transform: translateX(0);
+    transition: none;
 }
 
 .blog-tag-item {
-    display: inline-flex; /* Use inline-flex for vertical alignment if needed */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 8px 18px; /* Good padding for comfortable tap/click area */
-    margin-right: 15px; /* Space between tags */
-    background-color: #e0f7fa; /* Light blue background for tags */
-    color: #007bff; /* Primary blue text */
-    border-radius: 20px; /* Pill shape */
+    padding: 8px 18px;
+    margin-right: 15px;
+    background-color: #e0f7fa;
+    color: #007bff;
+    border-radius: 20px;
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 body.dark-theme .blog-tag-item {
@@ -2370,9 +2368,9 @@ body.dark-theme .blog-tag-item {
 }
 
 .blog-tag-item:hover {
-    background-color: #00bcd4; /* Accent color on hover */
+    background-color: #00bcd4;
     color: white;
-    transform: translateY(-2px); /* Slight lift on hover */
+    transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
@@ -2381,15 +2379,11 @@ body.dark-theme .blog-tag-item:hover {
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Remove margin from the last item in the direct view (if it was static)
-   but for marquee, all items need margin-right except the very last one.
-   Since JS duplicates, it's better to keep margin-right on all and handle
-   extra space if needed, or simply rely on overflow:hidden */
 .blog-tag-item:last-of-type {
-    /* margin-right: 0; If not duplicated by JS, otherwise keep it */
+
 }
 
-/* Responsive adjustments for tags */
+
 @media (max-width: 768px) {
     .blog-tags-section {
         padding: 30px 0;
@@ -2403,7 +2397,7 @@ body.dark-theme .blog-tag-item:hover {
         font-size: 13px;
     }
 }
-/* --- Global / Base Styles (existing) --- */
+
 .my-container {
     max-width: 1200px;
     margin-left: auto;
@@ -2442,7 +2436,6 @@ body.dark-theme .section-title {
     color: #00bcd4;
 }
 
-/* --- Blog Slider Section --- */
 .blog-slider-section {
     padding: 60px 0;
     background-color: #fcfcfc;
@@ -2454,24 +2447,22 @@ body.dark-theme .blog-slider-section {
 
 .blog-slider-wrapper {
     position: relative;
-    padding: 0 40px; /* Add padding for Swiper buttons inside wrapper */
+    padding: 0 40px;
 }
 
-/* Swiper specific overrides for our custom cards */
-/* The main Swiper container */
+
+
 .swiper {
     width: 100%;
-    height: auto; /* Height adapts to content */
-    padding-bottom: 40px; /* Space for pagination if active */
+    height: auto;
+    padding-bottom: 40px;
 }
 
-/* Individual Swiper slides (our blog cards) */
-.swiper-slide.blog-slider-card {
-    /* Swiper handles width and margin based on slidesPerView and spaceBetween */
-    width: auto !important; /* Let Swiper control the width based on configuration */
-    margin-right: 0 !important; /* Swiper handles spacing with spaceBetween parameter */
 
-    /* Keep existing card styles */
+.swiper-slide.blog-slider-card {
+
+    width: auto !important;
+    margin-right: 0 !important;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -2607,10 +2598,10 @@ body.dark-theme .blog-card-meta {
     transform: translateX(-5px);
 }
 
-/* Swiper Navigation Buttons Customization */
+
 .swiper-button-next,
 .swiper-button-prev {
-    color: #555; /* Icon color */
+    color: #555;
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 50%;
@@ -2645,7 +2636,7 @@ body.dark-theme .swiper-button-prev:hover {
     box-shadow: 0 5px 15px rgba(0, 123, 255, 0.5);
 }
 
-/* Adjust button position */
+
 .swiper-button-prev {
     left: 0;
 }
@@ -2654,21 +2645,21 @@ body.dark-theme .swiper-button-prev:hover {
     right: 0;
 }
 
-/* Remove default Swiper icon styling to use FontAwesome */
+
 .swiper-button-prev::after,
 .swiper-button-next::after {
-    display: none; /* Hide default Swiper icons */
+    display: none;
 }
 
-/* Swiper Pagination Customization */
+
 .swiper-pagination-bullet {
-    background-color: #ccc; /* Default bullet color */
+    background-color: #ccc;
     opacity: 1;
     transition: background-color 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
-    background-color: #00bcd4; /* Active bullet color */
+    background-color: #00bcd4;
 }
 
 body.dark-theme .swiper-pagination-bullet {
@@ -2679,13 +2670,13 @@ body.dark-theme .swiper-pagination-bullet-active {
     background-color: #00bcd4;
 }
 
-/* --- Responsive Adjustments (adjusted for Swiper) --- */
+
 @media (max-width: 992px) {
     .blog-slider-section {
         padding: 50px 0;
     }
     .blog-slider-wrapper {
-        padding: 0 30px; /* Adjust padding for buttons */
+        padding: 0 30px;
     }
     .blog-card-image-wrapper {
         height: 160px;
@@ -2724,7 +2715,7 @@ body.dark-theme .swiper-pagination-bullet-active {
         padding: 40px 0;
     }
     .blog-slider-wrapper {
-        padding: 0; /* Remove padding, buttons go outside */
+        padding: 0;
     }
     .blog-card-image-wrapper {
         height: 140px;
@@ -2744,7 +2735,7 @@ body.dark-theme .swiper-pagination-bullet-active {
     .read-more-btn {
         font-size: 12px;
     }
-    /* Hide navigation buttons on very small screens, rely on touch scroll */
+
     .swiper-button-next,
     .swiper-button-prev {
         display: none;
@@ -3013,17 +3004,16 @@ body.dark-mode .why-us-combined-text p {
     color: #adb5bd;
 }
 
-/* Force specific colors for the boxes in dark mode */
 body.dark-mode .reason-box-h {
-    background-color: #000000; /* Pure black background for cards */
-    color: #ffffff; /* This sets default text color for all child elements unless overridden */
+    background-color: #000000;
+    color: #ffffff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Explicitly target h3 inside the reason-box-h for dark mode */
+
 body.dark-mode .reason-box-h h3 {
-    color: #ffffff; /* Make sure h3 text is white by default */
+    color: #ffffff;
 }
 
 body.dark-mode .reason-box-h::before {
