@@ -2760,119 +2760,297 @@ body.dark-theme .swiper-pagination-bullet-active {
     width: 50% !important;
     height: 50% !important;
 }
+:root {
+    --primary-blue: #007bff;
+    --accent-blue: #0056b3;
+    --background-light: #ffffff;
+    --background-card-light: #f8f9fa;
+    --background-card-light-hover: #f0f2f5;
+    --text-dark: #343a40;
+    --text-muted: #6c757d;
+    --border-light: rgba(0, 0, 0, 0.1);
+}
 
-.why-us-section {
+.why-us-combined-section {
     direction: rtl;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     gap: 40px;
     padding: 60px 40px;
-    background-color: var(--light-bg-color, #f9f9f9);
-    border-radius: 15px;
+    background-color: var(--background-light);
+    color: var(--text-dark);
     margin: 40px auto;
     max-width: 1200px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
 }
 
-.why-us-section.is-visible {
+.why-us-combined-section.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.why-us-content {
-    flex: 1;
+.why-us-combined-text {
+    flex: 0 0 350px;
+    padding-left: 30px;
     text-align: right;
 }
 
-.why-us-content h2 {
-    font-size: 2.8rem;
+.why-us-combined-text h2 {
+    font-size: 2.5rem;
     font-weight: 800;
-    color: var(--heading-color, #333);
+    color: var(--primary-blue);
     margin-bottom: 20px;
     font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.3;
 }
 
-.why-us-content p {
-    font-size: 1.2rem;
+.why-us-combined-text p {
+    font-size: 1.1rem;
     line-height: 1.8;
-    color: var(--text-color, #555);
+    color: var(--text-muted);
     font-family: 'Vazirmatn', sans-serif;
+    margin-bottom: 30px;
 }
 
-.why-us-reasons {
-    flex: 1.2;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+.why-us-swiper-container {
+    flex: 1;
+    width: calc(100% - 350px - 40px);
+    height: 200px;
+    padding-bottom: 30px;
+    overflow: hidden;
 }
 
-.reason-box {
-    background-color: var(--card-bg-color, #ffffff);
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+.swiper-wrapper {
+    align-items: center;
+}
+
+.reason-box-h {
+    flex-shrink: 0;
+    width: 170px;
+    height: 170px;
+    background-color: var(--background-card-light);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    z-index: 1;
 }
 
-.reason-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+.reason-box-h::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, var(--primary-blue) 0%, transparent 70%);
+    opacity: 0;
+    transform: scale(0);
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+    z-index: -1;
 }
 
-.reason-box .reason-icon {
-    width: 48px;
-    height: 48px;
-    color: var(--brand-color, #007bff);
-    margin-bottom: 15px;
+.reason-box-h:hover::before {
+    transform: scale(1.5);
+    opacity: 0.08;
+}
+
+.reason-box-h:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background-color: var(--background-card-light-hover);
+}
+
+.reason-box-h .reason-icon-h {
+    width: 45px;
+    height: 45px;
+    color: var(--primary-blue);
+    margin-bottom: 12px;
     stroke: currentColor;
     fill: none;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.reason-box h3 {
-    font-size: 1.1rem;
+.reason-box-h:hover .reason-icon-h {
+    color: var(--accent-blue);
+    transform: scale(1.1);
+}
+
+.reason-box-h h3 {
+    font-size: 1.05rem;
     font-weight: 700;
-    color: var(--heading-color, #333);
+    color: var(--text-dark);
     margin: 0;
     font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.reason-box-h:hover h3 {
+    color: var(--accent-blue);
+}
+
+.why-us-pagination.swiper-pagination-bullets {
+    bottom: 0px;
+    text-align: right;
+    padding-right: 20px;
+    position: absolute;
+    width: auto;
+    left: auto;
+    right: 0;
+}
+
+
+.why-us-pagination .swiper-pagination-bullet {
+    background-color: var(--text-muted);
+    opacity: 0.5;
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.why-us-pagination .swiper-pagination-bullet-active {
+    background-color: var(--primary-blue);
+    opacity: 1;
+    width: 10px;
+    height: 10px;
 }
 
 @media (max-width: 992px) {
-    .why-us-section {
+    .why-us-combined-section {
         flex-direction: column;
         gap: 30px;
         padding: 40px 20px;
     }
-    .why-us-content {
+    .why-us-combined-text {
+        flex: 1;
+        padding-left: 0;
         text-align: center;
     }
-    .why-us-content h2 {
+    .why-us-combined-text h2 {
         font-size: 2.2rem;
     }
-    .why-us-content p {
+    .why-us-combined-text p {
         font-size: 1rem;
     }
-    .why-us-reasons {
-        grid-template-columns: repeat(2, 1fr);
+    .why-us-swiper-container {
+        width: 100%;
+        height: 180px;
+        padding-bottom: 25px;
+    }
+    .reason-box-h {
+        width: 150px;
+        height: 150px;
+        padding: 18px;
+    }
+    .reason-box-h .reason-icon-h {
+        width: 40px;
+        height: 40px;
+    }
+    .why-us-pagination.swiper-pagination-bullets {
+        bottom: 0px;
+        text-align: center;
+        padding-right: 0;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
 @media (max-width: 576px) {
-    .why-us-reasons {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .why-us-combined-section {
+        padding: 30px 15px;
     }
-    .reason-box {
-        padding: 20px;
+    .why-us-combined-text h2 {
+        font-size: 2rem;
     }
-    .reason-box .reason-icon {
-        width: 40px;
-        height: 40px;
+    .why-us-combined-text p {
+        font-size: 0.9rem;
     }
-    .reason-box h3 {
-        font-size: 1rem;
+    .why-us-swiper-container {
+        height: 160px;
+        padding-bottom: 20px;
     }
+    .reason-box-h {
+        width: 130px;
+        height: 130px;
+        padding: 15px;
+    }
+    .reason-box-h .reason-icon-h {
+        width: 35px;
+        height: 35px;
+    }
+    .reason-box-h h3 {
+        font-size: 0.9rem;
+    }
+}
+
+body.dark-mode .why-us-combined-section {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .why-us-combined-text h2 {
+    color: #61dafb;
+}
+
+body.dark-mode .why-us-combined-text p {
+    color: #adb5bd;
+}
+
+/* Force specific colors for the boxes in dark mode */
+body.dark-mode .reason-box-h {
+    background-color: #000000; /* Pure black background for cards */
+    color: #ffffff; /* This sets default text color for all child elements unless overridden */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Explicitly target h3 inside the reason-box-h for dark mode */
+body.dark-mode .reason-box-h h3 {
+    color: #ffffff; /* Make sure h3 text is white by default */
+}
+
+body.dark-mode .reason-box-h::before {
+    background: radial-gradient(circle at center, #61dafb 0%, transparent 70%);
+}
+
+body.dark-mode .reason-box-h:hover {
+    background-color: #111111;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .reason-box-h .reason-icon-h {
+    color: #61dafb;
+}
+
+body.dark-mode .reason-box-h:hover .reason-icon-h {
+    color: #4dd0e1;
+}
+
+body.dark-mode .reason-box-h:hover h3 {
+    color: #61dafb;
+}
+
+body.dark-mode .why-us-pagination .swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode .why-us-pagination .swiper-pagination-bullet-active {
+    background-color: #61dafb;
 }

@@ -1023,8 +1023,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const whyUsSection = document.querySelector('.why-us-section');
-    if (whyUsSection) {
+    const whyUsSwiper = new Swiper('.why-us-swiper-container', {
+        direction: 'horizontal',
+        loop: false,
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        freeMode: true,
+        grabCursor: true,
+        pagination: {
+            el: '.why-us-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 'auto',
+                spaceBetween: 15,
+            },
+            480: {
+                slidesPerView: 'auto',
+                spaceBetween: 10,
+            },
+        },
+    });
+
+    const whyUsCombinedSection = document.querySelector('.why-us-combined-section');
+    if (whyUsCombinedSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1033,6 +1056,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, { threshold: 0.1 });
-        observer.observe(whyUsSection);
+        observer.observe(whyUsCombinedSection);
     }
 });
