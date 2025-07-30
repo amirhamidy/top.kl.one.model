@@ -2760,3 +2760,119 @@ body.dark-theme .swiper-pagination-bullet-active {
     width: 50% !important;
     height: 50% !important;
 }
+
+.why-us-section {
+    direction: rtl;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 40px;
+    background-color: var(--light-bg-color, #f9f9f9);
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 1200px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.why-us-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.why-us-content {
+    flex: 1;
+    text-align: right;
+}
+
+.why-us-content h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--heading-color, #333);
+    margin-bottom: 20px;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.why-us-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-color, #555);
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.why-us-reasons {
+    flex: 1.2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.reason-box {
+    background-color: var(--card-bg-color, #ffffff);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reason-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.reason-box .reason-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--brand-color, #007bff);
+    margin-bottom: 15px;
+    stroke: currentColor;
+    fill: none;
+}
+
+.reason-box h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--heading-color, #333);
+    margin: 0;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+@media (max-width: 992px) {
+    .why-us-section {
+        flex-direction: column;
+        gap: 30px;
+        padding: 40px 20px;
+    }
+    .why-us-content {
+        text-align: center;
+    }
+    .why-us-content h2 {
+        font-size: 2.2rem;
+    }
+    .why-us-content p {
+        font-size: 1rem;
+    }
+    .why-us-reasons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .why-us-reasons {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .reason-box {
+        padding: 20px;
+    }
+    .reason-box .reason-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .reason-box h3 {
+        font-size: 1rem;
+    }
+}
