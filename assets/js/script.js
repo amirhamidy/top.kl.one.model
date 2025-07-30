@@ -48,16 +48,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 new Swiper(container, {
                     slidesPerView: 1,
-                    spaceBetween: 16,
+                    spaceBetween: 13,
                     navigation: {
                         nextEl: nextButton,
                         prevEl: prevButton
                     },
                     breakpoints: {
-                        576: { slidesPerView: 3, spaceBetween: 16 },
-                        768: { slidesPerView: 2, spaceBetween: 20 },
-                        992: { slidesPerView: 3, spaceBetween: 24 },
-                        1200: { slidesPerView: 4, spaceBetween: 24 }
+                        576: { slidesPerView: 3.4, spaceBetween: 16 },
+                        768: { slidesPerView: 2.4, spaceBetween: 20 },
+                        992: { slidesPerView: 3.4, spaceBetween: 24 },
+                        1200: { slidesPerView: 4.4, spaceBetween: 24 }
                     },
                     on: { init: (swiper) => updateSwiperNavButtons(swiper), slideChange: (swiper) => updateSwiperNavButtons(swiper) }
                 });
@@ -977,31 +977,26 @@ document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
 
-    // Blog Swiper Initialization (با آیدی اختصاصی)
     if (document.getElementById('blogSwiper')) {
         const blogSwiper = new Swiper('#blogSwiper', {
             // Optional parameters
-            direction: 'horizontal', // 'horizontal' or 'vertical'
-            loop: false, // Set to true if you want infinite loop
-            grabCursor: true, // Shows grab cursor on desktop
+            direction: 'horizontal',
+            loop: false,
+            grabCursor: true,
 
-            // Responsive breakpoints
             breakpoints: {
-                // when window width is >= 1200px (desktop)
                 1200: {
                     slidesPerView: 3,
-                    spaceBetween: 30, // Space between cards
+                    spaceBetween: 30,
                 },
-                // when window width is >= 768px (tablet)
                 768: {
                     slidesPerView: 2,
-                    spaceBetween: 30, // Space between cards
+                    spaceBetween: 30,
                 },
-                // when window width is < 768px (mobile)
-                0: { // Starting from 0px
-                    slidesPerView: 1.1, // Show one card partially to indicate more
-                    spaceBetween: 15, // Less space on mobile
-                    centeredSlides: true, // Center the active
+                0: {
+                    slidesPerView: 1.1,
+                    spaceBetween: 15,
+                    centeredSlides: true,
                     initialSlide: 0,
                 }
             },

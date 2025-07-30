@@ -1267,7 +1267,7 @@ body.dark-theme .product-countdown {
     height: 100%;
     object-fit: contain;
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    z-index: 1; 
+    z-index: 1;
 }
 
 
@@ -2311,9 +2311,6 @@ body.dark-theme .story-module-external-caption {
     border-top: 1px solid var(--border-color);
 }
 
-.sh-slider{
-    background-color: var(--primary-accent);
-}
 
 
 .blog-tags-section {
