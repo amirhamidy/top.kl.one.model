@@ -1054,3 +1054,38 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(whyUsCombinedSection);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const parallaxBanners = document.querySelectorAll('.js-parallax-banner');
+
+    if (parallaxBanners.length > 0) {
+        parallaxBanners.forEach(banner => {
+            const backgroundLayer = banner.querySelector('.smart-banner-item::after');
+
+            banner.addEventListener('mousemove', (e) => {
+                const rect = banner.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const deltaX = (e.clientX - centerX) / 50; // مقدار حرکت رو کم می‌کنه
+                const deltaY = (e.clientY - centerY) / 50;
+
+                const backgroundAfter = banner.style.getPropertyValue('--banner-after-transform');
+                const contentAfter = banner.style.getPropertyValue('--banner-content-transform');
+
+                banner.style.setProperty('--banner-after-transform', `translateZ(-20px) translateX(${deltaX}px) translateY(${deltaY}px) scale(1.05)`);
+                banner.style.setProperty('--banner-content-transform', `translateZ(20px) translateX(${-deltaX}px) translateY(${-deltaY}px)`);
+
+                // Update particles position
+                const particles = banner.querySelector('.banner-particles::before');
+                if (particles) {
+                    particles.style.setProperty('--particles-transform', `translate(-50%, -50%) translateX(${deltaX * 2}px) translateY(${deltaY * 2}px)`);
+                }
+            });
+
+            banner.addEventListener('mouseleave', () => {
+                banner.style.setProperty('--banner-after-transform', `translateZ(-20px) translateX(0) translateY(0)`);
+                banner.style.setProperty('--banner-content-transform', `translateZ(20px) translateX(0) translateY(0)`);
+            });
+        });
+    }
+});
