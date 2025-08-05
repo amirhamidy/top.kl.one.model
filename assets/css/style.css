@@ -3042,114 +3042,62 @@ body.dark-mode .why-us-pagination .swiper-pagination-bullet-active {
     background-color: #61dafb;
 }
 
-/*
-    ======================================
-    بخش بنرهای نامتقارن و مغناطیسی
-    ======================================
-*/
-
-.asymmetrical-banners-section {
-    padding: 50px 0;
+/* Hero Section - Digikala Style */
+.hero-section {
+    padding: 20px 0;
 }
 
-.magnetic-banner-wrapper {
+.hero-grid-container {
     display: grid;
-    /* Grid Layout for Desktop */
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 250px 350px;
-    gap: 20px;
-    grid-template-areas:
-        "wide wide tall"
-        "normal . tall";
-    transform-style: preserve-3d;
-    perspective: 1000px;
+    gap: 15px;
+    grid-template-columns: 3fr 1fr; /* Main slider is 3 times wider than side banners */
 }
 
-.magnetic-banner-item {
-    position: relative;
+/* Main Slider Styles */
+.hero-main-slider {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 350px;
+}
+
+.hero-main-banner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Side Banners Styles */
+.hero-side-banners {
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 25px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hero-side-banner {
+    display: block;
+    flex: 1;
     border-radius: 15px;
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    text-decoration: none;
-    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Defining Asymmetrical Layout with grid-area */
-.banner-wide {
-    grid-area: wide;
-}
-
-.banner-tall {
-    grid-area: tall;
-}
-
-.banner-normal {
-    grid-area: normal;
-}
-
-/* Overlay for the 'Wow' Effect */
-.banner-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
-    transition: opacity 0.4s ease-in-out;
-    opacity: 1;
-}
-
-.magnetic-banner-item:hover .banner-overlay {
-    opacity: 0;
-}
-
-.banner-content {
-    position: relative;
-    z-index: 2;
-    color: #fff;
-    transform: translateZ(20px);
-}
-
-.banner-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    line-height: 1.3;
-}
-
-.banner-cta {
-    display: inline-block;
-    background-color: var(--primary-blue);
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.banner-cta i {
-    margin-right: 5px;
-    transition: transform 0.3s ease;
-}
-
-.magnetic-banner-item:hover .banner-cta {
-    background-color: var(--accent-blue);
-}
-
-.magnetic-banner-item:hover .banner-cta i {
-    transform: translateX(-3px);
+.hero-side-banner:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Dark Mode Adaptation */
-body.dark-mode .magnetic-banner-item {
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+body.dark-mode .hero-side-banner {
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .hero-side-banner:hover {
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 }
 
 /*
@@ -3158,27 +3106,8 @@ body.dark-mode .magnetic-banner-item {
     ======================================
 */
 @media (max-width: 992px) {
-    .magnetic-banner-wrapper {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 250px 250px;
-        grid-template-areas:
-            "wide wide"
-            "tall normal";
-    }
-}
-
-@media (max-width: 576px) {
-    .magnetic-banner-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .magnetic-banner-item {
-        height: 200px;
-    }
-
-    .banner-wide, .banner-tall, .banner-normal {
-        height: 200px; /* Reset heights for mobile */
+    .hero-grid-container {
+        grid-template-columns: 1fr; /* All banners stacked in one column */
+        grid-template-rows: auto auto;
     }
 }
