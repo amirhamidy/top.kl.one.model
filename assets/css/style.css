@@ -3112,254 +3112,151 @@ body.dark-mode .hero-side-banner:hover {
     }
 }
 
-/*
-    ======================================
-    Main Footer V2 - Inspired by Top E-commerce Sites
-    ======================================
-*/
-.main-footer-v2 {
-    background-color: var(--color-bg-secondary);
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-    padding: 50px 0 20px;
+#creative-parallax-footer {
+    position: relative;
+    width: 100%;
+    height: 400px; /* یک ارتفاع مشخص برای فوتر */
+    overflow: hidden;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: 'Vazirmatn', sans-serif;
+    direction: rtl;
+    perspective: 1px; /* برای فعال کردن افکت parallax */
+    transform-style: preserve-3d;
 }
 
-/* Top Section */
-.footer-top-v2 {
+.parallax-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 100px 0;
+    z-index: 1;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transform-origin: center;
+    z-index: -1;
+}
+
+.parallax-bg {
+    background-image: url('https://via.placeholder.com/1920x1080/0d0d0d'); /* یک تصویر پس‌زمینه تیره و انتزاعی */
+    transform: translateZ(-1px) scale(2); /* افکت Parallax */
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-grid {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 30px;
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: 30px;
-}
-
-.footer-about-us {
-    max-width: 50%;
-}
-
-.footer-logo-v2 {
-    width: 150px;
-    margin-bottom: 10px;
-    filter: brightness(0.9);
-}
-
-.footer-description {
-    line-height: 1.8;
-}
-
-.footer-title-v2 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    margin-bottom: 15px;
-}
-
-.app-links {
-    display: flex;
-    gap: 10px;
+    justify-content: space-around;
     flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.app-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 12px;
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.app-link:hover {
-    background-color: var(--primary-blue);
-    color: #fff;
-    transform: translateY(-3px);
-}
-
-.app-link i {
-    font-size: 1.2rem;
-}
-
-.app-link img {
-    width: 20px;
-    filter: brightness(0.9);
-    transition: filter 0.3s ease;
-}
-
-.app-link:hover img {
-    filter: brightness(1) invert(1);
-}
-
-/* Middle Section */
-.footer-middle-v2 {
-    padding-bottom: 30px;
-}
-
-.footer-links-grid-v2 {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-}
-
-.footer-links-list-v2 {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-links-list-v2 li {
-    margin-bottom: 10px;
-}
-
-.footer-links-list-v2 a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links-list-v2 a:hover {
-    color: var(--primary-blue);
-}
-
-/* Bottom Section */
-.footer-bottom-v2 {
-    padding-top: 30px;
-    border-top: 1px solid var(--color-border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.social-trust-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.social-icons-v2 a {
-    color: var(--color-text-secondary);
-    font-size: 1.5rem;
-    margin-left: 15px;
-    transition: color 0.3s ease;
-}
-
-.social-icons-v2 a:hover {
-    color: var(--primary-blue);
-}
-
-.trust-badges-v2 {
-    display: flex;
-    gap: 10px;
-}
-
-.trust-badge-img-v2 {
-    width: 80px;
-    height: auto;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.trust-badge-img-v2:hover {
-    filter: grayscale(0%);
-}
-
-.copyright-v2 {
-    font-size: 0.8rem;
-    opacity: 0.7;
-    margin: 0;
-    flex-grow: 1;
+.grid-item {
+    flex: 1;
+    min-width: 250px;
     text-align: right;
 }
 
-/*
-    ======================================
-    Dark Mode Adaptation
-    ======================================
-*/
-body.dark-mode .main-footer-v2 {
-    background-color: var(--color-bg-secondary-dark);
+.brand-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #007bff; /* رنگ اصلی شما */
 }
 
-body.dark-mode .footer-top-v2 {
-    border-bottom: 1px solid var(--color-border-dark);
+.brand-slogan {
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
 }
 
-body.dark-mode .footer-logo-v2 {
-    filter: brightness(1);
+.social-links a {
+    color: #f0f0f0;
+    font-size: 28px;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
 }
 
-body.dark-mode .footer-title-v2 {
-    color: var(--color-text-primary-dark);
+.social-links a:hover {
+    transform: translateY(-5px);
+    color: #007bff;
 }
 
-body.dark-mode .app-link {
-    background-color: var(--color-bg-primary-dark);
-    color: var(--color-text-primary-dark);
-}
-
-body.dark-mode .app-link:hover {
-    background-color: var(--primary-blue);
+.footer-links-section h4 {
+    font-size: 22px;
     color: #fff;
+    margin-bottom: 20px;
 }
 
-body.dark-mode .app-link img {
-    filter: brightness(1);
+.footer-links-section ul {
+    list-style: none;
+    padding: 0;
 }
 
-body.dark-mode .app-link:hover img {
-    filter: brightness(1) invert(1);
+.footer-links-section ul li a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-body.dark-mode .footer-links-list-v2 a {
-    color: var(--color-text-secondary-dark);
+.footer-links-section ul li a:hover {
+    color: #007bff;
 }
 
-body.dark-mode .footer-bottom-v2 {
-    border-top: 1px solid var(--color-border-dark);
+.newsletter-input-group {
+    display: flex;
+    margin-top: 15px;
 }
 
-body.dark-mode .social-icons-v2 a {
-    color: var(--color-text-secondary-dark);
+.newsletter-input-group input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 8px 0 0 8px;
+    text-align: right;
 }
 
-body.dark-mode .copyright-v2 {
-    color: var(--color-text-secondary-dark);
+.newsletter-input-group button {
+    padding: 15px 30px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
 }
 
-/*
-    ======================================
-    Responsive Design
-    ======================================
-*/
-@media (max-width: 992px) {
-    .footer-top-v2,
-    .footer-bottom-v2 {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-    }
-    .footer-about-us, .footer-app-download {
-        max-width: 100%;
-    }
-    .footer-links-grid-v2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .social-trust-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .copyright-v2 {
-        text-align: left;
-    }
+.copyright-bar {
+    text-align: center;
+    margin-top: 50px;
 }
 
-@media (max-width: 576px) {
-    .footer-links-grid-v2 {
-        grid-template-columns: 1fr;
-    }
+.copyright-bar p {
+    font-size: 14px;
+    color: #777;
 }
+
+.enamad-icons img {
+    margin-top: 15px;
+    width: 60px;
+    height: 60px;
+}
+

@@ -1080,3 +1080,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // You can add a more creative JS effect for side banners here if needed.
     // For now, the CSS hover effect is enough.
 });
+
+document.addEventListener('scroll', function() {
+    const parallaxBg = document.querySelector('.parallax-bg');
+    const scrolled = window.pageYOffset;
+    parallaxBg.style.transform = `translateZ(-1px) scale(2) translateY(${scrolled * 0.5}px)`;
+});
