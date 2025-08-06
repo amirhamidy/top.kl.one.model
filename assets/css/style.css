@@ -3260,3 +3260,250 @@ body.dark-mode .hero-side-banner:hover {
     height: 60px;
 }
 
+/* ==================================== */
+/* WHY CHOOSE US SECTION      */
+/* ==================================== */
+
+.why-t-k-section {
+    padding: 80px 0;
+    background-color: #f8f8f8;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-theme .why-t-k-section {
+    background-color: #1a1a1a;
+}
+
+.why-t-k-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* ستون عنوان و ستون کارت‌ها */
+    gap: 40px;
+}
+
+/* ------------------ Title Styles ------------------ */
+
+.why-t-k-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.why-t-k-title {
+    font-size: 40px;
+    font-weight: 800;
+    color: #333;
+    font-family: 'Vazirmatn', sans-serif;
+    position: relative;
+    padding-bottom: 10px;
+    writing-mode: vertical-rl; /* قرار دادن عنوان به صورت عمودی */
+    transform: rotate(180deg);
+}
+
+body.dark-theme .why-t-k-title {
+    color: #e0e0e0;
+}
+
+.why-t-k-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 4px;
+    background-color: #007bff;
+    border-radius: 2px;
+}
+
+/* ------------------ Grid & Card Styles ------------------ */
+
+.why-t-k-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+}
+
+.why-t-k-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body.dark-theme .why-t-k-card {
+    background-color: #282828;
+    border-color: #383838;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.why-t-k-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-theme .why-t-k-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.why-t-k-icon {
+    width: 40px;
+    height: 40px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.why-t-k-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Vazirmatn', sans-serif;
+    margin: 0 0 10px 0;
+}
+
+body.dark-theme .why-t-k-card-title {
+    color: #e0e0e0;
+}
+
+.why-t-k-card-description {
+    font-size: 14px;
+    color: #777;
+    font-family: 'Vazirmatn', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+}
+
+body.dark-theme .why-t-k-card-description {
+    color: #b0b0b0;
+}
+
+/* استایل کارت اصلی برای برجسته شدن */
+.why-t-k-card--main {
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+    padding: 40px;
+    background-color: #007bff;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+    position: relative;
+    z-index: 3;
+}
+
+body.dark-theme .why-t-k-card--main {
+    background-color: #61dafb;
+    color: #1a1a1a;
+    box-shadow: 0 8px 20px rgba(97, 218, 251, 0.3);
+}
+
+.why-t-k-card--main .why-t-k-icon {
+    width: 60px;
+    height: 60px;
+    color: #fff;
+}
+
+body.dark-theme .why-t-k-card--main .why-t-k-icon {
+    color: #1a1a1a;
+}
+
+.why-t-k-card--main .why-t-k-card-title {
+    color: #fff;
+    font-size: 24px;
+}
+
+body.dark-theme .why-t-k-card--main .why-t-k-card-title {
+    color: #1a1a1a;
+}
+
+/* ==================================== */
+/* RESPONSIVE DESIGN          */
+/* ==================================== */
+
+@media (min-width: 993px) {
+    /* چیدمان نامنظم برای دسکتاپ و بالاتر */
+    .why-t-k-grid {
+        grid-template-areas:
+            ". card1 card2"
+            "card3 main card4"
+            "card5 . card6";
+    }
+
+    .why-t-k-card:nth-of-type(2) { grid-area: card1; }
+    .why-t-k-card:nth-of-type(3) { grid-area: card2; }
+    .why-t-k-card:nth-of-type(4) { grid-area: card3; }
+    .why-t-k-card:nth-of-type(5) { grid-area: card4; }
+    .why-t-k-card:nth-of-type(6) { grid-area: card5; }
+
+    .why-t-k-card--main {
+        grid-area: main;
+        transform: rotate(-5deg); /* چرخش کارت اصلی برای جذابیت بیشتر */
+    }
+
+    .why-t-k-card:nth-of-type(2) { transform: rotate(5deg); }
+    .why-t-k-card:nth-of-type(3) { transform: rotate(-5deg); }
+    .why-t-k-card:nth-of-type(4) { transform: rotate(3deg); }
+    .why-t-k-card:nth-of-type(5) { transform: rotate(-3deg); }
+}
+
+@media (max-width: 992px) {
+    .why-t-k-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .why-t-k-title-wrapper {
+        justify-content: center;
+    }
+
+    .why-t-k-title {
+        writing-mode: horizontal-tb;
+        transform: rotate(0deg);
+        text-align: center;
+        font-size: 32px;
+    }
+
+    .why-t-k-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .why-t-k-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: minmax(150px, auto);
+        gap: 15px;
+    }
+
+    .why-t-k-card--main {
+        grid-column: 1 / -1;
+        padding: 30px;
+    }
+
+    .why-t-k-card--main .why-t-k-card-title {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .why-t-k-section {
+        padding: 60px 0;
+    }
+
+    .why-t-k-title {
+        font-size: 28px;
+    }
+
+    .why-t-k-grid {
+        grid-template-columns: 1fr;
+    }
+}

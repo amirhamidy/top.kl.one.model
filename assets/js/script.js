@@ -339,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpecialProductGallery();
     initSearchSuggestionsDragScroll();
     initMisc();
+    initWhyUsAnimation();
 });
 document.addEventListener('DOMContentLoaded', () => {
     const storiesWrapper = document.querySelector('.story-module-stories-wrapper');
@@ -1016,7 +1017,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
-
+function initWhyUsAnimation() {
+    const animatedSection = document.querySelector('.why-t-k-section');
+    if (animatedSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        observer.observe(animatedSection);
+    }
+}
 document.addEventListener('DOMContentLoaded', () => {
     const whyUsSwiper = new Swiper('.why-us-swiper-container', {
         direction: 'horizontal',
@@ -1086,3 +1100,4 @@ document.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     parallaxBg.style.transform = `translateZ(-1px) scale(2) translateY(${scrolled * 0.5}px)`;
 });
+
