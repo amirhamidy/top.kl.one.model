@@ -3507,3 +3507,220 @@ body.dark-theme .why-t-k-card--main .why-t-k-card-title {
         grid-template-columns: 1fr;
     }
 }
+/* ==================================== */
+/* FLASH DEAL SECTION - NEW UX/UI */
+/* ==================================== */
+.flash-deal-section {
+    padding: 60px 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-dark);
+}
+body.dark-mode .section-title {
+    color: var(--text-light);
+}
+
+.view-all-link {
+    font-size: 1rem;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+.view-all-link i {
+    margin-right: 5px;
+    transition: transform 0.3s ease;
+}
+.view-all-link:hover {
+    color: var(--accent-blue);
+}
+.view-all-link:hover i {
+    transform: translateX(-5px);
+}
+
+.flash-deal-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* چیدمان اصلی */
+    gap: 40px;
+    background-color: var(--background-card-light);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+}
+body.dark-mode .flash-deal-container {
+    background-color: var(--background-card-dark);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Main Display Section */
+.flash-deal-main-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-image-wrapper {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.main-product-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* انیمیشن نرم برای تصویر */
+}
+
+.product-info-box {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
+.product-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+body.dark-mode .product-title {
+    color: var(--text-light);
+}
+
+.product-prices {
+    margin-bottom: 15px;
+}
+.price-old {
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+.price-new {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--red-color);
+}
+.timer-wrapper {
+    margin-bottom: 20px;
+}
+.timer-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-left: 5px;
+}
+.countdown-timer {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+.btn-purchase {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-blue);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-purchase:hover {
+    background-color: var(--accent-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion List - Side navigation */
+.flash-deal-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.accordion-item-btn {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    align-items: center;
+}
+body.dark-mode .accordion-item-btn {
+    background-color: var(--background-dark-alt);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.accordion-item-btn:hover {
+    transform: translateX(-5px);
+}
+
+.accordion-item-btn.active {
+    background-color: var(--primary-blue);
+    color: #fff;
+    transform: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.accordion-item-btn.active .accordion-title {
+    color: #fff;
+}
+.accordion-item-btn.active::before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background-color: var(--accent-blue);
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0 15px 15px 0;
+    transform: scaleY(0.5);
+    transition: transform 0.5s ease;
+}
+.accordion-item-btn.active::before {
+    transform: scaleY(1);
+}
+
+.accordion-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+body.dark-mode .accordion-title {
+    color: var(--text-light);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .flash-deal-container {
+        grid-template-columns: 1fr;
+    }
+    .flash-deal-accordion-list {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    .accordion-item-btn {
+        min-width: 150px;
+    }
+}

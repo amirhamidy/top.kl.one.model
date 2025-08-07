@@ -1100,4 +1100,109 @@ document.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     parallaxBg.style.transform = `translateZ(-1px) scale(2) translateY(${scrolled * 0.5}px)`;
 });
+function initFlashDealAccordionUX() {
+    const dataContainer = document.getElementById('flash-deal-data');
+    const accordionList = document.querySelector('.flash-deal-accordion-list');
 
+    // Main Display Elements
+    const mainImage = document.getElementById('main-product-image');
+    const mainTitle = document.getElementById('main-product-title');
+    const mainPriceOld = document.getElementById('main-price-old');
+    const mainPriceNew = document.getElementById('main-price-new');
+    const mainTimer = document.getElementById('main-countdown-timer');
+    const mainPurchaseBtn = document.querySelector('.btn-purchase');
+
+    if (!dataContainer || !accordionList || !mainImage) return;
+
+    const productsData = Array.from(dataContainer.children).map(item => ({
+        id: item.dataset.id,
+        imageUrl: item.dataset.imageUrl,
+        priceOld: item.dataset.priceOld,
+        priceNew: item.dataset.priceNew,
+        title: item.dataset.title
+    }));
+
+    let activeProductIndex = 0;
+    let countdownInterval;
+
+    function renderAccordionButtons() {
+        accordionList.innerHTML = '';
+        productsData.forEach((product, index) => {
+            const button = document.createElement('div');
+            button.classList.add('accordion-item-btn');
+            if (index === activeProductIndex) {
+                button.classList.add('active');
+            }
+            button.dataset.index = index;
+            button.innerHTML = `<h4 class="accordion-title">${product.title}</h4>`;
+            accordionList.appendChild(button);
+        });
+    }
+
+    function updateMainDisplay(product) {
+        // Animation: fade out old content
+        mainImage.style.opacity = 0;
+        mainTitle.style.opacity = 0;
+
+        setTimeout(() => {
+            // Update content after fade out
+            mainImage.src = product.imageUrl;
+            mainTitle.textContent = product.title;
+            mainPriceOld.textContent = `${parseInt(product.priceOld).toLocaleString()} تومان`;
+            mainPriceNew.textContent = `${parseInt(product.priceNew).toLocaleString()} تومان`;
+            mainPurchaseBtn.href = `#${product.id}`; // Update link
+
+            // Animation: fade in new content
+            mainImage.style.opacity = 1;
+            mainTitle.style.opacity = 1;
+        }, 300); // Wait for CSS transition
+    }
+
+    function startCountdownTimer() {
+        if (countdownInterval) clearInterval(countdownInterval);
+
+        // This can be different for each product
+        let timeInSeconds = 24 * 60 * 60;
+
+        countdownInterval = setInterval(() => {
+            if (timeInSeconds <= 0) {
+                clearInterval(countdownInterval);
+                mainTimer.textContent = "00:00:00";
+                return;
+            }
+            timeInSeconds--;
+            const h = String(Math.floor(timeInSeconds / 3600)).padStart(2, '0');
+            const m = String(Math.floor((timeInSeconds % 3600) / 60)).padStart(2, '0');
+            const s = String(timeInSeconds % 60).padStart(2, '0');
+            mainTimer.textContent = `${h}:${m}:${s}`;
+        }, 1000);
+    }
+
+    accordionList.addEventListener('click', (e) => {
+        const button = e.target.closest('.accordion-item-btn');
+        if (!button) return;
+
+        const newIndex = parseInt(button.dataset.index);
+        if (newIndex === activeProductIndex) return;
+
+        // Update active classes
+        accordionList.querySelector('.accordion-item-btn.active').classList.remove('active');
+        button.classList.add('active');
+        activeProductIndex = newIndex;
+
+        // Update display with animation
+        updateMainDisplay(productsData[activeProductIndex]);
+
+        // Restart timer
+        startCountdownTimer();
+    });
+
+    // Initial setup on page load
+    renderAccordionButtons();
+    updateMainDisplay(productsData[activeProductIndex]);
+    startCountdownTimer();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initFlashDealAccordionUX();
+});
