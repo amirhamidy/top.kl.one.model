@@ -1140,9 +1140,9 @@ function initFlashDealFinal() {
     }
 
     function updateMainDisplay(product) {
-        // Start animation: rotate and fade out
-        mainDisplay.style.transform = 'rotateX(10deg) translateY(-20px) scale(0.9)';
+        // Start animation: fade out and slightly scale down
         mainDisplay.style.opacity = '0';
+        mainImage.style.transform = 'scale(0.95)';
 
         setTimeout(() => {
             // Update content after animation
@@ -1153,9 +1153,9 @@ function initFlashDealFinal() {
             mainPurchaseBtn.href = `#${product.id}`;
 
             // Reset and start fade-in animation
-            mainDisplay.style.transform = 'rotateX(0deg) translateY(0) scale(1)';
             mainDisplay.style.opacity = '1';
-        }, 500); // Must match CSS transition duration
+            mainImage.style.transform = 'scale(1)';
+        }, 500); // زمان انیمیشن
     }
 
     accordionList.addEventListener('click', (e) => {
@@ -1165,7 +1165,6 @@ function initFlashDealFinal() {
         const newIndex = parseInt(button.dataset.index);
         if (newIndex === activeProductIndex) return;
 
-        // Update active classes
         const currentActive = accordionList.querySelector('.accordion-item-btn.active');
         if (currentActive) {
             currentActive.classList.remove('active');
@@ -1173,11 +1172,9 @@ function initFlashDealFinal() {
         button.classList.add('active');
         activeProductIndex = newIndex;
 
-        // Update display with animation
         updateMainDisplay(productsData[activeProductIndex]);
     });
 
-    // Initial setup on page load
     renderAccordionButtons();
     updateMainDisplay(productsData[activeProductIndex]);
 }

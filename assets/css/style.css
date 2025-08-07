@@ -3508,7 +3508,7 @@ body.dark-theme .why-t-k-card--main .why-t-k-card-title {
     }
 }
 /* ==================================== */
-/* FLASH DEAL SECTION - FINAL VERSION (FIXED) */
+/* FLASH DEAL SECTION - FINAL SIMPLE & CLEAN */
 /* ==================================== */
 .flash-deal-section {
     padding: 60px 0;
@@ -3555,24 +3555,24 @@ body.dark-mode .section-title {
     background-color: var(--background-card-light);
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-    padding: 40px;
-    position: relative; /* مهم: برای نمایش صحیح z-index */
+    padding: 20px;
 }
 body.dark-mode .flash-deal-container {
     background-color: var(--background-card-dark);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Main Display Section with 3D effect */
+/* Main Display Section */
 .flash-deal-main-display {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-    border-radius: 5px;
+    transition: opacity 0.5s ease;
+    border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     background-color: #fff;
-    padding: 20px;
+    padding: 15px 10px;
+    opacity: 1;
 }
 body.dark-mode .flash-deal-main-display {
     background-color: var(--background-dark-alt);
@@ -3580,28 +3580,22 @@ body.dark-mode .flash-deal-main-display {
 
 .product-image-wrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     border-radius: 5px;
     overflow: hidden;
-    position: relative; /* این خط اضافه شده */
-    z-index: 2; /* این خط اضافه شده */
+    margin-bottom: 20px;
 }
 
 .main-product-image {
     width: 100%;
     height: auto;
     display: block;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: scale(1);
-    opacity: 1;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .product-info-box {
     text-align: center;
-    margin-top: 20px;
     width: 100%;
-    position: relative; /* این خط اضافه شده */
-    z-index: 1; /* این خط اضافه شده */
 }
 
 .product-title {
@@ -3609,7 +3603,6 @@ body.dark-mode .flash-deal-main-display {
     font-weight: 800;
     color: var(--text-dark);
     margin-bottom: 10px;
-    transition: color 0.3s ease;
 }
 body.dark-mode .product-title {
     color: var(--text-light);
@@ -3650,8 +3643,7 @@ body.dark-mode .product-title {
 .flash-deal-accordion-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    position: relative;
+    gap: 5px;
 }
 
 .accordion-item-btn {
@@ -3695,11 +3687,12 @@ body.dark-mode .accordion-title {
     color: var(--text-light);
 }
 
-/* Responsive Styles */
+/* Responsive Styles for smaller screens */
 @media (max-width: 992px) {
     .flash-deal-container {
         grid-template-columns: 1fr;
         gap: 20px;
+        padding: 20px;
     }
     .flash-deal-main-display {
         padding: 10px;
