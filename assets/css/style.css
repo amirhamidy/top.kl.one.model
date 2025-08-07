@@ -741,7 +741,7 @@ body.dark-theme .search-overlay {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .offers-slider-title-wrapper {
@@ -929,7 +929,7 @@ body.dark-theme .search-overlay {
     color: var(--danger-color);
     border-radius: var(--border-radius-sm);
     padding: 0.4rem 0.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
     text-align: center;
     font-size: 1.1rem;
     font-weight: 700;
@@ -1090,7 +1090,7 @@ body.dark-theme .product-countdown {
     }
 
     .hero-swiper .swiper-pagination {
-        margin-top: 1rem;
+        margin-top: 0.6rem;
         justify-content: center;
     }
 
@@ -1106,7 +1106,7 @@ body.dark-theme .product-countdown {
         display: flex;
         justify-content: space-between;
         padding: 0;
-        margin-top: 1rem;
+        margin-top: 0.6rem;
     }
 
     .slider-controls-hero .swiper-navigation-buttons {
@@ -1170,7 +1170,7 @@ body.dark-theme .product-countdown {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .offers-slider-title {
@@ -1710,7 +1710,7 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     object-fit: cover;
     border: 2px solid white;
     margin-right: 0;
-    margin-left: 10px;
+    margin-left: 8px;
     pointer-events: none;
 }
 
@@ -1865,7 +1865,7 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
     align-items: center;
     padding: 20px 0;
     transition: background-color 0.2s ease;
-    margin: 0 10px;
+    margin: 0 8px;
     box-sizing: border-box;
     direction: ltr;
     background-color: rgba(0, 0, 0, 0.2);
@@ -1985,7 +1985,7 @@ body.dark-theme .suggestions-list-container::-webkit-scrollbar-thumb {
 
 .video-js .vjs-progress-control {
     flex-grow: 1;
-    margin: 0 10px;
+    margin: 0 8px;
     position: relative;
     z-index: 21 !important;
     align-self: center;
@@ -2346,7 +2346,7 @@ body.dark-theme .blog-tags-marquee-wrapper {
     align-items: center;
     justify-content: center;
     padding: 8px 18px;
-    margin-right: 15px;
+    margin-right: 10px;
     background-color: #e0f7fa;
     color: #007bff;
     border-radius: 20px;
@@ -2390,7 +2390,7 @@ body.dark-theme .blog-tag-item:hover {
     }
     .blog-tag-item {
         padding: 6px 14px;
-        margin-right: 10px;
+        margin-right: 8px;
         font-size: 13px;
     }
 }
@@ -2407,7 +2407,7 @@ body.dark-theme .blog-tag-item:hover {
     font-size: 32px;
     font-weight: 700;
     color: #333;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: center;
     position: relative;
     padding-bottom: 10px;
@@ -2514,7 +2514,7 @@ body.dark-theme .swiper-slide.blog-slider-card:hover {
     font-size: 12px;
     color: #00bcd4;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.8px;
 }
@@ -2523,7 +2523,7 @@ body.dark-theme .swiper-slide.blog-slider-card:hover {
     font-size: 18px;
     font-weight: 700;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     line-height: 1.35;
     color: #333333;
     transition: color 0.3s ease;
@@ -2541,7 +2541,7 @@ body.dark-theme .blog-card-title {
     font-size: 13px;
     color: #777;
     line-height: 1.6;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     flex-grow: 1;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -2556,7 +2556,7 @@ body.dark-theme .blog-card-title {
     gap: 12px;
     font-size: 12px;
     color: #999;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 body.dark-theme .blog-card-meta {
@@ -2566,7 +2566,7 @@ body.dark-theme .blog-card-meta {
 .blog-card-meta i {
     color: #ffeb3b;
     font-size: 11px;
-    margin-right: 4px;
+    margin-right: 2px;
 }
 
 .read-more-btn {
@@ -2768,7 +2768,7 @@ body.dark-theme .swiper-pagination-bullet-active {
     padding: 60px 40px;
     background-color: var(--background-light);
     color: var(--text-dark);
-    margin: 40px auto;
+    margin: 30px auto;
     max-width: 1200px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -2795,7 +2795,7 @@ body.dark-theme .swiper-pagination-bullet-active {
     font-size: 2.5rem;
     font-weight: 800;
     color: var(--primary-blue);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-family: 'Vazirmatn', sans-serif;
     line-height: 1.3;
 }
@@ -2805,7 +2805,7 @@ body.dark-theme .swiper-pagination-bullet-active {
     line-height: 1.8;
     color: var(--text-muted);
     font-family: 'Vazirmatn', sans-serif;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .why-us-swiper-container {
@@ -2865,7 +2865,7 @@ body.dark-theme .swiper-pagination-bullet-active {
     width: 45px;
     height: 45px;
     color: var(--primary-blue);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     stroke: currentColor;
     fill: none;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -2906,7 +2906,7 @@ body.dark-theme .swiper-pagination-bullet-active {
     opacity: 0.5;
     width: 8px;
     height: 8px;
-    margin: 0 4px;
+    margin: 0 2px;
     transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
@@ -3184,13 +3184,13 @@ body.dark-mode .hero-side-banner:hover {
 .brand-slogan {
     font-size: 18px;
     color: #aaa;
-    margin-top: 10px;
+    margin-top: 7px;
 }
 
 .social-links a {
     color: #f0f0f0;
     font-size: 28px;
-    margin-left: 20px;
+    margin-left: 15px;
     transition: transform 0.3s ease;
 }
 
@@ -3202,7 +3202,7 @@ body.dark-mode .hero-side-banner:hover {
 .footer-links-section h4 {
     font-size: 22px;
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .footer-links-section ul {
@@ -3222,7 +3222,7 @@ body.dark-mode .hero-side-banner:hover {
 
 .newsletter-input-group {
     display: flex;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .newsletter-input-group input {
@@ -3246,7 +3246,7 @@ body.dark-mode .hero-side-banner:hover {
 
 .copyright-bar {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 40px;
 }
 
 .copyright-bar p {
@@ -3255,7 +3255,7 @@ body.dark-mode .hero-side-banner:hover {
 }
 
 .enamad-icons img {
-    margin-top: 15px;
+    margin-top: 10px;
     width: 60px;
     height: 60px;
 }
@@ -3362,7 +3362,7 @@ body.dark-theme .why-t-k-card:hover {
     width: 40px;
     height: 40px;
     color: #007bff;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .why-t-k-card-title {
@@ -3370,7 +3370,7 @@ body.dark-theme .why-t-k-card:hover {
     font-weight: 700;
     color: #333;
     font-family: 'Vazirmatn', sans-serif;
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
 }
 
 body.dark-theme .why-t-k-card-title {
@@ -3518,7 +3518,7 @@ body.dark-theme .why-t-k-card--main .why-t-k-card-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .section-title {
@@ -3538,7 +3538,7 @@ body.dark-mode .section-title {
     transition: all 0.3s ease;
 }
 .view-all-link i {
-    margin-right: 5px;
+    margin-right: 3px;
     transition: transform 0.3s ease;
 }
 .view-all-link:hover {
@@ -3583,7 +3583,7 @@ body.dark-mode .flash-deal-main-display {
     max-width: 300px;
     border-radius: 5px;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .main-product-image {
@@ -3602,20 +3602,20 @@ body.dark-mode .flash-deal-main-display {
     font-size: 1.5rem;
     font-weight: 800;
     color: var(--text-dark);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 body.dark-mode .product-title {
     color: var(--text-light);
 }
 
 .product-prices {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 .price-old {
     font-size: 1rem;
     color: var(--text-muted);
     text-decoration: line-through;
-    margin-left: 10px;
+    margin-left: 8px;
 }
 .price-new {
     font-size: 2rem;
@@ -3715,3 +3715,103 @@ body.dark-mode .accordion-title {
         padding: 12px;
     }
 }
+
+/* Styling for the main section of the amazing offer slider */
+.sh-slider-section {
+    direction: rtl;
+    padding: 25px 0;
+    margin: 30px 0;
+    background-image: linear-gradient(to right, var(--primary-blue), var(--accent-blue));
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Header section with title and countdown */
+.sh-slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.sh-slider-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sh-slider-title-icon {
+    width: 40px;
+    height: 40px;
+    color: #fff;
+}
+
+.sh-slider-title-text {
+    font-size: 26px;
+    font-weight: 800;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.sh-slider-countdown {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* Styling for each product card inside the slider */
+.sh-slider-card {
+    background-color: #fff;
+    color: var(--text-dark);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    text-align: right;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.sh-slider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sh-slider-card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sh-slider-card-discount-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--primary-blue); /* Using your theme color */
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    z-index: 2;
+}
+
+.sh-slider-card-price-old {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    font-size: 15px;
+    margin-top: 8px;
+}
+
+.sh-slider-card-price-new {
+    color: var(--primary-blue);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* You can use the existing `special-card` and `interactive-zones` from your project here */
+
