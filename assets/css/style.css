@@ -3508,7 +3508,7 @@ body.dark-theme .why-t-k-card--main .why-t-k-card-title {
     }
 }
 /* ==================================== */
-/* FLASH DEAL SECTION - FINAL VERSION */
+/* FLASH DEAL SECTION - FINAL VERSION (FIXED) */
 /* ==================================== */
 .flash-deal-section {
     padding: 60px 0;
@@ -3553,10 +3553,10 @@ body.dark-mode .section-title {
     grid-template-columns: 1.5fr 1fr;
     gap: 40px;
     background-color: var(--background-card-light);
-    border-radius: 10px; /* کاهش border-radius */
+    border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     padding: 40px;
-    perspective: 1000px; /* اضافه کردن پرسپکتیو برای افکت 3D */
+    position: relative; /* مهم: برای نمایش صحیح z-index */
 }
 body.dark-mode .flash-deal-container {
     background-color: var(--background-card-dark);
@@ -3568,13 +3568,11 @@ body.dark-mode .flash-deal-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform-style: preserve-3d;
     transition: transform 0.5s ease-out, opacity 0.5s ease-out;
-    border-radius: 5px; /* کاهش border-radius */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* سایه عمیق‌تر */
-    position: relative;
-    padding: 20px; /* فاصله داخلی برای زیبایی بیشتر */
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     background-color: #fff;
+    padding: 20px;
 }
 body.dark-mode .flash-deal-main-display {
     background-color: var(--background-dark-alt);
@@ -3583,11 +3581,10 @@ body.dark-mode .flash-deal-main-display {
 .product-image-wrapper {
     width: 100%;
     max-width: 400px;
-    position: relative;
+    border-radius: 5px;
     overflow: hidden;
-    border-radius: 5px; /* کاهش border-radius */
-    transform: translateZ(20px); /* عمق دادن به تصویر */
-    transition: transform 0.3s ease-out;
+    position: relative; /* این خط اضافه شده */
+    z-index: 2; /* این خط اضافه شده */
 }
 
 .main-product-image {
@@ -3603,8 +3600,8 @@ body.dark-mode .flash-deal-main-display {
     text-align: center;
     margin-top: 20px;
     width: 100%;
-    transform: translateZ(10px); /* عمق دادن به باکس اطلاعات */
-    transition: all 0.3s ease;
+    position: relative; /* این خط اضافه شده */
+    z-index: 1; /* این خط اضافه شده */
 }
 
 .product-title {
@@ -3635,18 +3632,17 @@ body.dark-mode .product-title {
 
 .btn-purchase {
     display: inline-block;
-    padding: 10px 25px; /* کاهش اندازه دکمه */
+    padding: 10px 25px;
     background-color: var(--primary-blue);
     color: #fff;
     text-decoration: none;
-    border-radius: 5px; /* کاهش border-radius */
+    border-radius: 5px;
     font-weight: 600;
     transition: all 0.3s ease;
-    transform: translateZ(5px); /* عمق دادن به دکمه */
 }
 .btn-purchase:hover {
     background-color: var(--accent-blue);
-    transform: translateY(-3px) translateZ(10px);
+    transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -3656,19 +3652,17 @@ body.dark-mode .product-title {
     flex-direction: column;
     gap: 10px;
     position: relative;
-    transform-style: preserve-3d;
 }
 
 .accordion-item-btn {
     background-color: #f0f0f0;
-    padding: 15px 20px; /* کاهش padding */
-    border-radius: 5px; /* کاهش border-radius */
+    padding: 15px 20px;
+    border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     align-items: center;
-    transform: translateZ(0); /* آماده‌سازی برای افکت 3D */
 }
 body.dark-mode .accordion-item-btn {
     background-color: var(--background-dark-alt);
@@ -3676,14 +3670,14 @@ body.dark-mode .accordion-item-btn {
 }
 
 .accordion-item-btn:hover {
-    transform: scale(1.02) translateZ(10px); /* حرکت به سمت جلو در هاور */
+    transform: scale(1.02);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .accordion-item-btn.active {
     background-color: var(--primary-blue);
     color: #fff;
-    transform: translateZ(20px); /* حرکت به سمت جلو در حالت فعال */
+    transform: none;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 .accordion-item-btn.active .accordion-title {
@@ -3691,7 +3685,7 @@ body.dark-mode .accordion-item-btn {
 }
 
 .accordion-title {
-    font-size: 1rem; /* کاهش اندازه فونت */
+    font-size: 1rem;
     font-weight: 700;
     color: var(--text-dark);
     margin: 0;
