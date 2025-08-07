@@ -3508,7 +3508,7 @@ body.dark-theme .why-t-k-card--main .why-t-k-card-title {
     }
 }
 /* ==================================== */
-/* FLASH DEAL SECTION - NEW UX/UI */
+/* FLASH DEAL SECTION - FINAL VERSION */
 /* ==================================== */
 .flash-deal-section {
     padding: 60px 0;
@@ -3535,7 +3535,7 @@ body.dark-mode .section-title {
     color: var(--primary-blue);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 .view-all-link i {
     margin-right: 5px;
@@ -3550,46 +3550,61 @@ body.dark-mode .section-title {
 
 .flash-deal-container {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* چیدمان اصلی */
+    grid-template-columns: 1.5fr 1fr;
     gap: 40px;
     background-color: var(--background-card-light);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 30px;
+    border-radius: 10px; /* کاهش border-radius */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    perspective: 1000px; /* اضافه کردن پرسپکتیو برای افکت 3D */
 }
 body.dark-mode .flash-deal-container {
     background-color: var(--background-card-dark);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Main Display Section */
+/* Main Display Section with 3D effect */
 .flash-deal-main-display {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    border-radius: 5px; /* کاهش border-radius */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* سایه عمیق‌تر */
+    position: relative;
+    padding: 20px; /* فاصله داخلی برای زیبایی بیشتر */
+    background-color: #fff;
+}
+body.dark-mode .flash-deal-main-display {
+    background-color: var(--background-dark-alt);
 }
 
 .product-image-wrapper {
     width: 100%;
     max-width: 400px;
-    height: auto;
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 5px; /* کاهش border-radius */
+    transform: translateZ(20px); /* عمق دادن به تصویر */
+    transition: transform 0.3s ease-out;
 }
 
 .main-product-image {
     width: 100%;
     height: auto;
     display: block;
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* انیمیشن نرم برای تصویر */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(1);
+    opacity: 1;
 }
 
 .product-info-box {
     text-align: center;
     margin-top: 20px;
-    padding: 20px;
     width: 100%;
+    transform: translateZ(10px); /* عمق دادن به باکس اطلاعات */
+    transition: all 0.3s ease;
 }
 
 .product-title {
@@ -3617,32 +3632,21 @@ body.dark-mode .product-title {
     font-weight: 900;
     color: var(--red-color);
 }
-.timer-wrapper {
-    margin-bottom: 20px;
-}
-.timer-label {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin-left: 5px;
-}
-.countdown-timer {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-}
+
 .btn-purchase {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 10px 25px; /* کاهش اندازه دکمه */
     background-color: var(--primary-blue);
     color: #fff;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 5px; /* کاهش border-radius */
     font-weight: 600;
     transition: all 0.3s ease;
+    transform: translateZ(5px); /* عمق دادن به دکمه */
 }
 .btn-purchase:hover {
     background-color: var(--accent-blue);
-    transform: translateY(-3px);
+    transform: translateY(-3px) translateZ(10px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
@@ -3652,55 +3656,42 @@ body.dark-mode .product-title {
     flex-direction: column;
     gap: 10px;
     position: relative;
+    transform-style: preserve-3d;
 }
 
 .accordion-item-btn {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 15px;
+    background-color: #f0f0f0;
+    padding: 15px 20px; /* کاهش padding */
+    border-radius: 5px; /* کاهش border-radius */
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     align-items: center;
+    transform: translateZ(0); /* آماده‌سازی برای افکت 3D */
 }
 body.dark-mode .accordion-item-btn {
     background-color: var(--background-dark-alt);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .accordion-item-btn:hover {
-    transform: translateX(-5px);
+    transform: scale(1.02) translateZ(10px); /* حرکت به سمت جلو در هاور */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .accordion-item-btn.active {
     background-color: var(--primary-blue);
     color: #fff;
-    transform: none;
+    transform: translateZ(20px); /* حرکت به سمت جلو در حالت فعال */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 .accordion-item-btn.active .accordion-title {
     color: #fff;
 }
-.accordion-item-btn.active::before {
-    content: '';
-    width: 6px;
-    height: 100%;
-    background-color: var(--accent-blue);
-    position: absolute;
-    right: 0;
-    top: 0;
-    border-radius: 0 15px 15px 0;
-    transform: scaleY(0.5);
-    transition: transform 0.5s ease;
-}
-.accordion-item-btn.active::before {
-    transform: scaleY(1);
-}
 
 .accordion-title {
-    font-size: 1.1rem;
+    font-size: 1rem; /* کاهش اندازه فونت */
     font-weight: 700;
     color: var(--text-dark);
     margin: 0;
@@ -3714,13 +3705,26 @@ body.dark-mode .accordion-title {
 @media (max-width: 992px) {
     .flash-deal-container {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .flash-deal-main-display {
+        padding: 10px;
+    }
+    .product-title {
+        font-size: 1.2rem;
+    }
+    .price-new {
+        font-size: 1.5rem;
     }
     .flash-deal-accordion-list {
         flex-direction: row;
         overflow-x: auto;
         padding-bottom: 10px;
+        white-space: nowrap;
+        gap: 8px;
     }
     .accordion-item-btn {
-        min-width: 150px;
+        min-width: 120px;
+        padding: 12px;
     }
 }
