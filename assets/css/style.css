@@ -75,6 +75,9 @@ a:focus-visible {
     color: var(--primary-accent);
     outline: none;
 }
+body {
+    font-size: 14px;
+}
 
 button,
 input,
@@ -635,7 +638,7 @@ body.dark-theme .search-overlay {
 
 .slider-controls-hero {
     position: absolute;
-    bottom: 20px;
+    bottom: 40px;
     right: 20px;
     z-index: 10;
     background: rgba(0, 0, 0, 0.2);
