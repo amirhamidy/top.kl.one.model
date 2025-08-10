@@ -3822,7 +3822,6 @@ FLASH DEAL SECTION - New Version with Unique Styles
 ====================================
 */
 
-
 .tm-tr-flash-deal-swiper-container {
     overflow: hidden;
 }
@@ -3844,8 +3843,6 @@ body.dark-theme .tm-tr-flash-deal-card {
     background-color: #2a2a2a;
     border-color: #444;
 }
-
-
 
 body.dark-theme .tm-tr-flash-deal-card:hover {
     box-shadow: 0 15px 30px rgba(97, 218, 251, 0.3);

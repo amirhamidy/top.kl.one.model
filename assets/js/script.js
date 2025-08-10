@@ -1188,14 +1188,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const flashDealSwiper = new Swiper('.tm-tr-flash-deal-swiper', {
             loop: true,
             autoplay: {
-                delay: 5000, // 5 seconds for each slide
-                disableOnInteraction: false,
+                // delay: 5000,
+                // disableOnInteraction: false,
             },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
             navigation: false,
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                1024: {
+                    slidesPerView: 1,
+                    spaceBetween: 40
+                }
+            },
             on: {
                 init: (swiper) => {
                     const activeSlide = swiper.slides[swiper.activeIndex];
