@@ -3937,8 +3937,7 @@ body.dark-theme .tm-tr-flash-deal-title {
     right: 0;
     height: 8px;
     width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 12px 12px 0 0;
+    border-radius: 10px 10px 0 0;
     overflow: hidden;
 }
 
@@ -3953,7 +3952,7 @@ body.dark-theme .tm-tr-flash-deal-progress-bar {
     right: 0;
     bottom: 0;
     width: 100%;
-    background-image: linear-gradient(to right, #007bff, #61dafb);
+    background-image: linear-gradient(to right, rgba(0, 123, 255, 0.76), rgba(97, 218, 251, 0.71));
     transform: translateX(0);
     transform-origin: right;
     transition: transform 0.1s linear;
