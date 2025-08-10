@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const prevButton = container.parentNode.querySelector('.swiper-button-prev') || document.querySelector('.golden-offer-prev, .special-offer-prev');
 
                 new Swiper(container, {
-                    slidesPerView: 1,
+                    slidesPerView: 1.55,
                     spaceBetween: 16,
                     navigation: {
                         nextEl: nextButton,
@@ -349,7 +349,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalHeaderAvatar = modal.querySelector('.story-module-story-header-avatar');
     const modalHeaderUsername = modal.querySelector('.story-module-story-header-username');
     const modalHeaderTime = modal.querySelector('.story-module-story-header-time');
-    // const closeModalBtn = modal.querySelector('.story-module-modal-close'); // این خط حذف شد
     const modalProgressBarContainer = modal.querySelector('.story-module-modal-progress-bar-container');
     const modalMediaContainer = modal.querySelector('.story-module-modal-story-media');
     const modalNavPrevBtn = modalContent.querySelector('.story-module-nav-button-prev');
@@ -1152,10 +1151,9 @@ function initFlashDealFinal() {
             mainPriceNew.textContent = `${parseInt(product.priceNew).toLocaleString()} تومان`;
             mainPurchaseBtn.href = `#${product.id}`;
 
-            // Reset and start fade-in animation
             mainDisplay.style.opacity = '1';
             mainImage.style.transform = 'scale(1)';
-        }, 500); // زمان انیمیشن
+        }, 500);
     }
 
     accordionList.addEventListener('click', (e) => {
@@ -1181,4 +1179,39 @@ function initFlashDealFinal() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initFlashDealFinal();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    'use strict';
+
+    function tmTrInitFlashDealSwiper() {
+        const flashDealSwiper = new Swiper('.tm-tr-flash-deal-swiper', {
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                stopOnLastSlide: true
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: false,
+            on: {
+                init: (swiper) => {
+                    const activeSlide = swiper.slides[swiper.activeIndex];
+                    activeSlide.querySelector('.tm-tr-flash-deal-card').classList.add('active');
+                },
+                slideChangeTransitionEnd: (swiper) => {
+                    swiper.slides.forEach(slide => {
+                        slide.querySelector('.tm-tr-flash-deal-card').classList.remove('active');
+                    });
+                    const activeSlide = swiper.slides[swiper.activeIndex];
+                    activeSlide.querySelector('.tm-tr-flash-deal-card').classList.add('active');
+                }
+            }
+        });
+    }
+
+    tmTrInitFlashDealSwiper();
+
 });

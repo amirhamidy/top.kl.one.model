@@ -3816,5 +3816,283 @@ body.dark-mode .accordion-title {
     font-weight: bold;
 }
 
+/*
+====================================
+FLASH DEAL SECTION - New Version with Unique Styles
+====================================
+*/
+
+.tm-tr-flash-deal-section {
+    padding: 60px 0;
+}
+
+.tm-tr-flash-deal-swiper-container {
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.tm-tr-flash-deal-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+body.dark-theme .tm-tr-flash-deal-card {
+    background-color: #2a2a2a;
+    border-color: #444;
+    box-shadow: 0 8px 20px rgba(97, 218, 251, 0.15);
+}
+
+.tm-tr-flash-deal-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2);
+}
+
+body.dark-theme .tm-tr-flash-deal-card:hover {
+    box-shadow: 0 15px 30px rgba(97, 218, 251, 0.3);
+}
+
+.tm-tr-flash-deal-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.tm-tr-flash-deal-card:hover .tm-tr-flash-deal-image {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.tm-tr-flash-deal-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tm-tr-flash-deal-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    font-family: 'Vazirmatn', sans-serif;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+body.dark-theme .tm-tr-flash-deal-title {
+    color: #e0e0e0;
+}
+
+.tm-tr-flash-deal-prices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tm-tr-flash-deal-price-old {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+    position: relative;
+    opacity: 0.8;
+}
+
+.tm-tr-flash-deal-price-new {
+    font-size: 26px;
+    font-weight: 800;
+    color: #007bff;
+    margin-top: 5px;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+/* Purchase Button Styles */
+.tm-tr-btn-purchase {
+    display: inline-block;
+    padding: 12px 30px;
+    background-image: linear-gradient(to right, #007bff, #00c6ff);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: 'Vazirmatn', sans-serif;
+    transition: all 0.4s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2);
+}
+
+.tm-tr-btn-purchase:hover {
+    background-image: linear-gradient(to left, #007bff, #00c6ff);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Progress Bar Styles */
+.tm-tr-flash-deal-progress-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 8px;
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+body.dark-theme .tm-tr-flash-deal-progress-bar {
+    background-color: #444;
+}
+
+.tm-tr-flash-deal-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(to right, #007bff, #61dafb);
+    transform: translateX(0);
+    transform-origin: right;
+    transition: transform 0.1s linear;
+}
+
+.tm-tr-flash-deal-card.active .tm-tr-flash-deal-progress-bar::after {
+    animation: tm-tr-countdown 5s linear forwards;
+}
+
+@keyframes tm-tr-countdown {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Swiper navigation and pagination */
+.tm-tr-flash-deal-swiper-container .swiper-pagination {
+    position: static;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.tm-tr-flash-deal-swiper-container .swiper-button-next,
+.tm-tr-flash-deal-swiper-container .swiper-button-prev {
+    display: none;
+}
+
+/*
+====================================
+RESPONSIVE DESIGN
+====================================
+*/
+@media (max-width: 768px) {
+    .tm-tr-flash-deal-section {
+        padding: 40px 0;
+    }
+
+    .tm-tr-my-container {
+        padding: 0 15px;
+    }
+
+    .tm-tr-section-header {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .tm-tr-section-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .tm-tr-flash-deal-swiper-container {
+        padding: 10px 0;
+    }
+
+    .tm-tr-flash-deal-swiper .swiper-wrapper {
+        align-items: stretch;
+    }
+
+    .tm-tr-flash-deal-card {
+        padding: 15px;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    .tm-tr-flash-deal-image {
+        max-width: 120px;
+        margin-bottom: 10px;
+    }
+
+    .tm-tr-flash-deal-title {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .tm-tr-flash-deal-price-old {
+        font-size: 11px;
+    }
+
+    .tm-tr-flash-deal-price-new {
+        font-size: 18px;
+    }
+
+    .tm-tr-btn-purchase {
+        padding: 8px 15px;
+        font-size: 13px;
+        background-image: linear-gradient(to right, #007bff, #00c6ff);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .tm-tr-btn-purchase:hover {
+        background-image: linear-gradient(to right, #0056b3, #00a6e6);
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    }
+}
+
+@media (max-width: 480px) {
+    .tm-tr-section-title {
+        font-size: 1.3rem;
+    }
+
+    .tm-tr-flash-deal-card {
+        padding: 10px;
+    }
+
+    .tm-tr-flash-deal-image {
+        max-width: 100px;
+    }
+
+    .tm-tr-flash-deal-title {
+        font-size: 12px;
+    }
+
+    .tm-tr-flash-deal-price-old {
+        font-size: 10px;
+    }
+
+    .tm-tr-flash-deal-price-new {
+        font-size: 16px;
+    }
+
+    .tm-tr-btn-purchase {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
 /* You can use the existing `special-card` and `interactive-zones` from your project here */
 

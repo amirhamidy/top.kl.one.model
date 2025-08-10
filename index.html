@@ -550,86 +550,70 @@
     <section class="golden-offers">
         <div class="container">
             <div class="golden-offers-container">
-                <div class="flash-deal-slider-card">
-                    <div class="offers-slider-header">
-                        <div class="offers-slider-title-wrapper">
-                            <h2 class="offers-slider-title">پیشنهاد لحظه‌ای</h2>
+                <section class="tm-tr-flash-deal-section">
+                    <div class="tm-tr-my-container">
+                        <div class="tm-tr-section-header">
+                            <h2 class="tm-tr-section-title">پیشنهاد لحظه‌ای</h2>
+                            <a href="#" class="tm-tr-view-all-link">
+                                مشاهده همه
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
                         </div>
-                        <div class="header-nav-buttons">
-                            <button class="header-nav-btn flash-deal-prev" aria-label="قبلی">
-                                <svg class="icon"><use href="#icon-arrow-right"></use></svg>
-                            </button>
-                            <button class="header-nav-btn flash-deal-next" aria-label="بعدی">
-                                <svg class="icon"><use href="#icon-arrow-left"></use></svg>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="swiper flash-deal-swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <article class="product-card">
-                                    <div class="product-gallery">
-                                        <div class="main-image-wrapper">
-                                            <img src="https://picsum.photos/id/60/400/400" alt="اسپیکر هوشمند خانگی" class="main-product-image">
-                                            <div class="image-overlay"></div>
-                                            <div class="product-actions-on-hover">
-                                                <a href="#" class="action-btn" aria-label="مشاهده محصول">
-                                                    <svg class="icon"><use href="#icon-eye"></use></svg>
-                                                </a>
-                                                <button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید">
-                                                    <svg class="icon"><use href="#icon-cart"></use></svg>
-                                                </button>
-                                                <button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها">
-                                                    <svg class="icon"><use href="#icon-heart"></use></svg>
-                                                </button>
+
+                        <div class="tm-tr-flash-deal-swiper-container">
+                            <div class="swiper tm-tr-flash-deal-swiper">
+                                <div class="swiper-wrapper tm-tr-flash-deal-swiper-wrapper" id="tm-tr-flash-deal-data">
+
+                                    <div class="swiper-slide">
+                                        <div class="tm-tr-flash-deal-card" data-id="product-1">
+                                            <div class="tm-tr-flash-deal-progress-bar"></div>
+                                            <img class="tm-tr-flash-deal-image" src="https://via.placeholder.com/400x400/007bff/fff" alt="محصول ۱" data-image-url="https://via.placeholder.com/400x400/007bff/fff">
+                                            <div class="tm-tr-flash-deal-info">
+                                                <h3 class="tm-tr-flash-deal-title" data-title="گوشی موبایل Samsung Galaxy S23">گوشی موبایل Samsung Galaxy S23</h3>
+                                                <div class="tm-tr-flash-deal-prices">
+                                                    <span class="tm-tr-flash-deal-price-old" data-price-old="35000000">۳۵,۰۰۰,۰۰۰ تومان</span>
+                                                    <span class="tm-tr-flash-deal-price-new" data-price-new="32500000">۳۲,۵۰۰,۰۰۰ تومان</span>
+                                                </div>
+                                                <button class="tm-tr-btn-purchase" data-product-link="#">خرید</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-info">
-                                        <h3 class="product-name"><a href="#">اسپیکر هوشمند خانگی</a></h3>
-                                        <div class="product-countdown" id="flash-deal-countdown">24:00:00</div>
-                                        <div class="product-price-wrapper">
-                                            <div class="product-price">
-                                                <span class="new-price">۲,۸۰۰,۰۰۰ ت</span>
-                                            </div>
-                                            <span class="product-discount-badge">ویژه</span>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="swiper-slide">
-                                <article class="product-card">
-                                    <div class="product-gallery">
-                                        <div class="main-image-wrapper">
-                                            <img src="https://picsum.photos/id/70/400/400" alt="موس گیمینگ حرفه‌ای" class="main-product-image">
-                                            <div class="image-overlay"></div>
-                                            <div class="product-actions-on-hover">
-                                                <a href="#" class="action-btn" aria-label="مشاهده محصول">
-                                                    <svg class="icon"><use href="#icon-eye"></use></svg>
-                                                </a>
-                                                <button class="action-btn btn-add-to-cart" aria-label="افزودن به سبد خرید">
-                                                    <svg class="icon"><use href="#icon-cart"></use></svg>
-                                                </button>
-                                                <button class="action-btn wishlist-btn" aria-label="افزودن به علاقه‌مندی‌ها">
-                                                    <svg class="icon"><use href="#icon-heart"></use></svg>
-                                                </button>
+
+                                    <div class="swiper-slide">
+                                        <div class="tm-tr-flash-deal-card" data-id="product-2">
+                                            <div class="tm-tr-flash-deal-progress-bar"></div>
+                                            <img class="tm-tr-flash-deal-image" src="https://via.placeholder.com/400x400/ff5722/fff" alt="محصول ۲" data-image-url="https://via.placeholder.com/400x400/ff5722/fff">
+                                            <div class="tm-tr-flash-deal-info">
+                                                <h3 class="tm-tr-flash-deal-title" data-title="لپ‌تاپ گیمینگ ایسوس">لپ‌تاپ گیمینگ ایسوس</h3>
+                                                <div class="tm-tr-flash-deal-prices">
+                                                    <span class="tm-tr-flash-deal-price-old" data-price-old="60000000">۶۰,۰۰۰,۰۰۰ تومان</span>
+                                                    <span class="tm-tr-flash-deal-price-new" data-price-new="55500000">۵۵,۵۰۰,۰۰۰ تومان</span>
+                                                </div>
+                                                <button class="tm-tr-btn-purchase" data-product-link="#">خرید</button>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="product-info">
-                                        <h3 class="product-name"><a href="#">موس گیمینگ حرفه‌ای</a></h3>
-                                        <div class="product-price-wrapper">
-                                            <div class="product-price">
-                                                <span class="new-price">۱,۲۰۰,۰۰۰ ت</span>
+
+                                    <div class="swiper-slide">
+                                        <div class="tm-tr-flash-deal-card" data-id="product-3">
+                                            <div class="tm-tr-flash-deal-progress-bar"></div>
+                                            <img class="tm-tr-flash-deal-image" src="https://via.placeholder.com/400x400/4caf50/fff" alt="محصول ۳" data-image-url="https://via.placeholder.com/400x400/4caf50/fff">
+                                            <div class="tm-tr-flash-deal-info">
+                                                <h3 class="tm-tr-flash-deal-title" data-title="ساعت هوشمند شیائومی">ساعت هوشمند شیائومی</h3>
+                                                <div class="tm-tr-flash-deal-prices">
+                                                    <span class="tm-tr-flash-deal-price-old" data-price-old="8000000">۸,۰۰۰,۰۰۰ تومان</span>
+                                                    <span class="tm-tr-flash-deal-price-new" data-price-new="7200000">۷,۲۰۰,۰۰۰ تومان</span>
+                                                </div>
+                                                <button class="tm-tr-btn-purchase" data-product-link="#">خرید</button>
                                             </div>
-                                            <span class="product-discount-badge">ویژه</span>
                                         </div>
                                     </div>
-                                </article>
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 <div class="offers-slider-wrapper">
                     <div class="offers-slider-header">
