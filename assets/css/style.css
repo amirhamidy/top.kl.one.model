@@ -726,13 +726,16 @@ body.dark-theme .search-overlay {
     width: 100%;
 }
 
-
-.offers-slider-wrapper,
-.flash-deal-slider-card {
+.t-box-slider{
     background-color: var(--bg-white);
     border-radius: var(--border-radius-lg);
     padding: 1.5rem;
     box-shadow: var(--shadow-soft);
+  }
+
+
+.offers-slider-wrapper,
+.flash-deal-slider-card {
     min-width: 0;
 }
 
@@ -825,10 +828,7 @@ body.dark-theme .search-overlay {
     background-color: var(--bg-white);
 }
 
-.product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-premium);
-}
+
 
 .product-gallery {
     position: relative;
@@ -3849,17 +3849,17 @@ body.dark-theme .tm-tr-flash-deal-card:hover {
 }
 
 .tm-tr-flash-deal-img {
-    width: 100%;
-    max-width: 200px;
-    height: 200px;
+    width: 60% !important;
+    max-width: 60% !important;
     object-fit: contain;
     border-radius: 8px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
+    margin-top: 20px!important;
 }
 
 .tm-tr-flash-deal-card:hover .tm-tr-flash-deal-img {
-    transform: scale(1.05) rotate(2deg);
+    transform: scale(1.05) rotate(4deg);
 }
 
 .tm-tr-flash-deal-info {
