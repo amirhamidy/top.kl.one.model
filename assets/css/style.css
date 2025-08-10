@@ -3822,12 +3822,8 @@ FLASH DEAL SECTION - New Version with Unique Styles
 ====================================
 */
 
-.tm-tr-flash-deal-section {
-    padding: 60px 0;
-}
 
 .tm-tr-flash-deal-swiper-container {
-    padding: 20px 0;
     overflow: hidden;
 }
 
@@ -3839,38 +3835,33 @@ FLASH DEAL SECTION - New Version with Unique Styles
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.1);
-    padding: 25px;
+    padding: 15px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
 }
 
 body.dark-theme .tm-tr-flash-deal-card {
     background-color: #2a2a2a;
     border-color: #444;
-    box-shadow: 0 8px 20px rgba(97, 218, 251, 0.15);
 }
 
-.tm-tr-flash-deal-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2);
-}
+
 
 body.dark-theme .tm-tr-flash-deal-card:hover {
     box-shadow: 0 15px 30px rgba(97, 218, 251, 0.3);
 }
 
-.tm-tr-flash-deal-image {
+.tm-tr-flash-deal-img {
     width: 100%;
     max-width: 200px;
-    height: auto;
+    height: 200px;
+    object-fit: contain;
     border-radius: 8px;
     margin-bottom: 20px;
     transition: transform 0.3s ease;
 }
 
-.tm-tr-flash-deal-card:hover .tm-tr-flash-deal-image {
+.tm-tr-flash-deal-card:hover .tm-tr-flash-deal-img {
     transform: scale(1.05) rotate(2deg);
 }
 
@@ -4028,8 +4019,9 @@ RESPONSIVE DESIGN
         justify-content: space-between;
     }
 
-    .tm-tr-flash-deal-image {
+    .tm-tr-flash-deal-img {
         max-width: 120px;
+        height: 120px;
         margin-bottom: 10px;
     }
 
@@ -4072,8 +4064,9 @@ RESPONSIVE DESIGN
         padding: 10px;
     }
 
-    .tm-tr-flash-deal-image {
+    .tm-tr-flash-deal-img {
         max-width: 100px;
+        height: 100px;
     }
 
     .tm-tr-flash-deal-title {

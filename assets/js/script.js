@@ -1186,10 +1186,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function tmTrInitFlashDealSwiper() {
         const flashDealSwiper = new Swiper('.tm-tr-flash-deal-swiper', {
+            loop: true,
             autoplay: {
-                delay: 5000,
+                delay: 5000, // 5 seconds for each slide
                 disableOnInteraction: false,
-                stopOnLastSlide: true
             },
             pagination: {
                 el: '.swiper-pagination',
