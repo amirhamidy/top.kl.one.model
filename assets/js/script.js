@@ -341,6 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMisc();
     initWhyUsAnimation();
 });
+
 document.addEventListener('DOMContentLoaded', () => {
     const storiesWrapper = document.querySelector('.story-module-stories-wrapper');
     const storyItems = document.querySelectorAll('.story-module-story-item');
@@ -820,7 +821,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
             closeStoryModal();
@@ -936,6 +936,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 
 const hrefSlides = document.querySelectorAll('.href-slide');
 
@@ -1099,84 +1100,74 @@ document.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     parallaxBg.style.transform = `translateZ(-1px) scale(2) translateY(${scrolled * 0.5}px)`;
 });
-function initFlashDealFinal() {
-    const dataContainer = document.getElementById('flash-deal-data');
-    const accordionList = document.getElementById('flash-deal-accordion-list');
-    const mainDisplay = document.getElementById('flash-deal-main-display');
+document.addEventListener('DOMContentLoaded', () => {
+    function initFlashDealFinal() {
+        const accordionList = document.getElementById('flash-deal-accordion-list');
+        const mainDisplay = document.getElementById('flash-deal-main-display');
 
-    // Main Display Elements
-    const mainImage = document.getElementById('main-product-image');
-    const infoBox = document.querySelector('.product-info-box');
-    const mainTitle = document.getElementById('main-product-title');
-    const mainPriceOld = document.getElementById('main-price-old');
-    const mainPriceNew = document.getElementById('main-price-new');
-    const mainPurchaseBtn = document.querySelector('.btn-purchase');
+        // Main Display Elements
+        const mainImage = document.getElementById('main-product-image');
+        const mainTitle = document.getElementById('main-product-title');
+        const mainPriceOld = document.getElementById('main-price-old');
+        const mainPriceNew = document.getElementById('main-price-new');
+        const mainPurchaseBtn = document.getElementById('main-purchase-btn');
 
-    if (!dataContainer || !accordionList || !mainImage) return;
+        if (!accordionList || !mainImage) return;
 
-    const productsData = Array.from(dataContainer.children).map(item => ({
-        id: item.dataset.id,
-        imageUrl: item.dataset.imageUrl,
-        priceOld: item.dataset.priceOld,
-        priceNew: item.dataset.priceNew,
-        title: item.dataset.title
-    }));
+        // محصولات را مستقیماً از HTML می‌خوانیم
+        const productsData = Array.from(accordionList.children).map(item => ({
+            id: item.dataset.id,
+            imageUrl: item.querySelector('.accordion-image').src,
+            title: item.querySelector('.accordion-title').textContent,
+            priceOld: item.querySelector('.accordion-price-old').textContent,
+            priceNew: item.querySelector('.accordion-price-new').textContent
+        }));
 
-    let activeProductIndex = 0;
+        let activeProductIndex = 0;
 
-    function renderAccordionButtons() {
-        accordionList.innerHTML = '';
-        productsData.forEach((product, index) => {
-            const button = document.createElement('div');
-            button.classList.add('accordion-item-btn');
-            if (index === activeProductIndex) {
-                button.classList.add('active');
-            }
-            button.dataset.index = index;
-            button.innerHTML = `<h4 class="accordion-title">${product.title}</h4>`;
-            accordionList.appendChild(button);
-        });
-    }
+        function updateMainDisplay(product) {
+            // انیمیشن: محو شدن و کمی کوچک شدن
+            mainDisplay.style.opacity = '0';
+            mainImage.style.transform = 'scale(0.95)';
 
-    function updateMainDisplay(product) {
-        // Start animation: fade out and slightly scale down
-        mainDisplay.style.opacity = '0';
-        mainImage.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                // به‌روزرسانی محتوا
+                mainImage.src = product.imageUrl;
+                mainTitle.textContent = product.title;
+                mainPriceOld.textContent = product.priceOld;
+                mainPriceNew.textContent = product.priceNew;
+                mainPurchaseBtn.href = `#${product.id}`;
 
-        setTimeout(() => {
-            // Update content after animation
-            mainImage.src = product.imageUrl;
-            mainTitle.textContent = product.title;
-            mainPriceOld.textContent = `${parseInt(product.priceOld).toLocaleString()} تومان`;
-            mainPriceNew.textContent = `${parseInt(product.priceNew).toLocaleString()} تومان`;
-            mainPurchaseBtn.href = `#${product.id}`;
-
-            mainDisplay.style.opacity = '1';
-            mainImage.style.transform = 'scale(1)';
-        }, 500);
-    }
-
-    accordionList.addEventListener('click', (e) => {
-        const button = e.target.closest('.accordion-item-btn');
-        if (!button) return;
-
-        const newIndex = parseInt(button.dataset.index);
-        if (newIndex === activeProductIndex) return;
-
-        const currentActive = accordionList.querySelector('.accordion-item-btn.active');
-        if (currentActive) {
-            currentActive.classList.remove('active');
+                // انیمیشن: ظاهر شدن
+                mainDisplay.style.opacity = '1';
+                mainImage.style.transform = 'scale(1)';
+            }, 500);
         }
-        button.classList.add('active');
-        activeProductIndex = newIndex;
 
+        accordionList.addEventListener('click', (e) => {
+            const button = e.target.closest('.accordion-item-btn');
+            if (!button) return;
+
+            const newIndex = productsData.findIndex(p => p.id === button.dataset.id);
+
+            if (newIndex === activeProductIndex) return;
+
+            const currentActive = accordionList.querySelector('.accordion-item-btn.active');
+            if (currentActive) {
+                currentActive.classList.remove('active');
+            }
+            button.classList.add('active');
+            activeProductIndex = newIndex;
+
+            updateMainDisplay(productsData[activeProductIndex]);
+        });
+
+        // به‌روزرسانی اولیه با اولین محصول در لیست
         updateMainDisplay(productsData[activeProductIndex]);
-    });
+    }
 
-    renderAccordionButtons();
-    updateMainDisplay(productsData[activeProductIndex]);
-}
-
+    initFlashDealFinal();
+});
 document.addEventListener('DOMContentLoaded', () => {
     initFlashDealFinal();
 });
@@ -1229,3 +1220,5 @@ document.addEventListener('DOMContentLoaded', () => {
     tmTrInitFlashDealSwiper();
 
 });
+
+

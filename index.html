@@ -644,28 +644,91 @@
         <div class="flash-deal-container">
             <div class="flash-deal-main-display" id="flash-deal-main-display">
                 <div class="product-image-wrapper w-center">
-                    <img id="main-product-image" src="assets/img/L-1.png" alt="تصویر محصول" class="w-75">
+                    <img id="main-product-image" src="assets/img/sl-1.webp" alt="تصویر محصول" class="w-100">
                 </div>
                 <div class="product-info-box">
-                    <h3 class="product-title" id="main-product-title">نام محصول</h3>
+                    <h3 class="product-title" id="main-product-title">دوربین عکاسی نیکون D5600</h3>
                     <div class="product-prices">
                         <span class="price-old" id="main-price-old">1,590,000 تومان</span>
                         <span class="price-new" id="main-price-new">1,090,000 تومان</span>
                     </div>
-                    <a href="#" class="btn-purchase">خرید و مشاهده</a>
+                    <a href="#" class="btn-purchase" id="main-purchase-btn">خرید و مشاهده</a>
                 </div>
             </div>
 
             <div class="flash-deal-accordion-list" id="flash-deal-accordion-list">
-            </div>
-
-            <div id="flash-deal-data" style="display: none;">
-                <div class="flash-deal-item" data-id="product-1" data-image-url="assets/img/sl-1.webp" data-price-old="1,590,000" data-price-new="1,090,000" data-title="دوربین عکاسی نیکون D5600"></div>
-                <div class="flash-deal-item" data-id="product-2" data-image-url="assets/img/sl-2.webp" data-price-old="5,000,000" data-price-new="3,500,000" data-title="لنز NIKKOR 50mm f/1.8G"></div>
-                <div class="flash-deal-item" data-id="product-3" data-image-url="assets/img/sl-3.webp" data-price-old="800,000" data-price-new="650,000" data-title="باتری EN-EL14a"></div>
-                <div class="flash-deal-item" data-id="product-4" data-image-url="assets/img/sl-4.webp" data-price-old="800,000" data-price-new="650,000" data-title="باتری EN-EL14a"></div>
-                <div class="flash-deal-item" data-id="product-5" data-image-url="assets/img/sl-5.webp" data-price-old="800,000" data-price-new="650,000" data-title="باتری EN-EL14a"></div>
-                <div class="flash-deal-item" data-id="product-6" data-image-url="assets/img/sl-6.webp" data-price-old="800,000" data-price-new="650,000" data-title="باتری EN-EL14a"></div>
+                <button href="#" class="accordion-item-btn active" data-id="product-1">
+                    <div class="accordion-image-wrapper">
+                        <img src="assets/img/sl-1.webp" alt="دوربین عکاسی نیکون" class="accordion-image">
+                    </div>
+                    <div class="accordion-info">
+                        <h4 class="accordion-title">دوربین عکاسی نیکون D5600</h4>
+                        <div class="accordion-prices">
+                            <span class="accordion-price-old">1,590,000 تومان</span>
+                            <span class="accordion-price-new">1,090,000 تومان</span>
+                        </div>
+                    </div>
+                </button>
+                <button href="#" class="accordion-item-btn" data-id="product-2">
+                    <div class="accordion-image-wrapper">
+                        <img src="assets/img/sl-2.webp" alt="لنز NIKKOR" class="accordion-image">
+                    </div>
+                    <div class="accordion-info">
+                        <h4 class="accordion-title">لنز NIKKOR 50mm f/1.8G</h4>
+                        <div class="accordion-prices">
+                            <span class="accordion-price-old">5,000,000 تومان</span>
+                            <span class="accordion-price-new">3,500,000 تومان</span>
+                        </div>
+                    </div>
+                </button>
+                <button href="#" class="accordion-item-btn" data-id="product-3">
+                    <div class="accordion-image-wrapper">
+                        <img src="assets/img/sl-3.webp" alt="باتری EN-EL14a" class="accordion-image">
+                    </div>
+                    <div class="accordion-info">
+                        <h4 class="accordion-title">باتری EN-EL14a</h4>
+                        <div class="accordion-prices">
+                            <span class="accordion-price-old">800,000 تومان</span>
+                            <span class="accordion-price-new">650,000 تومان</span>
+                        </div>
+                    </div>
+                </button>
+                <button href="#" class="accordion-item-btn" data-id="product-4">
+                    <div class="accordion-image-wrapper">
+                        <img src="assets/img/sl-4.webp" alt="باتری EN-EL14a" class="accordion-image">
+                    </div>
+                    <div class="accordion-info">
+                        <h4 class="accordion-title">کیف دوربین Manfrotto</h4>
+                        <div class="accordion-prices">
+                            <span class="accordion-price-old">1,200,000 تومان</span>
+                            <span class="accordion-price-new">950,000 تومان</span>
+                        </div>
+                    </div>
+                </button>
+                <button href="#" class="accordion-item-btn" data-id="product-5">
+                    <div class="accordion-image-wrapper">
+                        <img src="assets/img/sl-5.webp" alt="لنز NIKKOR" class="accordion-image">
+                    </div>
+                    <div class="accordion-info">
+                        <h4 class="accordion-title">فیلتر UV HOYA</h4>
+                        <div class="accordion-prices">
+                            <span class="accordion-price-old">450,000 تومان</span>
+                            <span class="accordion-price-new">320,000 تومان</span>
+                        </div>
+                    </div>
+                </button>
+                <button href="#" class="accordion-item-btn" data-id="product-6">
+                    <div class="accordion-image-wrapper">
+                        <img src="assets/img/sl-6.webp" alt="دوربین فیلم‌برداری" class="accordion-image">
+                    </div>
+                    <div class="accordion-info">
+                        <h4 class="accordion-title">کارت حافظه SanDisk</h4>
+                        <div class="accordion-prices">
+                            <span class="accordion-price-old">600,000 تومان</span>
+                            <span class="accordion-price-new">480,000 تومان</span>
+                        </div>
+                    </div>
+                </button>
             </div>
         </div>
     </section>
@@ -987,7 +1050,7 @@
 
 
 <!--    sh - slider :: ---  start -->
-    <section class="sh-slider px-2 rounded-3 py-1  d-flex justify-content-start align-items-center bg-primary">
+    <section class="sh-slider px-2 rounded-3 py-1  d-flex justify-content-start align-items-center cs-border-1">
         <section class="special-offers w-100">
             <div class="container">
                 <div class="swiper special-offers-swiper">
@@ -1195,11 +1258,11 @@
         <div class="hero-grid-container">
             <div class="hero-main-slider swiper pb-0" id="heroSwiper">
                 <div class="swiper-wrapper ">
-                    <a href="#" class="swiper-slide hero-main-banner" style="background-image: url('assets/img/one-slider.webp');">
+                    <a href="#" class="swiper-slide rounded-3 d-inline  hero-main-banner" style="background-image: url('assets/img/one-slider.webp');background-size: auto 80% !important;background-repeat: no-repeat; ">
                     </a>
-                    <a href="#" class="swiper-slide hero-main-banner" style="background-image: url('assets/img/twoo-slider.webp');">
+                    <a href="#" class="swiper-slide rounded-3 d-inline  hero-main-banner" style="background-image: url('assets/img/twoo-slider.webp');background-size: auto 80% !important;background-repeat: no-repeat; ">
                     </a>
-                    <a href="#" class="swiper-slide hero-main-banner" style="background-image: url('assets/img/three-slider.webp');">
+                    <a href="#" class="swiper-slide rounded-3 d-inline  hero-main-banner" style="background-image: url('assets/img/three-slider.webp');background-size: auto 80% !important;background-repeat: no-repeat; ">
                     </a>
                 </div>
                 <div class="swiper-pagination"></div>
