@@ -4111,8 +4111,12 @@ RESPONSIVE DESIGN
 }
 
 body.dark-theme .flash-deal-main-display {
-    background-color: var(--card-background-dark);
+    background-color:#383838;
     border-color: #383838;
+}
+
+body.dark-theme .flash-deal-accordion-list{
+    background-color: #383838 !important;
 }
 
 body.dark-theme .flash-deal-main-display .product-title {
@@ -4218,7 +4222,12 @@ body.dark-theme .accordion-item-btn:hover {
     flex: 1;
     display: flex;
     flex-direction: column;
+    height: 300px;
     gap: 10px;
+    overflow-y: scroll;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+    scrollbar-width: thin;
+    background-color: white !important;
 }
 
 .accordion-item-btn {
